@@ -5,4 +5,6 @@
 //  Created by Khripunov Pavel on 28/12/2023.
 //
 
-import Foundation
+protocol UserProviderProtocol {
+    var currentUser: UserEntity? { get }
+}

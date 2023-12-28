@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+class ProfileScreenViewModel: ObservableObject {
+   
+}

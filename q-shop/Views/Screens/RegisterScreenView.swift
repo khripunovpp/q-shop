@@ -1,5 +1,5 @@
 //
-//  LoginScreenView.swift
+//  RegisterScreenView.swift
 //  q-shop
 //
 //  Created by Khripunov Pavel on 28/12/2023.
@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct LoginScreenView: View {
+struct RegisterScreenView: View {
     var body: some View {
         NavigationView{
             VStack{
-                LoginForm()
+                
+                RegisterForm()
                 
                 Spacer()
             }
@@ -20,5 +21,5 @@ struct LoginScreenView: View {
 }
 
 #Preview {
-    LoginScreenView()
+    RegisterScreenView()
 }

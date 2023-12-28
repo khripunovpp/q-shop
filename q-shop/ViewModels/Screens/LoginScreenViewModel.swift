@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+class LoginScreenViewModel: ObservableObject {
+    @Published var email = ""
+    @Published var passsword = ""
+    @Published var errors = ""
+    
+    init(){}
+    
+    func login() {
+        print("login")
+//        Auth.auth().signIn(withEmail: email, password: passsword){ result,errors in
+//            guard errors == nil else {
+//                print("Error: \(errors!)")
+//                return
+//            }
+//        }
+    }
+}
