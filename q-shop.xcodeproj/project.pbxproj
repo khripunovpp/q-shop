@@ -52,6 +52,11 @@
 		69AE73212B3E14AB0085902B /* RegisterScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73202B3E14AB0085902B /* RegisterScreenViewModel.swift */; };
 		69AE73232B3E16DA0085902B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73222B3E16DA0085902B /* RootView.swift */; };
 		69AE73252B3E16E60085902B /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73242B3E16E60085902B /* RootViewModel.swift */; };
+		69AE732B2B3E1AE70085902B /* BrandColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE732A2B3E1AE70085902B /* BrandColors.swift */; };
+		69AE732E2B3E1D500085902B /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE732D2B3E1D500085902B /* ColorExtensions.swift */; };
+		69AE73302B3F3F2E0085902B /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE732F2B3F3F2E0085902B /* SearchBarView.swift */; };
+		69AE73322B3F476E0085902B /* ViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73312B3F476E0085902B /* ViewConstraints.swift */; };
+		69AE73342B3F4A360085902B /* FiltersBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73332B3F4A360085902B /* FiltersBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +99,11 @@
 		69AE73202B3E14AB0085902B /* RegisterScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreenViewModel.swift; sourceTree = "<group>"; };
 		69AE73222B3E16DA0085902B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		69AE73242B3E16E60085902B /* RootViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		69AE732A2B3E1AE70085902B /* BrandColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandColors.swift; sourceTree = "<group>"; };
+		69AE732D2B3E1D500085902B /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		69AE732F2B3F3F2E0085902B /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		69AE73312B3F476E0085902B /* ViewConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstraints.swift; sourceTree = "<group>"; };
+		69AE73332B3F4A360085902B /* FiltersBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +144,8 @@
 		69AE72B22B3E0E1E0085902B /* q-shop */ = {
 			isa = PBXGroup;
 			children = (
+				69AE732C2B3E1D380085902B /* Extensions */,
+				69AE73292B3E1AD70085902B /* Const */,
 				69AE73262B3E18160085902B /* New Group */,
 				69AE72B72B3E0E1E0085902B /* Assets.xcassets */,
 				69AE72B52B3E0E1E0085902B /* ContentView.swift */,
@@ -216,6 +228,8 @@
 				69AE731A2B3E145E0085902B /* BrandButton.swift */,
 				69AE73192B3E145E0085902B /* LoginForm.swift */,
 				69AE73182B3E145E0085902B /* RegisterForm.swift */,
+				69AE732F2B3F3F2E0085902B /* SearchBarView.swift */,
+				69AE73332B3F4A360085902B /* FiltersBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -269,6 +283,23 @@
 			children = (
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		69AE73292B3E1AD70085902B /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				69AE732A2B3E1AE70085902B /* BrandColors.swift */,
+				69AE73312B3F476E0085902B /* ViewConstraints.swift */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		69AE732C2B3E1D380085902B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				69AE732D2B3E1D500085902B /* ColorExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69AE730C2B3E12EE0085902B /* CartProviderProtocol.swift in Sources */,
+				69AE73342B3F4A360085902B /* FiltersBar.swift in Sources */,
 				69AE72EF2B3E115A0085902B /* CartScreenViewModel.swift in Sources */,
 				69AE73082B3E12BE0085902B /* AuthServiceProtocol.swift in Sources */,
 				69AE72F52B3E11980085902B /* GoodEntity.swift in Sources */,
@@ -366,8 +398,10 @@
 				69AE72B62B3E0E1E0085902B /* ContentView.swift in Sources */,
 				69AE73102B3E13070085902B /* UserProviderProtocol.swift in Sources */,
 				69AE731D2B3E145E0085902B /* BrandButton.swift in Sources */,
+				69AE73302B3F3F2E0085902B /* SearchBarView.swift in Sources */,
 				69AE73002B3E12410085902B /* CartProvider.swift in Sources */,
 				69AE72E92B3E11310085902B /* ShowcaseScreenViewModel.swift in Sources */,
+				69AE732E2B3E1D500085902B /* ColorExtensions.swift in Sources */,
 				69AE72FB2B3E11E00085902B /* AuthService.swift in Sources */,
 				69AE73252B3E16E60085902B /* RootViewModel.swift in Sources */,
 				69AE73022B3E12500085902B /* CheckoutProvider.swift in Sources */,
@@ -375,9 +409,11 @@
 				69AE72E72B3E111B0085902B /* LoginScreenViewModel.swift in Sources */,
 				69AE72B42B3E0E1E0085902B /* q_shopApp.swift in Sources */,
 				69AE72E22B3E10E10085902B /* CartScreenView.swift in Sources */,
+				69AE732B2B3E1AE70085902B /* BrandColors.swift in Sources */,
 				69AE73232B3E16DA0085902B /* RootView.swift in Sources */,
 				69AE731F2B3E148F0085902B /* RegisterScreenView.swift in Sources */,
 				69AE72E42B3E10EF0085902B /* CheckoutScreenView.swift in Sources */,
+				69AE73322B3F476E0085902B /* ViewConstraints.swift in Sources */,
 				69AE72F92B3E11C40085902B /* OrderEntity.swift in Sources */,
 				69AE72DA2B3E10610085902B /* ShowcaseScreenView.swift in Sources */,
 				69AE72F12B3E116A0085902B /* CheckoutScreenViewModel.swift in Sources */,

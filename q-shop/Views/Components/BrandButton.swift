@@ -39,12 +39,12 @@ struct BrandButton: View {
         } label: {
             ZStack{
                 RoundedRectangle(cornerRadius: ButtonSizesMap[type]?.radius ?? 25)
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                    .foregroundColor(colorScheme == .dark ? .white : BrandColors.main)
                     .frame(height: height)
                 
                 Text(label)
                     .font(.system(size: ButtonSizesMap[type]?.fontSize ?? 25))
-                    .foregroundStyle(colorScheme == .dark ? .black : .white)
+                    .foregroundStyle(colorScheme == .dark ? BrandColors.main : .white)
             }
         }
     }
@@ -58,5 +58,5 @@ struct BrandButton: View {
         BrandButton(label: "Big",type: .big) {
             
         }
-    }
+    }.padding()
 }
