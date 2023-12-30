@@ -8,19 +8,11 @@
 import SwiftUI
 
 struct ShowcaseScreenView: View {
-  
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0){
-            // searchbar
+        VStack(alignment: .leading, spacing: 0) {
             SearchBarView()
-            
-            // filters
             FiltersBar()
-            
-            // list
             GoodsList()
-            
             Spacer()
         }
     }

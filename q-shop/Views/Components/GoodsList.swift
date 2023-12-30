@@ -12,19 +12,33 @@ struct GoodsList: View {
         "43fqred",
         "egravf"
     ]
-    var width = UIScreen.main.bounds.width / 2
+    var width: CGFloat
     var colors: [Color] = [.red,.green,.blue,.purple]
+    var horizontalSpacing: CGFloat
+    var verticalSpacing: CGFloat
+    var innerSpacing: CGFloat
+    
+    init() {
+        self.horizontalSpacing = BASE_PADDING
+        self.verticalSpacing = BASE_PADDING
+        self.innerSpacing = BASE_PADDING
+        self.width = (UIScreen.main.bounds.width - horizontalSpacing - innerSpacing * 2) / 2
+    }
+    
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: width),spacing: 0)], spacing: 0) {
+            LazyVGrid(
+                columns: [
+                    GridItem(.adaptive(minimum: width), spacing: horizontalSpacing)
+                ],
+                spacing: verticalSpacing
+            ) {
                 ForEach(1...8, id: \.self) { n in
                     GoodItem(
-                        width: width,
-                        height: width,
                         content: "\(n)"
                     ).frame(width: width, height: width)
                 }
-            }
+            }.padding(innerSpacing)
         }
         
     }

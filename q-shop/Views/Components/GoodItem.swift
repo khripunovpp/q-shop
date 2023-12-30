@@ -8,21 +8,30 @@
 import SwiftUI
 
 struct GoodItem: View {
-    var width: CGFloat
-    var height: CGFloat
     var content: String
     var body: some View {
         ZStack{
-            Rectangle().foregroundColor(.white)
-            Text(content).foregroundColor(.black)
+            Rectangle().foregroundColor(Color.hex("#eeeeee"))
+                .cornerRadius(5.0)
+            Group{
+                VStack {
+                    Spacer()
+                    Text(content)
+                        .foregroundColor(.black)
+                        .padding(.bottom, BASE_PADDING)
+                        .font(.system(size: 20))
+                    QuantityButton()
+                }
+            }.padding(BASE_PADDING)
         }
     }
 }
 
 #Preview {
     GoodItem(
-        width: .infinity,
-        height: 170,
         content: "12"
+    ).frame(
+        width: 200,
+        height: 200
     )
 }
