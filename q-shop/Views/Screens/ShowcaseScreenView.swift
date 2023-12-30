@@ -18,8 +18,8 @@ struct ShowcaseScreenView: View {
             // filters
             FiltersBar()
             
-            
             // list
+            GoodsList()
             
             Spacer()
         }
