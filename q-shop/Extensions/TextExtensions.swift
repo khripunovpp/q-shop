@@ -10,11 +10,13 @@ import SwiftUI
 struct TextStyle {
     var color: Color = .black
     var size: CGFloat = 16
+    var weight: Font.Weight = .regular
     
     mutating func clone(_ styles: TextStyle? = nil) -> TextStyle {
         return TextStyle(
             color: styles?.color ?? color,
-            size: styles?.size ?? size 
+            size: styles?.size ?? size,
+            weight: styles?.weight ?? weight
         )
     }
 }
@@ -24,7 +26,10 @@ struct TextStyleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .foregroundColor(styles.color)
-            .font(.system(size: styles.size))
+            .font(.system(
+                size: styles.size,
+                weight: styles.weight
+            ))
     }
 }
 

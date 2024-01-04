@@ -10,7 +10,7 @@ import SwiftUI
 struct RootView: View {
     var body: some View {
         if AuthService.shared.isSignnedIn {
-            ShowcaseScreenView()
+            CartScreenView()
         } else {
             LoginScreenView()
         }

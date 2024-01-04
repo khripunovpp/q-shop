@@ -8,3 +8,4 @@
 
 var RegularTextSyles = TextStyle(color: .black, size: 16)
 var GoodNameTextSyles = RegularTextSyles.clone(TextStyle(size: 20))
+var TitleLvl1 = TextStyle(size: 35, weight: .bold)
