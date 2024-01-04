@@ -9,7 +9,14 @@ import SwiftUI
 
 struct SingleGoodDetailsScreenView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+           Text("Name")
+                .textStyle(GoodNameTextSyles)
+           Text("Description")
+                .textStyle(RegularTextSyles)
+                .padding(.bottom, BASE_PADDING)
+            QuantityButton()
+        }
     }
 }
 

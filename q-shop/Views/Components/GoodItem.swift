@@ -17,9 +17,8 @@ struct GoodItem: View {
                 VStack {
                     Spacer()
                     Text(content)
-                        .foregroundColor(.black)
+                        .textStyle(GoodNameTextSyles)
                         .padding(.bottom, BASE_PADDING)
-                        .font(.system(size: 20))
                     QuantityButton()
                 }
             }.padding(BASE_PADDING)

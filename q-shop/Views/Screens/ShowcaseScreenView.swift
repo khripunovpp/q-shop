@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct ShowcaseScreenView: View {
+    @State var sheet = false
+    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
+        VStack(spacing: 0) {
             SearchBarView()
             FiltersBar()
-            GoodsList()
+            GoodsList().onTapGesture {
+                print("tap")
+                sheet = true
+            }
             Spacer()
+        }.sheet(isPresented: $sheet) {
+            VStack(spacing: 0){
+                Spacer()
+                SingleGoodDetailsScreenView().presentationDetents([.fraction(0.3)])
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ struct QuantityButton: View {
                 counter -= 1
             } label: {
                 Image(systemName: "minus")
+                    .foregroundColor(.black)
             }
             Spacer()
             Text("\(counter)")
@@ -23,6 +24,7 @@ struct QuantityButton: View {
                     counter += 1
             } label: {
                 Image(systemName: "plus")
+                    .foregroundColor(.black)
             }
         }
     }
