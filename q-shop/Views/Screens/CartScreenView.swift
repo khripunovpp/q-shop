@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CartScreenView: View {
+    @State var checkout = false
     var body: some View {
         VStack(alignment:.leading,spacing: 0){
             Text("Your order")
@@ -30,10 +31,16 @@ struct CartScreenView: View {
                 }.padding(.bottom, BASE_PADDING)
             }
             
-            BrandButton(
-                label: "Checkout",
-                type: .big
-            ) {
+            NavigationLink(isActive: $checkout) {
+                CheckoutScreenView()
+                    .navigationBarTitleDisplayMode(.inline)
+            } label: {
+                BrandButton(
+                    label: "Checkout",
+                    type: .big
+                ) {
+                    checkout = true
+                }
             }
             Spacer()
         }.padding(EdgeInsets(
