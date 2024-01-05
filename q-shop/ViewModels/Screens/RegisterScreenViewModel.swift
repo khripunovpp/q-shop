@@ -5,6 +5,7 @@
 //  Created by Khripunov Pavel on 28/12/2023.
 //
 
+import Resolver
 import Foundation
 
 class RegisterScreenViewModel: ObservableObject {
@@ -12,6 +13,8 @@ class RegisterScreenViewModel: ObservableObject {
     @Published var email = ""
     @Published var passsword = ""
     @Published var errors = ""
+    
+    @Injected var authService: AuthService
     
     init(){}
     
@@ -22,7 +25,7 @@ class RegisterScreenViewModel: ObservableObject {
             return
         }
         
-        AuthService.shared.createUser(name: name, email: email, password: passsword) { result, error in
+        authService.createUser(name: name, email: email, password: passsword) { result, error in
             guard error == nil else {
                 print("Error: \(error!)")
                 return

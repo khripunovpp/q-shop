@@ -6,8 +6,6 @@
 //
 
 class UserProvider: UserProviderProtocol {
-    
-    var authService = AuthService.shared
 
     var currentUser: UserEntity?
     

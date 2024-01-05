@@ -10,12 +10,12 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class AuthService: ObservableObject {
-    static let shared = AuthService()
     @Published var user: FirebaseAuth.User?
-    private init(){
+    
+    init(){
         self.user = Auth.auth().currentUser
-        Auth.auth().addIDTokenDidChangeListener(){ [weak self] auth,user in
-            print("user changed \(user?.uid)")
+        Auth.auth().addIDTokenDidChangeListener() { [weak self] auth, user in
+            print("user changed \(user?.uid ?? "")")
             self?.user = user
         }
     }
@@ -56,7 +56,7 @@ class AuthService: ObservableObject {
         let db = Firestore.firestore()
         
         db.collection("users")
-            .document(AuthService.shared.uuid)
+            .document(uuid)
             .setData([
                 "id": id,
                 "email": email,

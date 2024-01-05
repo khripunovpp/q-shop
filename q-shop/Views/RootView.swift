@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct RootView: View {
+    @Injected var authService: AuthService
+    
     var body: some View {
-        if AuthService.shared.isSignnedIn {
+        if authService.isSignnedIn {
             CartScreenView()
         } else {
             LoginScreenView()
