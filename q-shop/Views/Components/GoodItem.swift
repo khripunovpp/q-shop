@@ -9,11 +9,13 @@ import SwiftUI
 import Resolver
 
 struct GoodItem: View {
+    @State var sheet = false
     var content: String
     var changed: (Int) -> Void
     var body: some View {
         ZStack{
-            Rectangle().foregroundColor(Color.hex("#eeeeee"))
+            Rectangle()
+                .foregroundColor(Color.hex("#eeeeee"))
                 .cornerRadius(5.0)
             Group{
                 VStack {
@@ -26,6 +28,16 @@ struct GoodItem: View {
                     }
                 }
             }.padding(BASE_PADDING)
+        }
+        .onTapGesture {
+            sheet = true
+        }
+        .sheet(isPresented: $sheet) {
+            VStack(spacing: 0){
+                Spacer()
+                SingleGoodDetailsScreenView()
+                    .presentationDetents([.fraction(0.3)])
+            }
         }
     }
 }

@@ -205,7 +205,6 @@
 		69AE72C12B3E0E280085902B /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				69AE72FA2B3E11E00085902B /* AuthService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -258,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				69AE731A2B3E145E0085902B /* BrandButton.swift */,
+				69AE72FA2B3E11E00085902B /* AuthService.swift */,
 				69AE73192B3E145E0085902B /* LoginForm.swift */,
 				69AE73182B3E145E0085902B /* RegisterForm.swift */,
 				69AE732F2B3F3F2E0085902B /* SearchBarView.swift */,

@@ -9,7 +9,6 @@ import SwiftUI
 import Resolver
 
 struct ShowcaseScreenView: View {
-    @State var sheet = false
     @State var goToCart = false
     @StateObject var viewModel = ShowcaseScreenViewModel()
     
@@ -31,11 +30,6 @@ struct ShowcaseScreenView: View {
                         goToCart = true
                     }
                 }
-            }
-        }.sheet(isPresented: $sheet) {
-            VStack(spacing: 0){
-                Spacer()
-                SingleGoodDetailsScreenView().presentationDetents([.fraction(0.3)])
             }
         }
     }
