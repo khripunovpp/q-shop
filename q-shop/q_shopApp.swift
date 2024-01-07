@@ -15,6 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         
         Resolver.register { AuthService() as AuthService }
+        Resolver.register { CartProvider() as CartProvider }
         
         return true
     }

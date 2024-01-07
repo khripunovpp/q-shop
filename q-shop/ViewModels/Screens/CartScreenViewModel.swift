@@ -6,7 +6,7 @@
 //
 
 import Foundation
+import Resolver
 
 class CartScreenViewModel: ObservableObject {
-   
 }

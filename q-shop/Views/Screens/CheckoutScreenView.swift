@@ -23,7 +23,7 @@ struct CheckoutScreenView: View {
                         Text("Good 1")
                             .textStyle(RegularTextSyles)
                         Spacer()
-                        QuantityButton()
+                        QuantityButton() { _ in }
                             .frame(width: 100)
                     }
                     .padding(.bottom, BASE_PADDING)
@@ -32,7 +32,7 @@ struct CheckoutScreenView: View {
                         Text("Good 2")
                             .textStyle(RegularTextSyles)
                         Spacer()
-                        QuantityButton()
+                        QuantityButton() { _ in }
                             .frame(width: 100)
                     }
                     .padding(.bottom, BASE_PADDING)

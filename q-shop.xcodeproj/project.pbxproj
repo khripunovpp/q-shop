@@ -64,6 +64,11 @@
 		69AE73362B408EF60085902B /* GoodsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73352B408EF60085902B /* GoodsList.swift */; };
 		69AE73382B408F290085902B /* GoodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73372B408F290085902B /* GoodItem.swift */; };
 		69AE733A2B40B2C50085902B /* QuantityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73392B40B2C50085902B /* QuantityButton.swift */; };
+		69EA13372B4A28C8005152D6 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA13362B4A28C8005152D6 /* RxBlocking */; };
+		69EA13392B4A28C8005152D6 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA13382B4A28C8005152D6 /* RxBlocking-Dynamic */; };
+		69EA133B2B4A28C8005152D6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA133A2B4A28C8005152D6 /* RxCocoa */; };
+		69EA133D2B4A28C8005152D6 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA133C2B4A28C8005152D6 /* RxCocoa-Dynamic */; };
+		69EA133F2B4A28C8005152D6 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA133E2B4A28C8005152D6 /* RxRelay */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,14 +128,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				69AE72CF2B3E0FB90085902B /* FirebaseAnalyticsSwift in Frameworks */,
+				69EA133D2B4A28C8005152D6 /* RxCocoa-Dynamic in Frameworks */,
+				69EA13372B4A28C8005152D6 /* RxBlocking in Frameworks */,
 				69AE73132B3E13890085902B /* FirebaseAuth in Frameworks */,
 				699BCC2E2B4860770084155C /* Resolver in Frameworks */,
 				69AE72CB2B3E0FB90085902B /* FirebaseAnalytics in Frameworks */,
 				699BCC302B4860770084155C /* Resolver-Dynamic in Frameworks */,
+				69EA13392B4A28C8005152D6 /* RxBlocking-Dynamic in Frameworks */,
 				69AE72CD2B3E0FB90085902B /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				69AE72D32B3E0FB90085902B /* FirebaseAppCheck in Frameworks */,
+				69EA133B2B4A28C8005152D6 /* RxCocoa in Frameworks */,
 				69AE72D12B3E0FB90085902B /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				699BCC322B4860770084155C /* Resolver-Static in Frameworks */,
+				69EA133F2B4A28C8005152D6 /* RxRelay in Frameworks */,
 				69AE73152B3E138E0085902B /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +365,11 @@
 				699BCC2D2B4860770084155C /* Resolver */,
 				699BCC2F2B4860770084155C /* Resolver-Dynamic */,
 				699BCC312B4860770084155C /* Resolver-Static */,
+				69EA13362B4A28C8005152D6 /* RxBlocking */,
+				69EA13382B4A28C8005152D6 /* RxBlocking-Dynamic */,
+				69EA133A2B4A28C8005152D6 /* RxCocoa */,
+				69EA133C2B4A28C8005152D6 /* RxCocoa-Dynamic */,
+				69EA133E2B4A28C8005152D6 /* RxRelay */,
 			);
 			productName = "q-shop";
 			productReference = 69AE72B02B3E0E1E0085902B /* q-shop.app */;
@@ -387,6 +402,8 @@
 			packageReferences = (
 				69AE72C92B3E0FB90085902B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				699BCC2C2B4860770084155C /* XCRemoteSwiftPackageReference "Resolver" */,
+				69EA13322B4A12E1005152D6 /* XCRemoteSwiftPackageReference "ReSwift" */,
+				69EA13352B4A28C8005152D6 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 69AE72B12B3E0E1E0085902B /* Products */;
 			projectDirPath = "";
@@ -680,6 +697,22 @@
 				minimumVersion = 10.19.1;
 			};
 		};
+		69EA13322B4A12E1005152D6 /* XCRemoteSwiftPackageReference "ReSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReSwift/ReSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.1;
+			};
+		};
+		69EA13352B4A28C8005152D6 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -732,6 +765,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 69AE72C92B3E0FB90085902B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		69EA13362B4A28C8005152D6 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69EA13352B4A28C8005152D6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		69EA13382B4A28C8005152D6 /* RxBlocking-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69EA13352B4A28C8005152D6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxBlocking-Dynamic";
+		};
+		69EA133A2B4A28C8005152D6 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69EA13352B4A28C8005152D6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		69EA133C2B4A28C8005152D6 /* RxCocoa-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69EA13352B4A28C8005152D6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = "RxCocoa-Dynamic";
+		};
+		69EA133E2B4A28C8005152D6 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69EA13352B4A28C8005152D6 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

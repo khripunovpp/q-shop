@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct GoodsList: View {
     var items: [String] = [
@@ -17,12 +18,16 @@ struct GoodsList: View {
     var horizontalSpacing: CGFloat
     var verticalSpacing: CGFloat
     var innerSpacing: CGFloat
+    var addedHadler: (String, Int) -> Void
     
-    init() {
+    init(
+        _ addedHadler: @escaping (String, Int) -> Void = {_,_ in}
+    ) {
         self.horizontalSpacing = BASE_PADDING
         self.verticalSpacing = BASE_PADDING
         self.innerSpacing = BASE_PADDING
         self.width = (UIScreen.main.bounds.width - horizontalSpacing - innerSpacing * 2) / 2
+        self.addedHadler = addedHadler
     }
     
     var body: some View {
@@ -36,7 +41,9 @@ struct GoodsList: View {
                 ForEach(1...8, id: \.self) { n in
                     GoodItem(
                         content: "\(n)"
-                    ).frame(width: width, height: width)
+                    ) { v in
+                        addedHadler("\(n)",v)
+                    }.frame(width: width, height: width)
                 }
             }.padding(innerSpacing)
         }

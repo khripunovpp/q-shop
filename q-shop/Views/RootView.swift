@@ -13,7 +13,7 @@ struct RootView: View {
     
     var body: some View {
         if authService.isSignnedIn {
-            CartScreenView()
+            ShowcaseScreenView()
         } else {
             LoginScreenView()
         }

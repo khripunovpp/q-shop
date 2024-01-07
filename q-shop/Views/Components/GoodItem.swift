@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct GoodItem: View {
     var content: String
+    var changed: (Int) -> Void
     var body: some View {
         ZStack{
             Rectangle().foregroundColor(Color.hex("#eeeeee"))
@@ -19,7 +21,9 @@ struct GoodItem: View {
                     Text(content)
                         .textStyle(GoodNameTextSyles)
                         .padding(.bottom, BASE_PADDING)
-                    QuantityButton()
+                    QuantityButton() { value in
+                        changed(value)
+                    }
                 }
             }.padding(BASE_PADDING)
         }
@@ -29,7 +33,9 @@ struct GoodItem: View {
 #Preview {
     GoodItem(
         content: "12"
-    ).frame(
+    ) { v in
+        
+    }.frame(
         width: 200,
         height: 200
     )

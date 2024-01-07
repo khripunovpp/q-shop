@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct QuantityButton: View {
-    @State var counter = 0
+    @State var counter = 0 {
+        didSet {
+            chnaged(counter)
+        }
+    }
+    
+    let chnaged: (Int) -> Void
+    
+    
     var body: some View {
         HStack {
             Button{
@@ -31,5 +39,7 @@ struct QuantityButton: View {
 }
 
 #Preview {
-    QuantityButton()
+    QuantityButton() { _ in
+        
+    }
 }

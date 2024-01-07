@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CartScreenView: View {
+    @StateObject var viewModel = CartScreenViewModel()
     @State var checkout = false
+    
     var body: some View {
         VStack(alignment:.leading,spacing: 0){
             Text("Your order")
@@ -20,14 +22,14 @@ struct CartScreenView: View {
                     Text("Good 1")
                         .textStyle(RegularTextSyles)
                     Spacer()
-                    QuantityButton().frame(width: 100)
+                    QuantityButton(){ _ in }.frame(width: 100)
                 }.padding(.bottom, BASE_PADDING)
                 
                 HStack {
                     Text("Good 2")
                         .textStyle(RegularTextSyles)
                     Spacer()
-                    QuantityButton().frame(width: 100)
+                    QuantityButton() { _ in }.frame(width: 100)
                 }.padding(.bottom, BASE_PADDING)
             }
             
