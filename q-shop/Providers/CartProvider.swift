@@ -10,9 +10,9 @@ import RxSwift
 
 final class CartProvider {
     private let cart = Cart()
-    private let itemsSubject = BehaviorSubject<[String]>(value: [])
+    private let itemsSubject = BehaviorSubject<[CartItem]>(value: [])
     
-    var items$: Observable<[String]> {
+    var items$: Observable<[CartItem]> {
         itemsSubject.asObservable()
     }
     
@@ -21,7 +21,8 @@ final class CartProvider {
         _ count: Int
     ) {
         cart.addItem(name, count)
-        itemsSubject.onNext(cart.keys)
+        print("cart \(cart.getItems())")
+        itemsSubject.onNext(cart.getItems())
     }
     
     func remove(

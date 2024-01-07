@@ -12,7 +12,19 @@ struct CartItem {
 
 
 class Cart {
-    var items: [String: CartItem] = [:]
+    var empty: Bool {
+        items.isEmpty
+    }
+    
+    var keys: [String] {
+        items.keys.map { i in String(i)}
+    }
+    
+    private var items: [String: CartItem] = [:]
+    
+    func getItems() -> [CartItem] {
+        return Array(items.values)
+    }
     
     func addItem(_ name: String, _ count: Int) {
         guard count > 0 else {
@@ -29,13 +41,5 @@ class Cart {
     
     func removeItem(_ name: String) {
         items.removeValue(forKey: name)
-    }
-    
-    var empty: Bool {
-        items.isEmpty
-    }
-    
-    var keys: [String] {
-        items.keys.map { i in String(i)}
     }
 }
