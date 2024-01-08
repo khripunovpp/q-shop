@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CheckoutScreenView: View {
+    @StateObject var viewModel = CheckoutScreenViewModel()
+    
     var body: some View {
         VStack(
             alignment: .leading,
@@ -19,23 +21,16 @@ struct CheckoutScreenView: View {
             
             ScrollView{
                 VStack{
-                    HStack {
-                        Text("Good 1")
-                            .textStyle(RegularTextSyles)
-                        Spacer()
-                        QuantityButton() { _ in }
-                            .frame(width: 100)
+                    ForEach(viewModel.items, id: \.name) { cartItem in
+                        HStack {
+                            Text("\(cartItem.name)")
+                                .textStyle(RegularTextSyles)
+                            Spacer()
+                            QuantityButton() { _ in }
+                                .frame(width: 100)
+                        }
+                        .padding(.bottom, BASE_PADDING)
                     }
-                    .padding(.bottom, BASE_PADDING)
-                    
-                    HStack {
-                        Text("Good 2")
-                            .textStyle(RegularTextSyles)
-                        Spacer()
-                        QuantityButton() { _ in }
-                            .frame(width: 100)
-                    }
-                    .padding(.bottom, BASE_PADDING)
                 }
                 
                 VStack {
@@ -79,6 +74,9 @@ struct CheckoutScreenView: View {
             bottom: VIEWPORT_PADDING_V,
             trailing: VIEWPORT_PADDING_H
         ))
+        .onAppear(){
+            viewModel.loadCart()
+        }
     }
 }
 
