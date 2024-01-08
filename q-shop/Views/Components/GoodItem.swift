@@ -14,20 +14,27 @@ struct GoodItem: View {
     var changed: (Int) -> Void
     var body: some View {
         ZStack{
-            Rectangle()
-                .foregroundColor(Color.hex("#eeeeee"))
-                .cornerRadius(5.0)
+            Image("pic\(content)")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: UIScreen.main.bounds.width, height: 200)
+                .clipped()
+                .allowsHitTesting(false)
+            
             Group{
                 VStack {
                     Spacer()
-                    Text(content)
-                        .textStyle(GoodNameTextSyles)
-                        .padding(.bottom, BASE_PADDING)
-                    QuantityButton() { value in
-                        changed(value)
+                    VStack{
+                        Text(content)
+                            .textStyle(GoodNameTextSyles)
+                            .padding(.bottom, BASE_PADDING)
+                        QuantityButton() { value in
+                            changed(value)
+                        }
                     }
                 }
-            }.padding(BASE_PADDING)
+            }
+            .padding(BASE_PADDING)
         }
         .onTapGesture {
             sheet = true

@@ -5,7 +5,7 @@
 //  Created by Khripunov Pavel on 28/12/2023.
 //
 
-struct CartItem {
+struct CartItem:Hashable {
     var name: String
     var count: Int
 }

@@ -17,21 +17,16 @@ struct CartScreenView: View {
                 .textStyle(TitleLvl1)
                 .padding(.bottom, BASE_PADDING)
             
-            ScrollView{
+            ForEach(viewModel.items, id: \.name) { cartItem in
                 HStack {
-                    Text("Good 1")
+                    Text("\(cartItem.name)")
                         .textStyle(RegularTextSyles)
                     Spacer()
                     QuantityButton(){ _ in }.frame(width: 100)
                 }.padding(.bottom, BASE_PADDING)
-                
-                HStack {
-                    Text("Good 2")
-                        .textStyle(RegularTextSyles)
-                    Spacer()
-                    QuantityButton() { _ in }.frame(width: 100)
-                }.padding(.bottom, BASE_PADDING)
             }
+            
+            Spacer()
             
             NavigationLink(isActive: $checkout) {
                 CheckoutScreenView()
@@ -44,13 +39,15 @@ struct CartScreenView: View {
                     checkout = true
                 }
             }
-            Spacer()
         }.padding(EdgeInsets(
             top: VIEWPORT_PADDING_V,
             leading: VIEWPORT_PADDING_H,
             bottom: VIEWPORT_PADDING_V,
             trailing: VIEWPORT_PADDING_H
         ))
+        .onAppear(){
+            viewModel.loadCart()
+        }
     }
 }
 

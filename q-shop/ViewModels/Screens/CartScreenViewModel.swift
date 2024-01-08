@@ -11,14 +11,15 @@ import RxSwift
 
 class CartScreenViewModel: ObservableObject {
     @Injected var cartProvider: CartProvider
-    @Published var items = []
+    @Published var items: [CartItem] = []
     let bag = DisposeBag()
     
-    init(){
+    func loadCart(){
         cartProvider
             .items$
             .subscribe { [weak self] items in
                 self?.items = items
+                print("cahnged CartScreenViewModel \(items)")
             }
             .disposed(by: bag )
     }

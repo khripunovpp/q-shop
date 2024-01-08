@@ -26,7 +26,7 @@ class ShowcaseScreenViewModel: ObservableObject {
             .items$
             .subscribe { [weak self] items in
                 self?.items = items
-                print("cahnged \(items)")
+                print("cahnged ShowcaseScreenViewModel \(items)")
             }
             .disposed(by: bag )
     }

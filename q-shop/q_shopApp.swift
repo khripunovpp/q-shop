@@ -14,8 +14,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
         
-        Resolver.register { AuthService() as AuthService }
-        Resolver.register { CartProvider() as CartProvider }
+        Resolver.register { AuthService() as AuthService }.scope(.application)
+        Resolver.register { CartProvider() as CartProvider }.scope(.application)
         
         return true
     }

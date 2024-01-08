@@ -13,14 +13,22 @@ struct QuantityButton: View {
             chnaged(counter)
         }
     }
+    var max = 3
     
     let chnaged: (Int) -> Void
     
+    func increse() {
+        counter = counter < max ? counter + 1 : max
+    }
+    
+    func decrese() {
+        counter = counter <= 0 ? 0 : counter - 1
+    }
     
     var body: some View {
         HStack {
             Button{
-                counter -= 1
+                decrese()
             } label: {
                 Image(systemName: "minus")
                     .foregroundColor(.black)
@@ -29,7 +37,7 @@ struct QuantityButton: View {
             Text("\(counter)")
             Spacer()
             Button{
-                    counter += 1
+                increse()
             } label: {
                 Image(systemName: "plus")
                     .foregroundColor(.black)

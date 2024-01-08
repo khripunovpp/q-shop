@@ -9,6 +9,11 @@ import Foundation
 import RxSwift
 
 final class CartProvider {
+    static var count = 0
+    init(){
+        CartProvider.count += 1
+        print(CartProvider.count)
+    }
     private let cart = Cart()
     private let itemsSubject = BehaviorSubject<[CartItem]>(value: [])
     
@@ -21,8 +26,7 @@ final class CartProvider {
         _ count: Int
     ) {
         cart.addItem(name, count)
-        print("cart \(cart.getItems())")
-        itemsSubject.onNext(cart.getItems())
+        itemsSubject.onNext(cart.getItems().sorted { a,b in a.name < b.name })
     }
     
     func remove(
