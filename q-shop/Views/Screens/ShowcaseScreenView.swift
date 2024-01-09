@@ -16,7 +16,7 @@ struct ShowcaseScreenView: View {
         VStack(spacing: 0) {
             SearchBarView()
             FiltersBar()
-            GoodsList() { added,count in
+            GoodsList(items: GoodListItems()) { added,count in
                 viewModel.cartProvider.add(added, count)
             }
             if viewModel.items.count > 0 {

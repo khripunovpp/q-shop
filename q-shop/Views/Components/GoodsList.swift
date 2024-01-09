@@ -7,12 +7,24 @@
 
 import SwiftUI
 import Resolver
+import Foundation
+
+struct ShowcaseItem {
+    let name: String
+    var count = 0
+}
+
+class GoodListItems: ObservableObject {
+    @Published var items: [ShowcaseItem] = [
+         .init(name: "1"),
+         .init(name: "2"),
+         .init(name: "3"),
+         .init(name: "4")
+     ]
+}
 
 struct GoodsList: View {
-    var items: [String] = [
-        "43fqred",
-        "egravf"
-    ]
+    @ObservedObject var items: GoodListItems
     var colors: [Color] = [.red,.green,.blue,.purple]
     var verticalSpacing: CGFloat = BASE_PADDING
     var addedHadler: (String, Int) -> Void
@@ -20,11 +32,11 @@ struct GoodsList: View {
     var body: some View {
         ScrollView() {
             VStack(spacing: verticalSpacing) {
-                ForEach(1...4, id: \.self) { n in
+                ForEach(items.items, id: \.name) { item in
                     GoodItem(
-                        content: "\(n)"
-                    ) { v in
-                        addedHadler("\(n)",v)
+                        content: item.name
+                    ) { newQuantity in
+                        addedHadler(item.name, newQuantity)
                     }
                 }
             }
@@ -34,7 +46,7 @@ struct GoodsList: View {
 }
 
 #Preview {
-    GoodsList() { _,_ in
+    GoodsList(items: GoodListItems()) { _,_ in
         
     }
 }
