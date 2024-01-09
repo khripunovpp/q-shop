@@ -5,13 +5,13 @@
 //  Created by Khripunov Pavel on 28/12/2023.
 //
 
-struct CartItem:Hashable {
+struct CartItem: Hashable {
     var name: String
     var count: Int
 }
 
 
-class Cart {
+final class Cart {
     var empty: Bool {
         items.isEmpty
     }

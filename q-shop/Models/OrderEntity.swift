@@ -8,7 +8,7 @@
 import Foundation
 
 
-class Order: Codable, Identifiable {
+final class Order: Codable, Identifiable {
     let id: UUID
     let date: Date
     let items: [String:Int]?

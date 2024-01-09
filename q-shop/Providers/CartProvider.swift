@@ -9,11 +9,6 @@ import Foundation
 import RxSwift
 
 final class CartProvider {
-    static var count = 0
-    init(){
-        CartProvider.count += 1
-        print(CartProvider.count)
-    }
     private let cart = Cart()
     private let itemsSubject = BehaviorSubject<[CartItem]>(value: [])
     

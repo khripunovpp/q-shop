@@ -11,17 +11,24 @@ import RxSwift
 
 class ShowcaseScreenViewModel: ObservableObject {
     @Injected var cartProvider: CartProvider
-    @Published var items = []
+    @Injected var showcaseProvider: ShowcaseProvider
+    @Published var cartItems: [CartItem] = []
+    @Published var showcaseItems: [ShowcaseItem] = []
     let bag = DisposeBag()
     
     init(){
-        cartProvider
-            .items$
-            .subscribe { [weak self] items in
-                self?.items = items
-                
-                print("cahnged ShowcaseScreenViewModel \(items)")
+        Observable.combineLatest(
+            cartProvider.items$,
+            showcaseProvider.products$
+        ).subscribe { [weak self] cartItems, products in
+            
+            self?.cartItems = cartItems
+            self?.showcaseItems = []
+            for p in products {
+                self?.showcaseItems.append(ShowcaseItem(name: UUID().uuidString, count: p.count))
             }
-            .disposed(by: bag )
+            print("cahnged ShowcaseScreenViewModel cartItems:\(cartItems) \n showcaseItems\(products)")
+    }
+    .disposed(by: bag )
     }
 }

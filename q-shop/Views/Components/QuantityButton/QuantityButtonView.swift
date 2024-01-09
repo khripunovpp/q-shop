@@ -14,7 +14,7 @@ struct QuantityButtonView: View {
             chnaged(count)
         }
     }
-    var max = 3
+    var max = 99
     
     let chnaged: (Int) -> Void
     

@@ -69,6 +69,8 @@
 		69EA133B2B4A28C8005152D6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA133A2B4A28C8005152D6 /* RxCocoa */; };
 		69EA133D2B4A28C8005152D6 /* RxCocoa-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA133C2B4A28C8005152D6 /* RxCocoa-Dynamic */; };
 		69EA133F2B4A28C8005152D6 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA133E2B4A28C8005152D6 /* RxRelay */; };
+		69EA13552B4DEE13005152D6 /* Showcase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA13542B4DEE13005152D6 /* Showcase.swift */; };
+		69EA13582B4DF151005152D6 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA13572B4DF151005152D6 /* Sorting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +122,8 @@
 		69AE73352B408EF60085902B /* GoodsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListView.swift; sourceTree = "<group>"; };
 		69AE73372B408F290085902B /* GoodItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodItemView.swift; sourceTree = "<group>"; };
 		69AE73392B40B2C50085902B /* QuantityButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityButtonView.swift; sourceTree = "<group>"; };
+		69EA13542B4DEE13005152D6 /* Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Showcase.swift; sourceTree = "<group>"; };
+		69EA13572B4DF151005152D6 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,11 +180,11 @@
 		69AE72B22B3E0E1E0085902B /* q-shop */ = {
 			isa = PBXGroup;
 			children = (
+				69EA13562B4DF143005152D6 /* Enums */,
 				69EA13402B4DBA3F005152D6 /* Other */,
 				699BCC242B4724DE0084155C /* Styles */,
 				69AE732C2B3E1D380085902B /* Extensions */,
 				69AE73292B3E1AD70085902B /* Const */,
-				69AE73262B3E18160085902B /* New Group */,
 				69AE72B72B3E0E1E0085902B /* Assets.xcassets */,
 				69AE72C72B3E0F700085902B /* GoogleService-Info.plist */,
 				69AE72C22B3E0E370085902B /* Models */,
@@ -217,6 +221,7 @@
 				69AE72F42B3E11980085902B /* GoodEntity.swift */,
 				69AE72F62B3E11B40085902B /* CartEntity.swift */,
 				69AE72F82B3E11C40085902B /* OrderEntity.swift */,
+				69EA13542B4DEE13005152D6 /* Showcase.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,13 +293,6 @@
 			children = (
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		69AE73262B3E18160085902B /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		69AE73292B3E1AD70085902B /* Const */ = {
@@ -458,6 +456,14 @@
 			path = QuantityButton;
 			sourceTree = "<group>";
 		};
+		69EA13562B4DF143005152D6 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				69EA13572B4DF151005152D6 /* Sorting.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -570,6 +576,8 @@
 				69AE731D2B3E145E0085902B /* BrandButtonView.swift in Sources */,
 				69AE73302B3F3F2E0085902B /* SearchBarView.swift in Sources */,
 				69AE73002B3E12410085902B /* CartProvider.swift in Sources */,
+				69EA13582B4DF151005152D6 /* Sorting.swift in Sources */,
+				69EA13552B4DEE13005152D6 /* Showcase.swift in Sources */,
 				69AE72E92B3E11310085902B /* ShowcaseScreenViewModel.swift in Sources */,
 				69AE732E2B3E1D500085902B /* ColorExtensions.swift in Sources */,
 				69AE72FB2B3E11E00085902B /* AuthService.swift in Sources */,
