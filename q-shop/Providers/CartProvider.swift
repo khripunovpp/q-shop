@@ -25,13 +25,18 @@ final class CartProvider {
         _ name: String,
         _ count: Int
     ) {
-        cart.addItem(name, count)
-        itemsSubject.onNext(cart.getItems().sorted { a,b in a.name < b.name })
+        cart.setItem(name, count)
+        emitItems()
     }
     
     func remove(
         _ item: String
     ) {
         cart.removeItem(item)
+    }
+    
+    private func emitItems(){
+        
+        itemsSubject.onNext(cart.getItems().sorted { a,b in a.name < b.name })
     }
 }

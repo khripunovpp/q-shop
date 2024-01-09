@@ -12,18 +12,27 @@ struct CartScreenView: View {
     @State var checkout = false
     
     var body: some View {
-        VStack(alignment:.leading,spacing: 0){
+        VStack(
+            alignment: .leading,
+            spacing: 0
+        ) {
             Text("Your order")
                 .textStyle(TitleLvl1)
                 .padding(.bottom, BASE_PADDING)
             
-            ForEach(viewModel.items, id: \.name) { cartItem in
+            ForEach(viewModel.items.indices, id: \.self) { index in
                 HStack {
-                    Text("\(cartItem.name)")
+                    Text("\(viewModel.items[index].name)")
                         .textStyle(RegularTextSyles)
                     Spacer()
-                    QuantityButton(){ _ in }.frame(width: 100)
-                }.padding(.bottom, BASE_PADDING)
+                    QuantityButton(
+                        count: $viewModel.items[index].count
+                    ) { newCount in
+                        viewModel.cartProvider.add(viewModel.items[index].name, newCount)
+                    }
+                        .frame(width: 100)
+                }
+                .padding(.bottom, BASE_PADDING)
             }
             
             Spacer()

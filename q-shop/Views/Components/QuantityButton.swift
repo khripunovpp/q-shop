@@ -7,10 +7,11 @@
 
 import SwiftUI
 
+
 struct QuantityButton: View {
-    @State var counter = 0 {
+    @Binding var count: Int {
         didSet {
-            chnaged(counter)
+            chnaged(count)
         }
     }
     var max = 3
@@ -18,11 +19,11 @@ struct QuantityButton: View {
     let chnaged: (Int) -> Void
     
     func increse() {
-        counter = counter < max ? counter + 1 : max
+        count = count < max ? count + 1 : max
     }
     
     func decrese() {
-        counter = counter <= 0 ? 0 : counter - 1
+        count = count <= 0 ? 0 : count - 1
     }
     
     var body: some View {
@@ -34,7 +35,7 @@ struct QuantityButton: View {
                     .foregroundColor(.black)
             }
             Spacer()
-            Text("\(counter)")
+            Text("\(count)")
             Spacer()
             Button{
                 increse()
@@ -47,7 +48,7 @@ struct QuantityButton: View {
 }
 
 #Preview {
-    QuantityButton() { _ in
+    QuantityButton(count: .constant(0)) { _ in
         
     }
 }

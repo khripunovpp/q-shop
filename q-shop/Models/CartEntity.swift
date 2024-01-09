@@ -26,7 +26,7 @@ class Cart {
         return Array(items.values)
     }
     
-    func addItem(_ name: String, _ count: Int) {
+    func setItem(_ name: String, _ count: Int) {
         guard count > 0 else {
             removeItem(name)
             return

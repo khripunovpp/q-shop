@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SingleGoodDetailsScreenView: View {
+    @State var count = 0
     var body: some View {
         VStack{
            Text("Name")
@@ -15,7 +16,7 @@ struct SingleGoodDetailsScreenView: View {
            Text("Description")
                 .textStyle(RegularTextSyles)
                 .padding(.bottom, BASE_PADDING)
-            QuantityButton() { _ in }
+            QuantityButton(count: $count) { _ in }
         }
     }
 }

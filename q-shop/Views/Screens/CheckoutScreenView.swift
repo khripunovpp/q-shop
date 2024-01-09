@@ -21,12 +21,16 @@ struct CheckoutScreenView: View {
             
             ScrollView{
                 VStack{
-                    ForEach(viewModel.items, id: \.name) { cartItem in
+                    ForEach(viewModel.items.indices, id: \.self) { index in
                         HStack {
-                            Text("\(cartItem.name)")
+                            Text("\(viewModel.items[index].name)")
                                 .textStyle(RegularTextSyles)
                             Spacer()
-                            QuantityButton() { _ in }
+                            QuantityButton(
+                                count: $viewModel.items[index].count
+                            ) { newCount in
+                                viewModel.cartProvider.add(viewModel.items[index].name, newCount)
+                            }
                                 .frame(width: 100)
                         }
                         .padding(.bottom, BASE_PADDING)

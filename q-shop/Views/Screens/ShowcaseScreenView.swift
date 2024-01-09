@@ -17,7 +17,7 @@ struct ShowcaseScreenView: View {
             SearchBarView()
             FiltersBar()
             GoodsList() { added,count in
-                viewModel.add(added, count)
+                viewModel.cartProvider.add(added, count)
             }
             if viewModel.items.count > 0 {
                 NavigationLink(isActive: $goToCart) {
