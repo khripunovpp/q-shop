@@ -8,7 +8,7 @@
 import SwiftUI
 import Resolver
 
-struct GoodItem: View {
+struct GoodItemView: View {
     @State var sheet = false
     @State var count = 0
     var content: String
@@ -29,7 +29,7 @@ struct GoodItem: View {
                         Text(content)
                             .textStyle(GoodNameTextSyles)
                             .padding(.bottom, BASE_PADDING)
-                        QuantityButton(count: $count) { value in
+                        QuantityButtonView(count: $count) { value in
                             changed(value)
                         }
                     }
@@ -51,7 +51,7 @@ struct GoodItem: View {
 }
 
 #Preview {
-    GoodItem(
+    GoodItemView(
         content: "12"
     ) { v in
         

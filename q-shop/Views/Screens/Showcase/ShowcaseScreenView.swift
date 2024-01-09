@@ -15,8 +15,8 @@ struct ShowcaseScreenView: View {
     var body: some View {
         VStack(spacing: 0) {
             SearchBarView()
-            FiltersBar()
-            GoodsList(items: GoodListItems()) { added,count in
+            FiltersBarView()
+            GoodsListView(items: GoodListItems()) { added,count in
                 viewModel.cartProvider.add(added, count)
             }
             if viewModel.items.count > 0 {
@@ -24,7 +24,7 @@ struct ShowcaseScreenView: View {
                     CartScreenView()
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
-                    BrandButton(
+                    BrandButtonView(
                         label: "Checkout \(viewModel.items.count)"
                     ) {
                         goToCart = true

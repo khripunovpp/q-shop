@@ -23,7 +23,7 @@ class GoodListItems: ObservableObject {
      ]
 }
 
-struct GoodsList: View {
+struct GoodsListView: View {
     @ObservedObject var items: GoodListItems
     var colors: [Color] = [.red,.green,.blue,.purple]
     var verticalSpacing: CGFloat = BASE_PADDING
@@ -33,7 +33,7 @@ struct GoodsList: View {
         ScrollView() {
             VStack(spacing: verticalSpacing) {
                 ForEach(items.items, id: \.name) { item in
-                    GoodItem(
+                    GoodItemView(
                         content: item.name
                     ) { newQuantity in
                         addedHadler(item.name, newQuantity)
@@ -46,7 +46,7 @@ struct GoodsList: View {
 }
 
 #Preview {
-    GoodsList(items: GoodListItems()) { _,_ in
+    GoodsListView(items: GoodListItems()) { _,_ in
         
     }
 }

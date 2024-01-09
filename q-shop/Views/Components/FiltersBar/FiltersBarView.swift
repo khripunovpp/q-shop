@@ -16,7 +16,7 @@ struct Sort {
     var label: String
 }
 
-struct FiltersBar: View {
+struct FiltersBarView: View {
     
     @State var selectedSort = SortType.price.rawValue
     @State var selectedCount = 24
@@ -59,5 +59,5 @@ struct FiltersBar: View {
 }
 
 #Preview {
-    FiltersBar()
+    FiltersBarView()
 }

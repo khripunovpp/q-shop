@@ -11,7 +11,7 @@ struct LoginScreenView: View {
     var body: some View {
         NavigationView{
             VStack{
-                LoginForm()
+                LoginFormView()
                 
                 Spacer()
             }

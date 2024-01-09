@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LoginForm: View {
+struct LoginFormView: View {
     @State var email = ""
     @State var password = ""
     @Environment(\.colorScheme) var colorScheme
@@ -21,7 +21,7 @@ struct LoginForm: View {
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
             }
             
-            BrandButton(
+            BrandButtonView(
                 label: "Login",
                 type:.big
             ) {
@@ -33,5 +33,5 @@ struct LoginForm: View {
 }
 
 #Preview {
-    LoginForm()
+    LoginFormView()
 }

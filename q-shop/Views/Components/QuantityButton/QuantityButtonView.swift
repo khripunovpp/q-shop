@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct QuantityButton: View {
+struct QuantityButtonView: View {
     @Binding var count: Int {
         didSet {
             chnaged(count)
@@ -48,7 +48,7 @@ struct QuantityButton: View {
 }
 
 #Preview {
-    QuantityButton(count: .constant(0)) { _ in
+    QuantityButtonView(count: .constant(0)) { _ in
         
     }
 }

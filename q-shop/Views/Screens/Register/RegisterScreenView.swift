@@ -12,7 +12,7 @@ struct RegisterScreenView: View {
         NavigationView{
             VStack{
                 
-                RegisterForm()
+                RegisterFormView()
                 
                 Spacer()
             }

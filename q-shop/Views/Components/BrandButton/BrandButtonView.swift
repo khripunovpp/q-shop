@@ -22,7 +22,7 @@ let ButtonSizesMap: [ButtonSize:ButtonStyle] = [
     ButtonSize.small: ButtonStyle(radius: 15, fontSize: 20, padding: 20),
 ]
 
-struct BrandButton: View {
+struct BrandButtonView: View {
     let label: String
     var type: ButtonSize = .small
     var size: CGFloat?
@@ -52,10 +52,10 @@ struct BrandButton: View {
 
 #Preview {
     VStack{
-        BrandButton(label: "Small") {
+        BrandButtonView(label: "Small") {
             
         }
-        BrandButton(label: "Big",type: .big) {
+        BrandButtonView(label: "Big",type: .big) {
             
         }
     }.padding()

@@ -16,7 +16,7 @@ struct SingleGoodDetailsScreenView: View {
            Text("Description")
                 .textStyle(RegularTextSyles)
                 .padding(.bottom, BASE_PADDING)
-            QuantityButton(count: $count) { _ in }
+            QuantityButtonView(count: $count) { _ in }
         }
     }
 }

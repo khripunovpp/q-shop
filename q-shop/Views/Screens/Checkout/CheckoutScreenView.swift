@@ -26,7 +26,7 @@ struct CheckoutScreenView: View {
                             Text("\(viewModel.items[index].name)")
                                 .textStyle(RegularTextSyles)
                             Spacer()
-                            QuantityButton(
+                            QuantityButtonView(
                                 count: $viewModel.items[index].count
                             ) { newCount in
                                 viewModel.cartProvider.add(viewModel.items[index].name, newCount)
@@ -66,7 +66,7 @@ struct CheckoutScreenView: View {
                 }
             }
             
-            BrandButton(
+            BrandButtonView(
                 label: "Pay",
                 type: .big
             ) {

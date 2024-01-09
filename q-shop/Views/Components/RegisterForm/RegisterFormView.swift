@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RegisterForm: View {
+struct RegisterFormView: View {
     
     @StateObject var registerViewModel = RegisterScreenViewModel()
     @Environment(\.colorScheme) var colorScheme
@@ -27,7 +27,7 @@ struct RegisterForm: View {
                 }
             }
             
-            BrandButton(
+            BrandButtonView(
                 label: "Create account",
                 type:.big
             ) {
@@ -39,5 +39,5 @@ struct RegisterForm: View {
 }
 
 #Preview {
-    RegisterForm()
+    RegisterFormView()
 }
