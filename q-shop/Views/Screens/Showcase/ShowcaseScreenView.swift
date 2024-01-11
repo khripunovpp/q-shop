@@ -8,24 +8,39 @@
 import SwiftUI
 import Resolver
 
+
 struct ShowcaseScreenView: View {
     @State var goToCart = false
-    @StateObject var viewModel = ShowcaseScreenViewModel()
+    @Bindable var viewModel = ShowcaseScreenViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
             SearchBarView()
             FiltersBarView()
-            GoodsListView(items: viewModel.showcaseItems) { added,count in
-                viewModel.cartProvider.add(added, count)
+//            GoodsListView(items: $viewModel.showcaseItems) { added,count in
+//                viewModel.cartProvider.add(added, count)
+//            }
+//      
+            
+            ScrollView {
+                ForEach(viewModel.showcaseItems.indices, id: \.self) { index in
+                    GoodItemView(
+                        count: viewModel.showcaseItems[index].count, 
+                        content: viewModel.showcaseItems[index].name
+                    ) { newQuantity in
+                        viewModel.cartProvider.add(viewModel.showcaseItems[index].name, newQuantity)
+                        
+                        
+                    }
+                }
             }
-            if viewModel.cartItems.count > 0 {
+            if viewModel.count > 0 {
                 NavigationLink(isActive: $goToCart) {
                     CartScreenView()
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     BrandButtonView(
-                        label: "Checkout \(viewModel.cartItems.count)"
+                        label: "Checkout \(viewModel.count)"
                     ) {
                         goToCart = true
                     }

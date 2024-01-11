@@ -16,6 +16,10 @@ final class CartProvider {
         itemsSubject.asObservable()
     }
     
+    var count: Int {
+        cart.getItems().count
+    }
+    
     func add(
         _ name: String,
         _ count: Int
@@ -30,8 +34,7 @@ final class CartProvider {
         cart.removeItem(item)
     }
     
-    private func emitItems(){
-        
+    private func emitItems() {
         itemsSubject.onNext(cart.getItems().sorted { a,b in a.name < b.name })
     }
 }

@@ -23,4 +23,7 @@ class CartScreenViewModel: ObservableObject {
             }
             .disposed(by: bag )
     }
+    deinit {
+        print("dfeinit CartScreenViewModel")
+    }
 }

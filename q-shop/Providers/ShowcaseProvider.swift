@@ -7,8 +7,10 @@
 
 import Foundation
 import RxSwift
+import Resolver
 
 class ShowcaseProvider {
+    private let cartProvider: CartProvider = Resolver.resolve()
     private let showcase: Showcase
     private let productsSubject: BehaviorSubject<[ShowcaseItem]>
     
@@ -25,8 +27,40 @@ class ShowcaseProvider {
     }
     
     var products$: Observable<[ShowcaseItem]> {
-        productsSubject.asObservable()
+        Observable.combineLatest(
+            cartProvider.items$,
+            productsSubject.asObservable()
+        ).map { [weak self] cart, products in
+            self?.map(withCart: cart, for: products) ?? []
+        }
     }
+    
+    
+    private func map(
+        withCart cartItems: [CartItem],
+        for products: [ShowcaseItem]
+    ) -> [ShowcaseItem] {
+        var arr:[ShowcaseItem] = []
+        for p in products {
+            let res = cartItems.firstIndex(where: { $0.name == p.name })
+            if res == nil {
+                    arr.append(ShowcaseItem(name: p.name, count: p.count))
+            } else {
+                print("\n find this item in cart: \(p.name) \n index: \(res) \n item: \(cartItems[res!])")
+                arr.append(ShowcaseItem(name: p.name, count: cartItems[res!].count))
+            }
+                print("added to array result: \(arr)")
+        }
+        
+        //        products.map{ p in
+        //            let res = cartItems.firstIndex(where: { $0.name == p.name })
+        //            guard res != nil else { return ShowcaseItem(name: p.name, count: p.count) }
+        //            print("\n find this item in cart: \(p.name) \n index: \(res) \n item: \(cartItems[res!])")
+        //            return ShowcaseItem(name: p.name, count: cartItems[res!].count)
+        //        }
+        return arr
+    }
+    
     
     func add(
         _ name: String,
@@ -47,9 +81,7 @@ class ShowcaseProvider {
     }
     
     private func emitItems(){
-        var fd = showcase.getGoods()
-        fd = fd.map{pr in ShowcaseItem(name: UUID().uuidString, count: pr.count)}
-        productsSubject.onNext(fd.sorted { a,b in a.name < b.name })
+        productsSubject.onNext(showcase.getGoods().sorted { a,b in a.name < b.name })
     }
     
     func manualEmit(){

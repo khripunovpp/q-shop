@@ -10,7 +10,7 @@ import Resolver
 
 struct GoodItemView: View {
     @State var sheet = false
-    @State var count = 0
+    @State var count: Int = 0
     var content: String
     var changed: (Int) -> Void
     var body: some View {
@@ -30,6 +30,7 @@ struct GoodItemView: View {
                             .textStyle(GoodNameTextSyles)
                             .padding(.bottom, BASE_PADDING)
                         QuantityButtonView(count: $count) { value in
+                            print("new count for \(content) is \(value)")
                             changed(value)
                         }
                     }

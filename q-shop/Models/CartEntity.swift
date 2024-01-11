@@ -4,8 +4,10 @@
 //
 //  Created by Khripunov Pavel on 28/12/2023.
 //
+import Foundation
 
-struct CartItem: Hashable {
+struct CartItem: Hashable, Identifiable {
+    var id: String = UUID().uuidString
     var name: String
     var count: Int
 }

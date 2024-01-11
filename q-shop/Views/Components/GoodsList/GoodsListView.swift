@@ -10,20 +10,22 @@ import Resolver
 import Foundation
 
 struct GoodsListView: View {
-    @State var items: [ShowcaseItem]
+    @Binding var items: [ShowcaseItem]
     var verticalSpacing: CGFloat = BASE_PADDING
     var addedHadler: (String, Int) -> Void
     
     var body: some View {
         ScrollView() {
             VStack(spacing: verticalSpacing) {
-                ForEach(items, id: \.name) { item in
+                ForEach(items) { item in
                     GoodItemView(
                         content: item.name
                     ) { newQuantity in
                         addedHadler(item.name, newQuantity)
                     }
                 }
+            }.onAppear() {
+                print("GoodsListView has appeared")
             }
         }
         
@@ -31,7 +33,7 @@ struct GoodsListView: View {
 }
 
 #Preview {
-    GoodsListView(items: []) { _,_ in
+    GoodsListView(items: .constant([])) { _,_ in
         
     }
 }

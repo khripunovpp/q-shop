@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6941BCE22B4F3E4D000B8279 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 6941BCE12B4F3E4D000B8279 /* Algorithms */; };
 		699BCC202B47216B0084155C /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BCC1F2B47216B0084155C /* TextExtensions.swift */; };
 		699BCC262B4725110084155C /* BrandTextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BCC252B4725110084155C /* BrandTextStyles.swift */; };
 		699BCC2E2B4860770084155C /* Resolver in Frameworks */ = {isa = PBXBuildFile; productRef = 699BCC2D2B4860770084155C /* Resolver */; };
@@ -135,6 +136,7 @@
 				69EA133D2B4A28C8005152D6 /* RxCocoa-Dynamic in Frameworks */,
 				69EA13372B4A28C8005152D6 /* RxBlocking in Frameworks */,
 				69AE73132B3E13890085902B /* FirebaseAuth in Frameworks */,
+				6941BCE22B4F3E4D000B8279 /* Algorithms in Frameworks */,
 				699BCC2E2B4860770084155C /* Resolver in Frameworks */,
 				69AE72CB2B3E0FB90085902B /* FirebaseAnalytics in Frameworks */,
 				699BCC302B4860770084155C /* Resolver-Dynamic in Frameworks */,
@@ -496,6 +498,7 @@
 				69EA133A2B4A28C8005152D6 /* RxCocoa */,
 				69EA133C2B4A28C8005152D6 /* RxCocoa-Dynamic */,
 				69EA133E2B4A28C8005152D6 /* RxRelay */,
+				6941BCE12B4F3E4D000B8279 /* Algorithms */,
 			);
 			productName = "q-shop";
 			productReference = 69AE72B02B3E0E1E0085902B /* q-shop.app */;
@@ -530,6 +533,7 @@
 				699BCC2C2B4860770084155C /* XCRemoteSwiftPackageReference "Resolver" */,
 				69EA13322B4A12E1005152D6 /* XCRemoteSwiftPackageReference "ReSwift" */,
 				69EA13352B4A28C8005152D6 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				6941BCE02B4F3E4D000B8279 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = 69AE72B12B3E0E1E0085902B /* Products */;
 			projectDirPath = "";
@@ -809,6 +813,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6941BCE02B4F3E4D000B8279 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		699BCC2C2B4860770084155C /* XCRemoteSwiftPackageReference "Resolver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hmlongco/Resolver.git";
@@ -844,6 +856,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6941BCE12B4F3E4D000B8279 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6941BCE02B4F3E4D000B8279 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
 		699BCC2D2B4860770084155C /* Resolver */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 699BCC2C2B4860770084155C /* XCRemoteSwiftPackageReference "Resolver" */;

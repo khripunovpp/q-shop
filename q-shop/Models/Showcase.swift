@@ -8,9 +8,10 @@
 import Foundation
 
 
-struct ShowcaseItem: Hashable {
+struct ShowcaseItem: Hashable, Identifiable, Equatable {
+    var id = UUID().uuidString
     let name: String
-    let count: Int
+    var count = 0
     
     init(
         name: String,
