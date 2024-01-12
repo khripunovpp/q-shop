@@ -10,6 +10,7 @@
 		6940AB382B51DD820032AEB0 /* ScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB372B51DD820032AEB0 /* ScreenHeaderView.swift */; };
 		6940AB3B2B51DE0B0032AEB0 /* GoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB3A2B51DE0B0032AEB0 /* GoodRowView.swift */; };
 		6940AB3E2B51E0BA0032AEB0 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB3D2B51E0BA0032AEB0 /* SettingsRowView.swift */; };
+		6940AB412B51EC3D0032AEB0 /* SingleSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB402B51EC3D0032AEB0 /* SingleSettingView.swift */; };
 		6941BCE22B4F3E4D000B8279 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 6941BCE12B4F3E4D000B8279 /* Algorithms */; };
 		699BCC202B47216B0084155C /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BCC1F2B47216B0084155C /* TextExtensions.swift */; };
 		699BCC262B4725110084155C /* BrandTextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BCC252B4725110084155C /* BrandTextStyles.swift */; };
@@ -83,6 +84,7 @@
 		6940AB372B51DD820032AEB0 /* ScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenHeaderView.swift; sourceTree = "<group>"; };
 		6940AB3A2B51DE0B0032AEB0 /* GoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodRowView.swift; sourceTree = "<group>"; };
 		6940AB3D2B51E0BA0032AEB0 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
+		6940AB402B51EC3D0032AEB0 /* SingleSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleSettingView.swift; sourceTree = "<group>"; };
 		699BCC1F2B47216B0084155C /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
 		699BCC252B4725110084155C /* BrandTextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTextStyles.swift; sourceTree = "<group>"; };
 		69AE72B02B3E0E1E0085902B /* q-shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "q-shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,6 +190,14 @@
 			path = SettingsRow;
 			sourceTree = "<group>";
 		};
+		6940AB3F2B51EC130032AEB0 /* SingleSetting */ = {
+			isa = PBXGroup;
+			children = (
+				6940AB402B51EC3D0032AEB0 /* SingleSettingView.swift */,
+			);
+			path = SingleSetting;
+			sourceTree = "<group>";
+		};
 		699BCC242B4724DE0084155C /* Styles */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +299,7 @@
 		69AE72D52B3E100E0085902B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6940AB3F2B51EC130032AEB0 /* SingleSetting */,
 				6940AB3C2B51E0AB0032AEB0 /* SettingsRow */,
 				6940AB392B51DDE50032AEB0 /* GoodRow */,
 				6940AB362B51DD700032AEB0 /* ScreenHeader */,
@@ -630,6 +641,7 @@
 				69AE73002B3E12410085902B /* CartProvider.swift in Sources */,
 				69EA13582B4DF151005152D6 /* Sorting.swift in Sources */,
 				69EA13552B4DEE13005152D6 /* Showcase.swift in Sources */,
+				6940AB412B51EC3D0032AEB0 /* SingleSettingView.swift in Sources */,
 				69FE328B2B50A02C001EBDFC /* ChoiserView.swift in Sources */,
 				69AE72E92B3E11310085902B /* ShowcaseScreenViewModel.swift in Sources */,
 				69AE732E2B3E1D500085902B /* ColorExtensions.swift in Sources */,

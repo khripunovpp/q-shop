@@ -1,5 +1,5 @@
 //
-//  SettingsRowView.swift
+//  SingleSettingView.swift
 //  q-shop
 //
 //  Created by Khripunov Pavel on 12/01/2024.
@@ -7,24 +7,21 @@
 
 import SwiftUI
 
-struct SettingsRowView<Content: View>: View {
-    @Binding var displaySettings: Bool
+struct SingleSettingView<Content: View>: View {
+    @Binding var displayEditing: Bool
     var label: String
     var change: (_ newValue: Int) -> Void
-    var value: String
     private var content: () -> Content
     
     init(
         _ label: String,
-        displaySettings: Binding<Bool>,
-        value: String,
+        displayEditing: Binding<Bool>,
         change: @escaping (_ newValue: Int) -> Void,
         @ViewBuilder content: @escaping () -> Content
     ){
         self.label = label
         self.change = change
-        self._displaySettings = displaySettings
-        self.value = value
+        self._displayEditing = displayEditing
         self.content = content
     }
     
@@ -33,26 +30,26 @@ struct SettingsRowView<Content: View>: View {
             Text(label)
                 .textStyle(RegularTextSyles)
                 .onTapGesture {
-                    displaySettings = true
+                    displayEditing = true
                 }
-                .padding(0)
             Spacer()
             ChoiserView(
-                value,
-                $displaySettings,
+                "Edit",
+                $displayEditing,
                 textStyle: LinkTextSyles
             ) {
                 content()
             }
-        }.padding(.bottom, BASE_PADDING)
+            .padding(.leading, BASE_PADDING)
+        }
+        .padding(.bottom, BASE_PADDING)
     }
 }
 
 #Preview {
-    SettingsRowView(
-        "Address",
-        displaySettings: .constant(true),
-        value: "Home"
+    SingleSettingView(
+        "Rua. do Barao de Sao Cosme, 250, ap. 0.1, floor -1",
+        displayEditing: .constant(false)
     ) { _ in
         
     } content: {
