@@ -16,61 +16,44 @@ struct CheckoutScreenView: View {
         VStack(
             alignment: .leading,
             spacing: 0
-        ){
-            Text("Total")
-                .textStyle(TitleLvl1)
-                .padding(.bottom, BASE_PADDING)
+        ) {
+            ScreenHeaderView(title: "Total")
             
             ScrollView{
                 VStack{
                     ForEach(viewModel.items.indices, id: \.self) { index in
-                        HStack {
-                            Text("\(viewModel.items[index].name)")
-                                .textStyle(RegularTextSyles)
-                            Spacer()
-                            QuantityButtonView(
-                                count: $viewModel.items[index].count
-                            ) { newCount in
-                                viewModel.cartProvider.add(viewModel.items[index].name, newCount)
-                            }
-                            .frame(width: 100)
+                        GoodRowView(
+                            viewModel.items[index].name,
+                            count: $viewModel.items[index].count
+                        ) { newCount in
+                            viewModel.cartProvider.add(
+                                viewModel.items[index].name,
+                                newCount
+                            )
                         }
-                        .padding(.bottom, BASE_PADDING)
                     }
                 }
                 
                 VStack {
-                    HStack{
-                        Text("Address")
-                            .textStyle(RegularTextSyles)
-                            .onTapGesture {
-                                choiseAddress = true
-                            }
-                        Spacer()
-                        ChoiserView(
-                            "Home",
-                            $choiseAddress,
-                            textStyle: LinkTextSyles
-                        ) {
-                            Text("Address inner")
-                        }
-                    }.padding(.bottom, BASE_PADDING)
+                    SettingsRowView(
+                        "Address",
+                        displaySettings: $choiseAddress,
+                        value: "Home"
+                    ) { _ in
+                        choiseAddress = true
+                    } content: {
+                        Text("Address inner")
+                    }
                     
-                    HStack{
-                        Text("Payment")
-                            .textStyle(RegularTextSyles)
-                            .onTapGesture {
-                                choisePayment = true
-                            }
-                        Spacer()
-                        ChoiserView(
-                            "ApplePay",
-                            $choisePayment,
-                            textStyle: LinkTextSyles
-                        ) {
-                            Text("Payments inner")
-                        }
-                    }.padding(.bottom, BASE_PADDING)
+                    SettingsRowView(
+                        "Payment",
+                        displaySettings: $choisePayment,
+                        value: "ApplePay"
+                    ) { _ in
+                        choisePayment = true
+                    } content: {
+                        Text("Payments inner")
+                    }
                 }
             }
             
