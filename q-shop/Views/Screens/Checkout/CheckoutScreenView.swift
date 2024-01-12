@@ -48,10 +48,12 @@ struct CheckoutScreenView: View {
                             }
                         Spacer()
                         ChoiserView(
-                            display: $choiseAddress,
-                            title: "Home",
+                            "Home",
+                            $choiseAddress,
                             textStyle: LinkTextSyles
-                        )
+                        ) {
+                            Text("Address inner")
+                        }
                     }.padding(.bottom, BASE_PADDING)
                     
                     HStack{
@@ -62,10 +64,12 @@ struct CheckoutScreenView: View {
                             }
                         Spacer()
                         ChoiserView(
-                            display: $choisePayment,
-                            title: "ApplePay",
+                            "ApplePay",
+                            $choisePayment,
                             textStyle: LinkTextSyles
-                        )
+                        ) {
+                            Text("Payments inner")
+                        }
                     }.padding(.bottom, BASE_PADDING)
                 }
             }

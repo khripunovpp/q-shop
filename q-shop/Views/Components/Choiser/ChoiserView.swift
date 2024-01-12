@@ -7,32 +7,48 @@
 
 import SwiftUI
 
-struct ChoiserView: View {
-    @Binding var display: Bool
+struct ChoiserView<Content: View>: View {
     @Bindable var viewModel = ChoiserViewModel()
-    let title: String
-    let textStyle: TextStyle
+    @Binding var display: Bool
+    var label: String
+    var textStyle: TextStyle?
+    private var content: () -> Content
+    
+    init(
+        _ label: String,
+        _ display: Binding<Bool>,
+        textStyle: TextStyle?,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
+        self._display = display
+        self.label = label
+        self.textStyle = textStyle ?? RegularTextSyles
+        self.content = content
+    }
     
     var body: some View {
         Group {
             Button {
                 display = true
-                print("taped", display)
             } label: {
-                Text(title)
-                    .textStyle(textStyle)
+                Text(label)
+                    .textStyle(textStyle ?? RegularTextSyles)
                     .underline()
             }
-        }.sheet(isPresented: $display) {
-            Text("aerga")
+        }.sheet(
+            isPresented: $display
+        ) {
+            content()
         }
     }
 }
 
 #Preview {
     ChoiserView(
-        display: .constant(false),
-        title: "Title",
+        "Title",
+        .constant(true),
         textStyle: LinkTextSyles
-    )
+    ) {
+        Text("Sample")
+    }
 }
