@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CheckoutScreenView: View {
     @StateObject var viewModel = CheckoutScreenViewModel()
+    @State var choiseAddress = false
+    @State var choisePayment = false
     
     var body: some View {
         VStack(
@@ -31,7 +33,7 @@ struct CheckoutScreenView: View {
                             ) { newCount in
                                 viewModel.cartProvider.add(viewModel.items[index].name, newCount)
                             }
-                                .frame(width: 100)
+                            .frame(width: 100)
                         }
                         .padding(.bottom, BASE_PADDING)
                     }
@@ -41,27 +43,29 @@ struct CheckoutScreenView: View {
                     HStack{
                         Text("Address")
                             .textStyle(RegularTextSyles)
+                            .onTapGesture {
+                                choiseAddress = true
+                            }
                         Spacer()
-                        Button {
-                            
-                        } label: {
-                            Text("Home")
-                                .textStyle(LinkTextSyles)
-                                .underline()
-                        }
+                        ChoiserView(
+                            display: $choiseAddress,
+                            title: "Home",
+                            textStyle: LinkTextSyles
+                        )
                     }.padding(.bottom, BASE_PADDING)
                     
                     HStack{
                         Text("Payment")
                             .textStyle(RegularTextSyles)
+                            .onTapGesture {
+                                choisePayment = true
+                            }
                         Spacer()
-                        Button {
-                            
-                        } label: {
-                            Text("ApplePay")
-                                .textStyle(LinkTextSyles)
-                                .underline()
-                        }
+                        ChoiserView(
+                            display: $choisePayment,
+                            title: "ApplePay",
+                            textStyle: LinkTextSyles
+                        )
                     }.padding(.bottom, BASE_PADDING)
                 }
             }

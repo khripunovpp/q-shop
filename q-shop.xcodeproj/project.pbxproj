@@ -72,6 +72,8 @@
 		69EA133F2B4A28C8005152D6 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA133E2B4A28C8005152D6 /* RxRelay */; };
 		69EA13552B4DEE13005152D6 /* Showcase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA13542B4DEE13005152D6 /* Showcase.swift */; };
 		69EA13582B4DF151005152D6 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EA13572B4DF151005152D6 /* Sorting.swift */; };
+		69FE32892B50A01B001EBDFC /* ChoiserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FE32882B50A01B001EBDFC /* ChoiserViewModel.swift */; };
+		69FE328B2B50A02C001EBDFC /* ChoiserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FE328A2B50A02C001EBDFC /* ChoiserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,6 +127,8 @@
 		69AE73392B40B2C50085902B /* QuantityButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityButtonView.swift; sourceTree = "<group>"; };
 		69EA13542B4DEE13005152D6 /* Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Showcase.swift; sourceTree = "<group>"; };
 		69EA13572B4DF151005152D6 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
+		69FE32882B50A01B001EBDFC /* ChoiserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiserViewModel.swift; sourceTree = "<group>"; };
+		69FE328A2B50A02C001EBDFC /* ChoiserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +259,7 @@
 		69AE72D52B3E100E0085902B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				69FE32872B50A004001EBDFC /* Choiser */,
 				69EA134F2B4DBF23005152D6 /* SearchBar */,
 				69EA134E2B4DBF1B005152D6 /* RegisterForm */,
 				69EA134D2B4DBF04005152D6 /* LoginForm */,
@@ -466,6 +471,15 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		69FE32872B50A004001EBDFC /* Choiser */ = {
+			isa = PBXGroup;
+			children = (
+				69FE32882B50A01B001EBDFC /* ChoiserViewModel.swift */,
+				69FE328A2B50A02C001EBDFC /* ChoiserView.swift */,
+			);
+			path = Choiser;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -582,6 +596,7 @@
 				69AE73002B3E12410085902B /* CartProvider.swift in Sources */,
 				69EA13582B4DF151005152D6 /* Sorting.swift in Sources */,
 				69EA13552B4DEE13005152D6 /* Showcase.swift in Sources */,
+				69FE328B2B50A02C001EBDFC /* ChoiserView.swift in Sources */,
 				69AE72E92B3E11310085902B /* ShowcaseScreenViewModel.swift in Sources */,
 				69AE732E2B3E1D500085902B /* ColorExtensions.swift in Sources */,
 				69AE72FB2B3E11E00085902B /* AuthService.swift in Sources */,
@@ -590,6 +605,7 @@
 				69AE72D72B3E10250085902B /* LoginScreenView.swift in Sources */,
 				69AE72E72B3E111B0085902B /* LoginScreenViewModel.swift in Sources */,
 				69AE72B42B3E0E1E0085902B /* q_shopApp.swift in Sources */,
+				69FE32892B50A01B001EBDFC /* ChoiserViewModel.swift in Sources */,
 				69AE72E22B3E10E10085902B /* CartScreenView.swift in Sources */,
 				69AE732B2B3E1AE70085902B /* BrandColors.swift in Sources */,
 				69AE73232B3E16DA0085902B /* RootView.swift in Sources */,
