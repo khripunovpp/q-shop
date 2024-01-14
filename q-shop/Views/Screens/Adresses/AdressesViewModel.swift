@@ -14,7 +14,7 @@ import RxSwift
 final class AdressesViewModel: ObservableObject {
     @Injected var addressesProvider: AddressesProvider
     let bag = DisposeBag()
-    @Published var addresses: [String] = []
+    @Published var addresses: [Address] = []
     @Published var displayEditing = false
     
     init() {
@@ -30,16 +30,16 @@ final class AdressesViewModel: ObservableObject {
     }
     @Published var activeAdressIndex: Int = 0 {
         didSet {
-            activeAdress =  addressesProvider.activeAddress
+            activeAdress = addressesProvider.activeAddress
         }
     }
-    @Published var activeAdress: String = ""
+    @Published var activeAdress: Address?
     @Published var addressOnEditIdx: Int = 0 {
         didSet {
             addressOnEdit = addresses[addressOnEditIdx]
         }
     }
-    @Published var addressOnEdit: String = ""
+    @Published var addressOnEdit: Address?
     
     
     func setActive(

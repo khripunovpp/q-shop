@@ -16,18 +16,18 @@ struct AddressesView: View {
             
             ForEach(viewModel.addresses.indices, id: \.self) { index in
                 SingleSettingView(
-                    viewModel.addresses[index],
+                    viewModel.addresses[index].label == nil ? "Loading" : "\(viewModel.addresses[index].label): \(viewModel.addresses[index].value)",
                     displayEditing: $viewModel.displayEditing,
                     style: index == viewModel.activeAdressIndex ? ActiveStyles : InactiveStyles
                 ) { newAddress in
                     viewModel.setActive(index)
                 } onEdit: { newAddress in
-                    print("newAddress with index \(index): \(newAddress)")
                     viewModel.addressOnEditIdx = index
                 } content: { newAddress in
-                    VStack(spacing: 0) {
+                    VStack(alignment: .leading, spacing: 0) {
                         ScreenHeaderView(title: "Edit address")
-                        Text(viewModel.addressOnEdit)
+                        Text("\(viewModel.addressOnEdit?.label ?? "")")
+                        Text("\(viewModel.addressOnEdit?.value ?? "")")
                         Spacer()
                     }.padding(BASE_PADDING)
                 }

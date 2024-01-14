@@ -19,9 +19,9 @@ class CheckoutScreenViewModel: ObservableObject {
     let bag = DisposeBag()
     
     init() {
-        activeAddress = addressesProvider.activeAddress
+        activeAddress = addressesProvider.activeAddress.label
         addressesProvider.activeAddress$.subscribe { [weak self] address in
-            self?.activeAddress = address
+            self?.activeAddress = address.label
         }.disposed(by: bag)
         
         activePaymentAccount = paymentAccountsProvider.activePaymentAccount

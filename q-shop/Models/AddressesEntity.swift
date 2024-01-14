@@ -8,27 +8,27 @@
 import Foundation
 
 final class AddressesEntity {
-    private var addresess: [String]
+    private var addresess: [Address]
     
-    init(_ addresess: [String]?) {
+    init(_ addresess: [Address]?) {
         self.addresess = addresess ?? []
     }
     
     func getOne(
         _ index: Int
-    ) -> String {
+    ) -> Address {
         return addresess[index]
     }
     
     func add(
-        _ value: String
+        _ value: Address
     ) {
         addresess.append(value)
     }
     
     func edit(
         _ index: Int,
-        _ newValue: String
+        _ newValue: Address
     ) {
         addresess[index] = newValue
     }
@@ -39,7 +39,7 @@ final class AddressesEntity {
         addresess.remove(at: index)
     }
     
-    var list: [String] {
+    var list: [Address] {
         addresess
     }
 }
