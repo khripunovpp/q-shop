@@ -29,10 +29,13 @@ struct ShowcaseScreenView: View {
                     CartScreenView()
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
-                    BrandButtonView(
-                        label: "Show \(viewModel.count) items in your cart"
-                    ) {
-                        goToCart = true
+                    VStack {
+                        BrandButtonView(
+                            label: "Show \(viewModel.count) items in your cart"
+                        ) {
+                            goToCart = true
+                        }
+                        .padding(BASE_PADDING)
                     }
                 }
             }
