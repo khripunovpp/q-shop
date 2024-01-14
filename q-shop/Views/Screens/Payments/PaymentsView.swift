@@ -15,15 +15,20 @@ struct PaymentsView: View {
     ]
     @State var activePaymentAccountIdx: Int = 0 {
         didSet {
-            activePaymentAccount = paymentAccounts[activePaymentAccountIdx]
-            activePaymentAccountStored = activePaymentAccount
+            activePaymentAccountStored = paymentAccounts[activePaymentAccountIdx]
             
-            print("updated activePaymentAccount \(activePaymentAccount)")
+            print("updated activePaymentAccount \(activePaymentAccountStored)")
         }
     }
+    @State var paymentAccountOnEditIdx: Int = 0 {
+        didSet {
+            paymentAccountOnEdit = paymentAccounts[paymentAccountOnEditIdx]
+        }
+    }
+    
     @AppStorage("activePaymentAccount") var activePaymentAccountStored: String = ""
     @State var displayEditing: Bool = false
-    @State var activePaymentAccount: String = ""
+    @State var paymentAccountOnEdit: String = ""
     
     var body: some View {
         VStack(spacing: 0) {
@@ -32,14 +37,18 @@ struct PaymentsView: View {
             ForEach(paymentAccounts.indices, id: \.self) { index in
                 SingleSettingView(
                     paymentAccounts[index],
-                    displayEditing: $displayEditing
+                    displayEditing: $displayEditing,
+                    style: index == activePaymentAccountIdx ? ActiveStyles : InactiveStyles
                 ) {newValue in
                     activePaymentAccountIdx = index
+                    print("activate payment \(newValue)")
+                } onEdit: { newValue in
+                    paymentAccountOnEditIdx = index
                     print("new payment \(newValue)")
                 } content: { paymentAccount in
                     VStack(spacing: 0) {
                         ScreenHeaderView(title: "Edit payment account")
-                        Text(activePaymentAccount)
+                        Text(paymentAccountOnEdit)
                         Spacer()
                     }.padding(BASE_PADDING)
                 }

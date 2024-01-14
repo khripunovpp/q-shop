@@ -15,6 +15,7 @@
 		6940AB462B5440D50032AEB0 /* AddressesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB452B5440D50032AEB0 /* AddressesView.swift */; };
 		6940AB492B5441500032AEB0 /* PaymentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB482B5441500032AEB0 /* PaymentsViewModel.swift */; };
 		6940AB4B2B54415F0032AEB0 /* PaymentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB4A2B54415F0032AEB0 /* PaymentsView.swift */; };
+		6940AB4D2B54582D0032AEB0 /* BoxStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB4C2B54582D0032AEB0 /* BoxStyles.swift */; };
 		6941BCE22B4F3E4D000B8279 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 6941BCE12B4F3E4D000B8279 /* Algorithms */; };
 		699BCC202B47216B0084155C /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BCC1F2B47216B0084155C /* TextExtensions.swift */; };
 		699BCC262B4725110084155C /* BrandTextStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699BCC252B4725110084155C /* BrandTextStyles.swift */; };
@@ -93,6 +94,7 @@
 		6940AB452B5440D50032AEB0 /* AddressesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesView.swift; sourceTree = "<group>"; };
 		6940AB482B5441500032AEB0 /* PaymentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsViewModel.swift; sourceTree = "<group>"; };
 		6940AB4A2B54415F0032AEB0 /* PaymentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentsView.swift; sourceTree = "<group>"; };
+		6940AB4C2B54582D0032AEB0 /* BoxStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxStyles.swift; sourceTree = "<group>"; };
 		699BCC1F2B47216B0084155C /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
 		699BCC252B4725110084155C /* BrandTextStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandTextStyles.swift; sourceTree = "<group>"; };
 		69AE72B02B3E0E1E0085902B /* q-shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "q-shop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				6940AB402B51EC3D0032AEB0 /* SingleSettingView.swift */,
+				6940AB4C2B54582D0032AEB0 /* BoxStyles.swift */,
 			);
 			path = SingleSetting;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				69AE72F52B3E11980085902B /* GoodEntity.swift in Sources */,
 				69AE73212B3E14AB0085902B /* RegisterScreenViewModel.swift in Sources */,
 				69AE72F72B3E11B40085902B /* CartEntity.swift in Sources */,
+				6940AB4D2B54582D0032AEB0 /* BoxStyles.swift in Sources */,
 				69AE73382B408F290085902B /* GoodItemView.swift in Sources */,
 				69AE730A2B3E12DD0085902B /* ShowcaseProviderProtocol.swift in Sources */,
 				69AE73362B408EF60085902B /* GoodsListView.swift in Sources */,

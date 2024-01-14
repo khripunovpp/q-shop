@@ -13,15 +13,19 @@ struct AddressesView: View {
         "Morskaya embankment 15, appartment 25",
         "Microdistrict 1, build. 9, appartment 12"
     ]
-    @State var activeAdressIndex = 0 {
+    @State var activeAdressIndex: Int = 0 {
         didSet {
-            activeAddress = addresses[activeAdressIndex]
-            addressStored = activeAddress
+            addressStored = addresses[activeAdressIndex]
+        }
+    }
+    @State var addressOnEditIdx: Int = 0 {
+        didSet {
+            addressOnEdit = addresses[addressOnEditIdx]
         }
     }
     @AppStorage("address") var addressStored: String = ""
     @State var displayEditing = false
-    @State var activeAddress: String = ""
+    @State var addressOnEdit: String = ""
     
     var body: some View {
         VStack(spacing: 0) {
@@ -29,14 +33,17 @@ struct AddressesView: View {
             ForEach(addresses.indices, id: \.self) { index in
                 SingleSettingView(
                     addresses[index],
-                    displayEditing: $displayEditing
+                    displayEditing: $displayEditing,
+                    style: index == activeAdressIndex ? ActiveStyles : InactiveStyles
                 ) {newAddress in
-                    print("newAddress \(newAddress)")
                     activeAdressIndex = index
+                } onEdit: { newAddress in
+                    print("newAddress with index \(index): \(newAddress)")
+                    addressOnEditIdx = index
                 } content: { newAddress in
                     VStack(spacing: 0) {
                         ScreenHeaderView(title: "Edit address")
-                        Text(activeAddress)
+                        Text(addressOnEdit)
                         Spacer()
                     }.padding(BASE_PADDING)
                 }
