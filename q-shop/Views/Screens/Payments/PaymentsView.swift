@@ -12,11 +12,11 @@ struct PaymentsView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            ScreenHeaderView(title: "Adresses")
+            ScreenHeaderView(title: "Payment accounts")
             
             ForEach(viewModel.paymentAccounts.indices, id: \.self) { index in
                 SingleSettingView(
-                    viewModel.paymentAccounts[index],
+                    viewModel.paymentAccounts[index].label == nil ? "Loading" : "\(viewModel.paymentAccounts[index].label!)",
                     displayEditing: $viewModel.displayEditing,
                     style: index == viewModel.activePaymentAccountIndex ? ActiveStyles : InactiveStyles
                 ) { newAddress in
@@ -27,7 +27,7 @@ struct PaymentsView: View {
                 } content: { newAddress in
                     VStack(spacing: 0) {
                         ScreenHeaderView(title: "Edit address")
-                        Text(viewModel.paymentAccountOnEdit)
+                        Text(viewModel.paymentAccountOnEdit?.label ?? "")
                         Spacer()
                     }.padding(BASE_PADDING)
                 }

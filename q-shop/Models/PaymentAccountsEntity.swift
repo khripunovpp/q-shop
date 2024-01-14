@@ -8,27 +8,27 @@
 import Foundation
 
 final class PaymentAccountsEntity {
-    private var paymentAccounts: [String]
+    private var paymentAccounts: [PaymentAccount]
     
-    init(_ paymentAccounts: [String]?) {
+    init(_ paymentAccounts: [PaymentAccount]?) {
         self.paymentAccounts = paymentAccounts ?? []
     }
     
     func getOne(
         _ index: Int
-    ) -> String {
+    ) -> PaymentAccount {
         return paymentAccounts[index]
     }
     
     func add(
-        _ value: String
+        _ value: PaymentAccount
     ) {
         paymentAccounts.append(value)
     }
     
     func edit(
         _ index: Int,
-        _ newValue: String
+        _ newValue: PaymentAccount
     ) {
         paymentAccounts[index] = newValue
     }
@@ -39,7 +39,7 @@ final class PaymentAccountsEntity {
         paymentAccounts.remove(at: index)
     }
     
-    var list: [String] {
+    var list: [PaymentAccount] {
         paymentAccounts
     }
 }

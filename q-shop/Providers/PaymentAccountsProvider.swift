@@ -10,31 +10,31 @@ import RxSwift
 
 final class PaymentAccountsProvider {
     var paymentAccountes = PaymentAccountsEntity([
-        "ApplePay",
-        "Bank transfer",
-        "MBWay"
+        PaymentAccount(label: "ApplePay", paymentMethod: PaymentMethod.ApplePay),
+        PaymentAccount(label: "Bank transfer", paymentMethod: PaymentMethod.BankTransfer),
+        PaymentAccount(label: "MBWay", paymentMethod: PaymentMethod.MBWay)
     ])
     private var activePaymentAccountIndex = 0
-    private var itemsSubject = BehaviorSubject<[String]>(value: [])
-    private var activePaymentAccountSubject = ReplaySubject<String>.create(bufferSize: 1)
+    private var itemsSubject = BehaviorSubject<[PaymentAccount]>(value: [])
+    private var activePaymentAccountSubject = ReplaySubject<PaymentAccount>.create(bufferSize: 1)
     
     var activeIndex: Int {
         activePaymentAccountIndex
     }
     
-    var items: [String] {
+    var items: [PaymentAccount] {
         paymentAccountes.list
     }
     
-    var items$: Observable<[String]> {
+    var items$: Observable<[PaymentAccount]> {
         itemsSubject.asObservable()
     }
     
-    var activePaymentAccount: String {
+    var activePaymentAccount: PaymentAccount {
         paymentAccountes.getOne(activePaymentAccountIndex)
     }
     
-    var activePaymentAccount$: Observable<String> {
+    var activePaymentAccount$: Observable<PaymentAccount> {
         activePaymentAccountSubject.asObservable()
     }
     
@@ -44,14 +44,14 @@ final class PaymentAccountsProvider {
     }
     
     func add(
-        _ value: String
+        _ value: PaymentAccount
     ) {
         paymentAccountes.add(value)
     }
     
     func edit(
         _ index: Int,
-        _ newValue: String
+        _ newValue: PaymentAccount
     ) {
         paymentAccountes.edit(index, newValue)
     }

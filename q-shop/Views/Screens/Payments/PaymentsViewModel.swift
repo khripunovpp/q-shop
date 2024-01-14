@@ -12,7 +12,7 @@ import Resolver
 final class PaymentsViewModel: ObservableObject {
     @Injected var paymentAccountsProvider: PaymentAccountsProvider
     let bag = DisposeBag()
-    @Published var paymentAccounts: [String] = []
+    @Published var paymentAccounts: [PaymentAccount] = []
     @Published var displayEditing = false
     
     init() {
@@ -31,13 +31,13 @@ final class PaymentsViewModel: ObservableObject {
             activePaymentAccount =  paymentAccountsProvider.activePaymentAccount
         }
     }
-    @Published var activePaymentAccount: String = ""
+    @Published var activePaymentAccount: PaymentAccount?
     @Published var paymentAccountOnEditIdx: Int = 0 {
         didSet {
             paymentAccountOnEdit = paymentAccounts[paymentAccountOnEditIdx]
         }
     }
-    @Published var paymentAccountOnEdit: String = ""
+    @Published var paymentAccountOnEdit: PaymentAccount?
     
     
     func setActive(

@@ -24,9 +24,11 @@ class CheckoutScreenViewModel: ObservableObject {
             self?.activeAddress = address.label
         }.disposed(by: bag)
         
-        activePaymentAccount = paymentAccountsProvider.activePaymentAccount
+        activePaymentAccount = paymentAccountsProvider.activePaymentAccount.label!
+        print("activePaymentAccount set: \(activePaymentAccount)")
         paymentAccountsProvider.activePaymentAccount$.subscribe { [weak self] acc in
-            self?.activePaymentAccount = acc
+            self?.activePaymentAccount = acc.label ?? ""
+            print("activePaymentAccount changed: \(self?.activePaymentAccount)")
         }.disposed(by: bag)
     }
     
