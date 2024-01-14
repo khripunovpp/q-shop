@@ -38,7 +38,7 @@ struct CheckoutScreenView: View {
                     SettingsRowView(
                         "Address",
                         displaySettings: $choiseAddress,
-                        value: "Home"
+                        value: viewModel.activeAddress
                     ) { _ in
                         choiseAddress = true
                     } content: {

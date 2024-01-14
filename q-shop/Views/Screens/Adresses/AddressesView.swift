@@ -20,7 +20,7 @@ struct AddressesView: View {
                     displayEditing: $viewModel.displayEditing,
                     style: index == viewModel.activeAdressIndex ? ActiveStyles : InactiveStyles
                 ) { newAddress in
-                    viewModel.activeAdressIndex = index
+                    viewModel.setActive(index)
                 } onEdit: { newAddress in
                     print("newAddress with index \(index): \(newAddress)")
                     viewModel.addressOnEditIdx = index

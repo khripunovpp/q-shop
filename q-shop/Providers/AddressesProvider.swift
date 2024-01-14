@@ -14,6 +14,8 @@ final class AddressesProvider {
     ])
     private var activeAdressIndex = 0
     private var itemsSubject = BehaviorSubject<[String]>(value: [])
+    private var activeAddressSubject = ReplaySubject<String>.create(bufferSize: 1)
+    
     var activeIndex: Int {
         activeAdressIndex
     }
@@ -29,6 +31,11 @@ final class AddressesProvider {
     var activeAddress: String {
         addresses.getOne(activeAdressIndex)
     }
+    
+    var activeAddress$: Observable<String> {
+        activeAddressSubject.asObservable()
+    }
+    
     
     init() {
         itemsSubject.onNext(addresses.list)
@@ -57,5 +64,6 @@ final class AddressesProvider {
         _ index: Int
     ) {
         activeAdressIndex = index
+        activeAddressSubject.onNext(activeAddress)
     }
 }
