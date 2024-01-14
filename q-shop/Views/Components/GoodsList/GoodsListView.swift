@@ -19,6 +19,7 @@ struct GoodsListView: View {
             VStack(spacing: verticalSpacing) {
                 ForEach(items) { item in
                     GoodItemView(
+                        count: .constant(item.count),
                         content: item.name
                     ) { newQuantity in
                         addedHadler(item.name, newQuantity)

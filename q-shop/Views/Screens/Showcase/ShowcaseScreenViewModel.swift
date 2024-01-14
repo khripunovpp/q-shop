@@ -18,7 +18,7 @@ import RxSwift
     init(){
         showcaseProvider.products$.subscribe { [weak self] products in
             self?.showcaseItems = products
-            print("\n cahnged ShowcaseScreenViewModel \n products: \n \(products) \n showcaseItems: \n  \(self?.showcaseItems)")
+//            print("\n cahnged ShowcaseScreenViewModel \n products: \n \(products) \n showcaseItems: \n  \(self?.showcaseItems)")
         }
         .disposed(by: bag )
     }

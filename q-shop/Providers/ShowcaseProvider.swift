@@ -46,10 +46,10 @@ class ShowcaseProvider {
             if res == nil {
                     arr.append(ShowcaseItem(name: p.name, count: p.count))
             } else {
-                print("\n find this item in cart: \(p.name) \n index: \(res) \n item: \(cartItems[res!])")
+//                print("\n find this item in cart: \(p.name) \n index: \(res) \n item: \(cartItems[res!])")
                 arr.append(ShowcaseItem(name: p.name, count: cartItems[res!].count))
             }
-                print("added to array result: \(arr)")
+//                print("added to array result: \(arr)")
         }
         
         //        products.map{ p in

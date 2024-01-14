@@ -17,15 +17,11 @@ struct ShowcaseScreenView: View {
         VStack(spacing: 0) {
             SearchBarView()
             FiltersBarView()
-//            GoodsListView(items: $viewModel.showcaseItems) { added,count in
-//                viewModel.cartProvider.add(added, count)
-//            }
-//      
             
             ScrollView {
                 ForEach(viewModel.showcaseItems.indices, id: \.self) { index in
                     GoodItemView(
-                        count: viewModel.showcaseItems[index].count, 
+                        count: $viewModel.showcaseItems[index].count,
                         content: viewModel.showcaseItems[index].name
                     ) { newQuantity in
                         viewModel.cartProvider.add(viewModel.showcaseItems[index].name, newQuantity)
@@ -34,6 +30,7 @@ struct ShowcaseScreenView: View {
                     }
                 }
             }
+            
             if viewModel.count > 0 {
                 NavigationLink(isActive: $goToCart) {
                     CartScreenView()
