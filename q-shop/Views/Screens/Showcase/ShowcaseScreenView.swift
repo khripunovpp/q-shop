@@ -18,17 +18,10 @@ struct ShowcaseScreenView: View {
             SearchBarView()
             FiltersBarView()
             
-            ScrollView {
-                ForEach(viewModel.showcaseItems.indices, id: \.self) { index in
-                    GoodItemView(
-                        count: $viewModel.showcaseItems[index].count,
-                        content: viewModel.showcaseItems[index].name
-                    ) { newQuantity in
-                        viewModel.cartProvider.add(viewModel.showcaseItems[index].name, newQuantity)
-                        
-                        
-                    }
-                }
+            GoodsListView(
+                items: $viewModel.showcaseItems
+            ) { name, newQuantity in
+                viewModel.cartProvider.add(name, newQuantity)
             }
             
             if viewModel.count > 0 {
@@ -37,7 +30,7 @@ struct ShowcaseScreenView: View {
                         .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     BrandButtonView(
-                        label: "Checkout \(viewModel.count)"
+                        label: "Show \(viewModel.count) items in your cart"
                     ) {
                         goToCart = true
                     }

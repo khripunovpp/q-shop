@@ -15,18 +15,16 @@ struct GoodsListView: View {
     var addedHadler: (String, Int) -> Void
     
     var body: some View {
-        ScrollView() {
+        ScrollView {
             VStack(spacing: verticalSpacing) {
-                ForEach(items) { item in
+                ForEach(items.indices, id: \.self) { index in
                     GoodItemView(
-                        count: .constant(item.count),
-                        content: item.name
+                        count: $items[index].count,
+                        content: items[index].name
                     ) { newQuantity in
-                        addedHadler(item.name, newQuantity)
+                        addedHadler(items[index].name, newQuantity)
                     }
                 }
-            }.onAppear() {
-                print("GoodsListView has appeared")
             }
         }
         
