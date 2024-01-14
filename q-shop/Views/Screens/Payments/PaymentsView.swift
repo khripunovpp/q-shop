@@ -8,47 +8,26 @@
 import SwiftUI
 
 struct PaymentsView: View {
-    let paymentAccounts: [String] = [
-        "Bank transfer",
-        "Apple pay",
-        "MBWay"
-    ]
-    @State var activePaymentAccountIdx: Int = 0 {
-        didSet {
-            activePaymentAccountStored = paymentAccounts[activePaymentAccountIdx]
-            
-            print("updated activePaymentAccount \(activePaymentAccountStored)")
-        }
-    }
-    @State var paymentAccountOnEditIdx: Int = 0 {
-        didSet {
-            paymentAccountOnEdit = paymentAccounts[paymentAccountOnEditIdx]
-        }
-    }
-    
-    @AppStorage("activePaymentAccount") var activePaymentAccountStored: String = ""
-    @State var displayEditing: Bool = false
-    @State var paymentAccountOnEdit: String = ""
+    @StateObject var viewModel = PaymentsViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
-            ScreenHeaderView(title: "Payment accounts")
+            ScreenHeaderView(title: "Adresses")
             
-            ForEach(paymentAccounts.indices, id: \.self) { index in
+            ForEach(viewModel.paymentAccounts.indices, id: \.self) { index in
                 SingleSettingView(
-                    paymentAccounts[index],
-                    displayEditing: $displayEditing,
-                    style: index == activePaymentAccountIdx ? ActiveStyles : InactiveStyles
-                ) {newValue in
-                    activePaymentAccountIdx = index
-                    print("activate payment \(newValue)")
-                } onEdit: { newValue in
-                    paymentAccountOnEditIdx = index
-                    print("new payment \(newValue)")
-                } content: { paymentAccount in
+                    viewModel.paymentAccounts[index],
+                    displayEditing: $viewModel.displayEditing,
+                    style: index == viewModel.activePaymentAccountIndex ? ActiveStyles : InactiveStyles
+                ) { newAddress in
+                    viewModel.setActive(index)
+                } onEdit: { newAddress in
+                    print("newAddress with index \(index): \(newAddress)")
+                    viewModel.paymentAccountOnEditIdx = index
+                } content: { newAddress in
                     VStack(spacing: 0) {
-                        ScreenHeaderView(title: "Edit payment account")
-                        Text(paymentAccountOnEdit)
+                        ScreenHeaderView(title: "Edit address")
+                        Text(viewModel.paymentAccountOnEdit)
                         Spacer()
                     }.padding(BASE_PADDING)
                 }

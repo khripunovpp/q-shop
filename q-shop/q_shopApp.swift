@@ -18,6 +18,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Resolver.register { CartProvider() as CartProvider }.scope(.application)
         Resolver.register { ShowcaseProvider() as ShowcaseProvider }.scope(.application)
         Resolver.register { AddressesProvider() as AddressesProvider }.scope(.application)
+        Resolver.register { PaymentAccountsProvider() as PaymentAccountsProvider }.scope(.application)
         
         return true
     }

@@ -48,7 +48,7 @@ struct CheckoutScreenView: View {
                     SettingsRowView(
                         "Payment",
                         displaySettings: $choisePayment,
-                        value: "ApplePay"
+                        value: viewModel.activePaymentAccount
                     ) { _ in
                         choisePayment = true
                     } content: {
