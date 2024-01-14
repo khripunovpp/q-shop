@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import Resolver
 
-class ShowcaseProvider {
+final class ShowcaseProvider {
     private let cartProvider: CartProvider = Resolver.resolve()
     private let showcase: Showcase
     private let productsSubject: BehaviorSubject<[ShowcaseItem]>
