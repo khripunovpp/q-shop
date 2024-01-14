@@ -10,17 +10,17 @@ import SwiftUI
 struct SingleSettingView<Content: View>: View {
     @Binding var displayEditing: Bool
     var label: String
-    var change: (_ newValue: Int) -> Void
-    private var content: () -> Content
+    var onEdit: (_ newValue: String) -> Void
+    private var content: (String) -> Content
     
     init(
         _ label: String,
         displayEditing: Binding<Bool>,
-        change: @escaping (_ newValue: Int) -> Void,
-        @ViewBuilder content: @escaping () -> Content
+        onEdit: @escaping (_ newValue: String) -> Void,
+        @ViewBuilder content: @escaping (_:String) -> Content
     ){
         self.label = label
-        self.change = change
+        self.onEdit = onEdit
         self._displayEditing = displayEditing
         self.content = content
     }
@@ -31,6 +31,7 @@ struct SingleSettingView<Content: View>: View {
                 .textStyle(RegularTextSyles)
                 .onTapGesture {
                     displayEditing = true
+                    onEdit(label)
                 }
             Spacer()
             ChoiserView(
@@ -38,7 +39,12 @@ struct SingleSettingView<Content: View>: View {
                 $displayEditing,
                 textStyle: LinkTextSyles
             ) {
-                content()
+                print("on show \(label) editing")
+                onEdit(label)
+            } onDismiss: {
+                onEdit(label)
+            } content: {
+                content(label)
             }
             .padding(.leading, BASE_PADDING)
         }
@@ -52,7 +58,7 @@ struct SingleSettingView<Content: View>: View {
         displayEditing: .constant(false)
     ) { _ in
         
-    } content: {
-        Text("Sample inner")
+    } content: { address in
+        Text(address)
     }
 }

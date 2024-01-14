@@ -42,6 +42,10 @@ struct SettingsRowView<Content: View>: View {
                 $displaySettings,
                 textStyle: LinkTextSyles
             ) {
+                
+            } onDismiss: {
+                
+            } content: {
                 content()
             }
         }.padding(.bottom, BASE_PADDING)

@@ -8,29 +8,38 @@
 import SwiftUI
 
 struct PaymentsView: View {
-    let paymentAccounts = [
+    let paymentAccounts: [String] = [
         "Bank transfer",
         "Apple pay",
         "MBWay"
     ]
-    private var activePaymentAccountIdx = 0 {
+    @State var activePaymentAccountIdx: Int = 0 {
         didSet {
             activePaymentAccount = paymentAccounts[activePaymentAccountIdx]
+            activePaymentAccountStored = activePaymentAccount
+            
+            print("updated activePaymentAccount \(activePaymentAccount)")
         }
     }
-    @AppStorage("activePaymentAccount") var activePaymentAccount: String = ""
+    @AppStorage("activePaymentAccount") var activePaymentAccountStored: String = ""
+    @State var displayEditing: Bool = false
+    @State var activePaymentAccount: String = ""
+    
     var body: some View {
         VStack(spacing: 0) {
             ScreenHeaderView(title: "Payment accounts")
-            ForEach(paymentAccounts, id: \.self) { acc in
+            
+            ForEach(paymentAccounts.indices, id: \.self) { index in
                 SingleSettingView(
-                    acc,
-                    displayEditing: .constant(false)
+                    paymentAccounts[index],
+                    displayEditing: $displayEditing
                 ) {newValue in
-                    
-                } content: {
+                    activePaymentAccountIdx = index
+                    print("new payment \(newValue)")
+                } content: { paymentAccount in
                     VStack(spacing: 0) {
-                        ScreenHeaderView(title: "Place fore editing")
+                        ScreenHeaderView(title: "Edit payment account")
+                        Text(activePaymentAccount)
                         Spacer()
                     }.padding(BASE_PADDING)
                 }

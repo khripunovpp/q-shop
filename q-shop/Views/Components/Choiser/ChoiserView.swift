@@ -8,35 +8,44 @@
 import SwiftUI
 
 struct ChoiserView<Content: View>: View {
-    @Bindable var viewModel = ChoiserViewModel()
     @Binding var display: Bool
     var label: String
     var textStyle: TextStyle?
     private var content: () -> Content
+    private var onShow: () -> Void
+    private var onDismiss: () -> Void
     
     init(
         _ label: String,
         _ display: Binding<Bool>,
         textStyle: TextStyle?,
+        onShow: @escaping () -> Void,
+        onDismiss: @escaping () -> Void,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self._display = display
         self.label = label
         self.textStyle = textStyle ?? RegularTextSyles
         self.content = content
+        self.onShow = onShow
+        self.onDismiss = onDismiss
     }
     
     var body: some View {
         Group {
             Button {
                 display = true
+                onShow()
             } label: {
                 Text(label)
                     .textStyle(textStyle ?? RegularTextSyles)
                     .underline()
             }
         }.sheet(
-            isPresented: $display
+            isPresented: $display,
+            onDismiss: {
+                onDismiss()
+            }
         ) {
             content()
         }
@@ -49,6 +58,10 @@ struct ChoiserView<Content: View>: View {
         .constant(true),
         textStyle: LinkTextSyles
     ) {
+        
+    } onDismiss: {
+        
+    } content: {
         Text("Sample")
     }
 }
