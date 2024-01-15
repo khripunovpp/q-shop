@@ -17,7 +17,7 @@ struct CheckoutScreenView: View {
             alignment: .leading,
             spacing: 0
         ) {
-            ScreenHeaderView(title: "Total")
+            ScreenHeaderView(title: "Your order")
             
             ScrollView{
                 VStack{

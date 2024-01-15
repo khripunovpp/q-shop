@@ -26,8 +26,5 @@ import RxSwift
     var count: Int {
         cartProvider.count
     }
-    
-    deinit {
-        print("dfeinit ShowcaseScreenViewModel")
-    }
+
 }

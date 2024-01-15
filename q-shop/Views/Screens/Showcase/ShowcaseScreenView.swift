@@ -14,33 +14,50 @@ struct ShowcaseScreenView: View {
     @Bindable var viewModel = ShowcaseScreenViewModel()
     
     var body: some View {
-        VStack(spacing: 0) {
-            SearchBarView()
-            FiltersBarView()
-            
-            GoodsListView(
-                items: $viewModel.showcaseItems
-            ) { name, newQuantity in
-                viewModel.cartProvider.add(name, newQuantity)
-            }
-            
-            if viewModel.count > 0 {
-                NavigationLink(isActive: $goToCart) {
-                    CartScreenView()
-                        .navigationBarTitleDisplayMode(.inline)
-                } label: {
-                    VStack {
-                        BrandButtonView(
-                            label: "Show \(viewModel.count) items in your cart"
-                        ) {
-                            goToCart = true
+        Group {
+            ZStack {
+                LinearGradient(
+                    colors: [Color.hex("#eeeeee"), .white],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                ).ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    SearchBarView().padding(EdgeInsets(top: 0, leading: BASE_PADDING, bottom: 0, trailing: BASE_PADDING))
+                    
+                    Group {
+                        FiltersBarView()
+                            .padding(EdgeInsets(
+                                top: 3,
+                                leading: BASE_PADDING - 8,
+                                bottom: 3,
+                                trailing: BASE_PADDING - 8
+                            ))
+                        
+                        GoodsListView(
+                            items: $viewModel.showcaseItems
+                        ) { name, newQuantity in
+                            viewModel.cartProvider.add(name, newQuantity)
                         }
-                        .padding(BASE_PADDING)
+                    }
+                    
+                    if viewModel.count > 0 {
+                        NavigationLink(isActive: $goToCart) {
+                            CheckoutScreenView()
+                                .navigationBarTitleDisplayMode(.inline)
+                        } label: {
+                            VStack {
+                                BrandButtonView(
+                                    label: "Show \(viewModel.count) items in your cart"
+                                ) {
+                                    goToCart = true
+                                }
+                                .padding(BASE_PADDING)
+                            }
+                        }
                     }
                 }
             }
-        }.onAppear{
-            viewModel.showcaseProvider.manualEmit()
         }
     }
 }

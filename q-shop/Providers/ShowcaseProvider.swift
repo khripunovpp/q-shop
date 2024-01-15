@@ -83,9 +83,4 @@ final class ShowcaseProvider {
     private func emitItems(){
         productsSubject.onNext(showcase.getGoods().sorted { a,b in a.name < b.name })
     }
-    
-    func manualEmit(){
-        print("manualEmit")
-        emitItems()
-    }
 }

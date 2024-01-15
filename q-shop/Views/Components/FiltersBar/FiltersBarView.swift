@@ -31,30 +31,27 @@ struct FiltersBarView: View {
         24,
         48
     ]
+    var textColor = BrandColors.main
     
     var body: some View {
         HStack(spacing:0){
             Picker("Sorting", selection: $selectedSort) {
                 ForEach(sortlist, id: \.self) { sorting in
-                    Text(sorting).accentColor(.green)
+                    Text(sorting)
                 }
             }
+            .accentColor(textColor)
             
             Picker("Count", selection: $selectedCount) {
                 ForEach(countlist, id: \.self) { sorting in
-                    Text(String(sorting)).foregroundColor(.green)
+                    Text("\(sorting)")
                 }
             }
+            .accentColor(textColor)
+            
             Spacer()
         }
         .frame(maxWidth: .infinity)
-        .padding(EdgeInsets(
-            top: 3,
-            leading: BASE_PADDING - 2,
-            bottom: 3,
-            trailing: BASE_PADDING - 2
-        ))
-        .background(BrandColors.main.opacity(0.2))
     }
 }
 

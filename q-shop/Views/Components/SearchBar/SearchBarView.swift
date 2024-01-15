@@ -20,18 +20,11 @@ struct SearchBarView: View {
                 ))
                 .background(in: Rectangle())
                 .backgroundStyle(.white)
-                .font(.system(size: 25))
-                .foregroundColor(BrandColors.main)
-                .clipShape(RoundedRectangle(cornerRadius: 25))
+                .font(.system(size: 18))
+                .clipShape(RoundedRectangle(cornerRadius: BASE_RADIUS))
         }
-        .padding(EdgeInsets(
-            top: BASE_PADDING,
-            leading: BASE_PADDING,
-            bottom: BASE_PADDING,
-            trailing: BASE_PADDING
-        ))
         .background(in: Rectangle())
-        .backgroundStyle(BrandColors.main)
+        .backgroundStyle(.white.opacity(0))
     }
 }
 
