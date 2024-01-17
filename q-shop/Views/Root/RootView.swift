@@ -12,7 +12,7 @@ struct RootView: View {
     @Injected var userProvider: UserProvider
     
     var body: some View {
-        if false {
+        if userProvider.hasSignedIn {
             ShowcaseScreenView()
         } else {
             LoginScreenView()

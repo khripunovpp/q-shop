@@ -15,12 +15,5 @@ class LoginScreenViewModel: ObservableObject {
     init(){}
     
     func login() {
-        print("login")
-//        Auth.auth().signIn(withEmail: email, password: passsword){ result,errors in
-//            guard errors == nil else {
-//                print("Error: \(errors!)")
-//                return
-//            }
-//        }
     }
 }

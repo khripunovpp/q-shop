@@ -22,9 +22,6 @@ final class AdressesViewModel: ObservableObject {
         addressesProvider.items$.subscribe{ [weak self] items in
             self?.activeAdressIndex =  self?.addressesProvider.activeIndex ?? 0
             self?.addresses = items
-            
-            
-            print("addresses changes \(items)")
         }.disposed(by: bag)
         
     }
@@ -47,8 +44,7 @@ final class AdressesViewModel: ObservableObject {
     ) {
         addressesProvider.setActive(index)
         activeAdressIndex = addressesProvider.activeIndex
-        
-        print("new active index \(activeAdressIndex)")
+    
     }
     
     func onEdit(

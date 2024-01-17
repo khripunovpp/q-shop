@@ -100,8 +100,6 @@ class AuthService {
             try Auth.auth().signOut()
 
             self.userSubject.onNext(nil)
-            
-            print("after logout \( Auth.auth().currentUser?.uid ?? "")")
         } catch {
             
         }

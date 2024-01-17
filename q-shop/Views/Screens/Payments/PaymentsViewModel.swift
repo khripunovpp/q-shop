@@ -20,9 +20,6 @@ final class PaymentsViewModel: ObservableObject {
         paymentAccountsProvider.items$.subscribe{ [weak self] items in
             self?.activePaymentAccountIndex =  self?.paymentAccountsProvider.activeIndex ?? 0
             self?.paymentAccounts = items
-            
-            
-            print("paymentAccounts changes \(items)")
         }.disposed(by: bag)
         
     }
@@ -45,8 +42,6 @@ final class PaymentsViewModel: ObservableObject {
     ) {
         paymentAccountsProvider.setActive(index)
         activePaymentAccountIndex = paymentAccountsProvider.activeIndex
-        
-        print("new active index \(activePaymentAccountIndex)")
     }
     
     func onEdit(

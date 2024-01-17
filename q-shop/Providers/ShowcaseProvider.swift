@@ -44,20 +44,12 @@ final class ShowcaseProvider {
         for p in products {
             let res = cartItems.firstIndex(where: { $0.name == p.name })
             if res == nil {
-                    arr.append(ShowcaseItem(name: p.name, count: p.count))
+                arr.append(ShowcaseItem(name: p.name, count: p.count))
             } else {
-//                print("\n find this item in cart: \(p.name) \n index: \(res) \n item: \(cartItems[res!])")
                 arr.append(ShowcaseItem(name: p.name, count: cartItems[res!].count))
             }
-//                print("added to array result: \(arr)")
         }
         
-        //        products.map{ p in
-        //            let res = cartItems.firstIndex(where: { $0.name == p.name })
-        //            guard res != nil else { return ShowcaseItem(name: p.name, count: p.count) }
-        //            print("\n find this item in cart: \(p.name) \n index: \(res) \n item: \(cartItems[res!])")
-        //            return ShowcaseItem(name: p.name, count: cartItems[res!].count)
-        //        }
         return arr
     }
     

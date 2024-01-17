@@ -22,7 +22,6 @@ struct PaymentsView: View {
                 ) { newAddress in
                     viewModel.setActive(index)
                 } onEdit: { newAddress in
-                    print("newAddress with index \(index): \(newAddress)")
                     viewModel.paymentAccountOnEditIdx = index
                 } content: { newAddress in
                     VStack(spacing: 0) {

@@ -53,7 +53,6 @@ struct SingleSettingView<Content: View>: View {
                 textStyle: LinkTextSyles
             ) {
                 displayEditing = true
-                print("on show \(label) editing")
                 onEdit(label)
             } onDismiss: {
                 
