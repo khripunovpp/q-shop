@@ -9,18 +9,26 @@ import SwiftUI
 
 struct SingleGoodDetailsScreenView: View {
     @State var count = 0
+    @Binding var name: String
+    @Binding var description: String
+    var changed: (Int) -> Void
+    
     var body: some View {
         VStack{
-           Text("Name")
+           Text(name)
                 .textStyle(GoodNameTextSyles)
-           Text("Description")
+           Text(description)
                 .textStyle(RegularTextSyles)
                 .padding(.bottom, BASE_PADDING)
-            QuantityButtonView(count: $count) { _ in }
+            QuantityButtonView(count: $count) { c in changed(c) }
         }
     }
 }
 
 #Preview {
-    SingleGoodDetailsScreenView()
+    SingleGoodDetailsScreenView(
+        name: .constant("Name"), description: .constant("Description")
+    ) { _ in
+        
+    }
 }

@@ -20,6 +20,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Resolver.register { ShowcaseProvider() as ShowcaseProvider }.scope(.application)
         Resolver.register { AddressesProvider() as AddressesProvider }.scope(.application)
         Resolver.register { PaymentAccountsProvider() as PaymentAccountsProvider }.scope(.application)
+        Resolver.register { OrdersProvider() as OrdersProvider }.scope(.application)
         
         return true
     }
