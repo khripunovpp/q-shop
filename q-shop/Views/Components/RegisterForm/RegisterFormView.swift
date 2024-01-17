@@ -14,7 +14,7 @@ struct RegisterFormView: View {
     
     var body: some View {
         VStack{
-            Form { 
+            Form {
                 TextField("Name", text: $registerViewModel.name)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 TextField("Email", text: $registerViewModel.email)

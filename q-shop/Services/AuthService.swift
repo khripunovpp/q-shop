@@ -8,23 +8,32 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import RxSwift
 
-class AuthService: ObservableObject {
-    @Published var user: FirebaseAuth.User?
+class AuthService {
+    typealias FUser = FirebaseAuth.User
     
-    init(){
-        self.user = Auth.auth().currentUser
+    private var userSubject = BehaviorSubject<FUser?>(value: nil)
+    
+    init() {
+        self.userSubject.onNext(Auth.auth().currentUser)
         Auth.auth().addIDTokenDidChangeListener() { [weak self] auth, user in
             print("user changed \(user?.uid ?? "")")
-            self?.user = user
+            Thread.printCurrent()
+            self?.userSubject.onNext(user)
         }
     }
+    
     public var isSignnedIn: Bool {
-        return self.user != nil
+        return self.currentUser != nil
     }
     
-    public var currentUser: UserInfo? {
-        return self.user
+    public var currentUser: FUser? {
+        return try? self.userSubject.value()
+    }
+    
+    public var currentUser$: Observable<FUser?> {
+        return self.userSubject.asObservable()
     }
     
     public var uuid: String {
@@ -39,11 +48,31 @@ class AuthService: ObservableObject {
     ) {
         Auth.auth().createUser(withEmail: email, password: password) { result,error in
             complete(result,error)
-        
-            if let userId = result?.user.uid {
-                self.user = Auth.auth().currentUser
-                self.setUser(id:userId,name: name,email: email)
+            
+            guard let userId = result?.user.uid else {
+                return
             }
+            self.userSubject.onNext(Auth.auth().currentUser)
+            self.setUser(id: userId, name: name,email: email)
+        }
+    }
+    
+    func createUserAsync(
+        name: String,
+        email: String,
+        password: String
+    ) async -> FUser {
+        await withCheckedContinuation{ continuation in
+            Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                guard error == nil else {
+                    continuation.resume(throwing: error as! Never)
+                    return
+                }
+                self.userSubject.onNext(Auth.auth().currentUser)
+                self.setUser(id: result?.user.uid ?? "", name: name,email: email)
+                continuation.resume(returning: result as! FUser)
+            }
+            
         }
     }
     
@@ -69,8 +98,8 @@ class AuthService: ObservableObject {
     func logout(){
         do {
             try Auth.auth().signOut()
-            
-            self.user = nil
+
+            self.userSubject.onNext(nil)
             
             print("after logout \( Auth.auth().currentUser?.uid ?? "")")
         } catch {

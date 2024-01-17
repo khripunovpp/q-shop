@@ -9,10 +9,10 @@ import SwiftUI
 import Resolver
 
 struct RootView: View {
-    @Injected var authService: AuthService
+    @Injected var userProvider: UserProvider
     
     var body: some View {
-        if authService.isSignnedIn {
+        if false {
             ShowcaseScreenView()
         } else {
             LoginScreenView()

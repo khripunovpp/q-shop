@@ -5,6 +5,7 @@
 //  Created by Khripunov Pavel on 28/12/2023.
 //
 
-class UserEntity {
-    
+struct UserEntity: Hashable {
+    var id: String
+    var name: String
 }

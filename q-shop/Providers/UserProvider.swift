@@ -4,12 +4,21 @@
 //
 //  Created by Khripunov Pavel on 28/12/2023.
 //
+import RxSwift
+import Resolver
 
-class UserProvider: UserProviderProtocol {
-
-    var currentUser: UserEntity?
+class UserProvider {
+    private var currentUser: Observable<UserEntity?>
+    private var authService: AuthService
     
-    private init(){}
+    init() {
+        authService = Resolver.resolve()
+        self.currentUser = authService.currentUser$.asObservable().map { user in
+            return user == nil ? nil : UserEntity(id: user?.uid ?? "", name: user?.displayName ?? "")
+        }.share(replay: 1)
+    }
     
-    static let this = UserProvider()
+    var hasSignedIn: Bool {
+        authService.isSignnedIn
+    }
 }

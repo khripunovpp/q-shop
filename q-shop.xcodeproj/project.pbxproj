@@ -58,11 +58,6 @@
 		69AE72FE2B3E12360085902B /* ShowcaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE72FD2B3E12360085902B /* ShowcaseProvider.swift */; };
 		69AE73022B3E12500085902B /* CheckoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73012B3E12500085902B /* CheckoutProvider.swift */; };
 		69AE73042B3E125F0085902B /* UserProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73032B3E125F0085902B /* UserProvider.swift */; };
-		69AE73082B3E12BE0085902B /* AuthServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73072B3E12BE0085902B /* AuthServiceProtocol.swift */; };
-		69AE730A2B3E12DD0085902B /* ShowcaseProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73092B3E12DD0085902B /* ShowcaseProviderProtocol.swift */; };
-		69AE730C2B3E12EE0085902B /* CartProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE730B2B3E12EE0085902B /* CartProviderProtocol.swift */; };
-		69AE730E2B3E12FC0085902B /* CheckoutProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE730D2B3E12FC0085902B /* CheckoutProviderProtocol.swift */; };
-		69AE73102B3E13070085902B /* UserProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE730F2B3E13070085902B /* UserProviderProtocol.swift */; };
 		69AE73132B3E13890085902B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 69AE73122B3E13890085902B /* FirebaseAuth */; };
 		69AE73152B3E138E0085902B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 69AE73142B3E138E0085902B /* FirebaseFirestore */; };
 		69AE731B2B3E145E0085902B /* RegisterFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE73182B3E145E0085902B /* RegisterFormView.swift */; };
@@ -135,11 +130,6 @@
 		69AE72FD2B3E12360085902B /* ShowcaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseProvider.swift; sourceTree = "<group>"; };
 		69AE73012B3E12500085902B /* CheckoutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutProvider.swift; sourceTree = "<group>"; };
 		69AE73032B3E125F0085902B /* UserProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProvider.swift; sourceTree = "<group>"; };
-		69AE73072B3E12BE0085902B /* AuthServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceProtocol.swift; sourceTree = "<group>"; };
-		69AE73092B3E12DD0085902B /* ShowcaseProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseProviderProtocol.swift; sourceTree = "<group>"; };
-		69AE730B2B3E12EE0085902B /* CartProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProviderProtocol.swift; sourceTree = "<group>"; };
-		69AE730D2B3E12FC0085902B /* CheckoutProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutProviderProtocol.swift; sourceTree = "<group>"; };
-		69AE730F2B3E13070085902B /* UserProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProviderProtocol.swift; sourceTree = "<group>"; };
 		69AE73182B3E145E0085902B /* RegisterFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterFormView.swift; sourceTree = "<group>"; };
 		69AE73192B3E145E0085902B /* LoginFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
 		69AE731A2B3E145E0085902B /* BrandButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandButtonView.swift; sourceTree = "<group>"; };
@@ -276,7 +266,6 @@
 				69AE72C72B3E0F700085902B /* GoogleService-Info.plist */,
 				69AE72C22B3E0E370085902B /* Models */,
 				69AE72B92B3E0E1E0085902B /* Preview Content */,
-				69AE73052B3E12720085902B /* Protocols */,
 				69AE72FC2B3E121D0085902B /* Providers */,
 				69AE72B32B3E0E1E0085902B /* q_shopApp.swift */,
 				69AE72C12B3E0E280085902B /* Services */,
@@ -373,18 +362,6 @@
 				6940AB522B5481B60032AEB0 /* PaymentAccountsProvider.swift */,
 			);
 			path = Providers;
-			sourceTree = "<group>";
-		};
-		69AE73052B3E12720085902B /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				69AE73072B3E12BE0085902B /* AuthServiceProtocol.swift */,
-				69AE73092B3E12DD0085902B /* ShowcaseProviderProtocol.swift */,
-				69AE730B2B3E12EE0085902B /* CartProviderProtocol.swift */,
-				69AE730D2B3E12FC0085902B /* CheckoutProviderProtocol.swift */,
-				69AE730F2B3E13070085902B /* UserProviderProtocol.swift */,
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 		69AE73112B3E13890085902B /* Frameworks */ = {
@@ -662,23 +639,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				699BCC202B47216B0084155C /* TextExtensions.swift in Sources */,
-				69AE730C2B3E12EE0085902B /* CartProviderProtocol.swift in Sources */,
 				69AE73342B3F4A360085902B /* FiltersBarView.swift in Sources */,
-				69AE73082B3E12BE0085902B /* AuthServiceProtocol.swift in Sources */,
 				69AE72F52B3E11980085902B /* GoodEntity.swift in Sources */,
 				69AE73212B3E14AB0085902B /* RegisterScreenViewModel.swift in Sources */,
 				6940AB572B548D650032AEB0 /* Address.swift in Sources */,
 				6940AB4D2B54582D0032AEB0 /* BoxStyles.swift in Sources */,
 				69AE73382B408F290085902B /* GoodItemView.swift in Sources */,
-				69AE730A2B3E12DD0085902B /* ShowcaseProviderProtocol.swift in Sources */,
 				69AE73362B408EF60085902B /* GoodsListView.swift in Sources */,
 				6940AB462B5440D50032AEB0 /* AddressesView.swift in Sources */,
 				6940AB3E2B51E0BA0032AEB0 /* SettingsRowView.swift in Sources */,
 				69AE72ED2B3E11510085902B /* ProfileScreenViewModel.swift in Sources */,
 				699BCC262B4725110084155C /* BrandTextStyles.swift in Sources */,
-				69AE730E2B3E12FC0085902B /* CheckoutProviderProtocol.swift in Sources */,
 				6940AB4F2B54716C0032AEB0 /* AddressesProvider.swift in Sources */,
-				69AE73102B3E13070085902B /* UserProviderProtocol.swift in Sources */,
 				69AE731D2B3E145E0085902B /* BrandButtonView.swift in Sources */,
 				69AE73302B3F3F2E0085902B /* SearchBarView.swift in Sources */,
 				6940AB512B54721B0032AEB0 /* AddressesEntity.swift in Sources */,

@@ -15,6 +15,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         FirebaseApp.configure()
         
         Resolver.register { AuthService() as AuthService }.scope(.application)
+        Resolver.register { UserProvider() as UserProvider }.scope(.application)
         Resolver.register { CartProvider() as CartProvider }.scope(.application)
         Resolver.register { ShowcaseProvider() as ShowcaseProvider }.scope(.application)
         Resolver.register { AddressesProvider() as AddressesProvider }.scope(.application)
