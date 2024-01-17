@@ -21,7 +21,7 @@ struct SingleGoodDetailsScreenView: View {
                 .textStyle(RegularTextSyles)
                 .padding(.bottom, BASE_PADDING)
             QuantityButtonView(count: $count) { c in changed(c) }
-        }
+        }.padding(BASE_RADIUS)
     }
 }
 

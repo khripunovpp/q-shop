@@ -17,6 +17,7 @@ import RxSwift
     
     init(){
         showcaseProvider.products$.subscribe { [weak self] products in
+            print("recive prodcuts for ShowcaseScreenViewModel \(products)")
             self?.showcaseItems = products
         }
         .disposed(by: bag )

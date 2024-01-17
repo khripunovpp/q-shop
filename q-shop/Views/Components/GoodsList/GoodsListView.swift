@@ -21,7 +21,9 @@ struct GoodsListView: View {
                 ForEach(items.indices, id: \.self) { index in
                     GoodItemView(
                         count: $items[index].count,
-                        content: items[index].name
+                        name: items[index].name,
+                        price: items[index].price,
+                        pictureName: items[index].pictureName
                     ) { newQuantity in
                         addedHadler(items[index].name, newQuantity)
                     }.padding(EdgeInsets(top: 0, leading: horizontalSpacing, bottom: verticalSpacing, trailing: horizontalSpacing))
@@ -34,10 +36,10 @@ struct GoodsListView: View {
 
 #Preview {
     GoodsListView(items: .constant([
-        ShowcaseItem(name: "1", count: 0),
-        ShowcaseItem(name: "2", count: 0),
-        ShowcaseItem(name: "3", count: 0),
-        ShowcaseItem(name: "4", count: 0),
+        ShowcaseItem(name: "1", price: 0.0, count: 0),
+        ShowcaseItem(name: "2", price: 0.0, count: 0),
+        ShowcaseItem(name: "3", price: 0.0, count: 0),
+        ShowcaseItem(name: "4", price: 0.0, count: 0),
     ])) { _,_ in
         
     }

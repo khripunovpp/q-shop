@@ -6,24 +6,29 @@
 //
 
 import SwiftUI
+import Foundation
 import Resolver
 
 struct GoodItemView: View {
     @State var sheet = false
-    @Binding var count: Int {
+    @Binding var count: Int
+    @State var name: String
+    @State var price: Float {
         didSet {
-            print("GoodItemView: \(content): count new value \(count)")
+            print("price set \(price) for \(name)")
         }
     }
-    @State var content: String
+    @State var pictureName: String
+    
     var changed: (Int) -> Void
+    
     var body: some View {
         ZStack{
             Group {
-                Image("pic\(content)")
+                Image(pictureName)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(maxWidth: .infinity, maxHeight: 200)
+                    .frame(maxWidth: .infinity, maxHeight: 300)
                     .clipped()
                     .allowsHitTesting(false)
                 
@@ -31,7 +36,9 @@ struct GoodItemView: View {
                     VStack {
                         Spacer()
                         VStack{
-                            Text(content)
+                            Text(name)
+                                .textStyle(GoodNameTextSyles)
+                            Text(price.formatted(.number.precision(.fractionLength(2))))
                                 .textStyle(GoodNameTextSyles)
                                 .padding(.bottom, BASE_PADDING)
                             QuantityButtonView(count: $count) { value in
@@ -53,10 +60,10 @@ struct GoodItemView: View {
             VStack(spacing: 0){
                 Spacer()
                 SingleGoodDetailsScreenView(
-                    count: count, name: $content, description: $content) { newCount in
+                    count: count, name: $name, description: $name) { newCount in
                         changed(newCount)
                     }
-                    .presentationDetents([.fraction(0.3)])
+                    .presentationDetents([.fraction(0.1)])
             }
         }
     }
@@ -66,21 +73,20 @@ struct GoodItemView: View {
     VStack{
         GoodItemView(
             count: .constant(0),
-            content: "1"
+            name: "1avrrv",
+            price: 0.0,
+            pictureName: "pic1"
         ) { v in
             
-        }.frame(
-            width: 200,
-            height: 200
-        )
+        }
+        
         GoodItemView(
             count: .constant(0),
-            content: "2"
+            name: "arebd",
+            price: 0.0,
+            pictureName: "pic2"
         ) { v in
             
-        }.frame(
-            width: 200,
-            height: 200
-        )
+        }
     }
 }

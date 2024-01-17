@@ -17,10 +17,10 @@ final class ShowcaseProvider {
     init() {
         showcase = Showcase()
         showcase.setMany([
-            .init(name: "1"),
-            .init(name: "2"),
-            .init(name: "3"),
-            .init(name: "4")
+            ShowcaseItem(name: "Lemon-Basil", price: 3.50, count: 0, pictureName: "pic1"),
+            ShowcaseItem(name: "Shocolate diplomat", price: 3.50, count: 0, pictureName: "pic2"),
+            ShowcaseItem(name: "Berry", price: 2.50, count: 0, pictureName: "pic3"),
+            ShowcaseItem(name: "Lemon-Lime", price: 3.0, count: 0, pictureName: "pic4")
         ])
         productsSubject = BehaviorSubject(value: [])
         emitItems()
@@ -40,13 +40,18 @@ final class ShowcaseProvider {
         withCart cartItems: [CartItem],
         for products: [ShowcaseItem]
     ) -> [ShowcaseItem] {
-        var arr:[ShowcaseItem] = []
+        var arr: [ShowcaseItem] = []
         for p in products {
             let res = cartItems.firstIndex(where: { $0.name == p.name })
             if res == nil {
-                arr.append(ShowcaseItem(name: p.name, count: p.count))
+                arr.append(p)
             } else {
-                arr.append(ShowcaseItem(name: p.name, count: cartItems[res!].count))
+                arr.append(ShowcaseItem(
+                    name: p.name,
+                    price: p.price,
+                    count: cartItems[res!].count,
+                    pictureName: p.pictureName
+                ))
             }
         }
         
@@ -55,10 +60,9 @@ final class ShowcaseProvider {
     
     
     func add(
-        _ name: String,
-        _ count: Int
+        _ item: ShowcaseItem
     ) {
-        showcase.setItem(name, count)
+        showcase.setItem(item)
         emitItems()
     }
     
@@ -67,9 +71,9 @@ final class ShowcaseProvider {
     }
     
     func remove(
-        _ item: String
+        _ item: ShowcaseItem
     ) {
-        showcase.removeItem(item)
+        showcase.removeItemByName(item.name)
     }
     
     private func emitItems(){

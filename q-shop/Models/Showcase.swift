@@ -11,15 +11,9 @@ import Foundation
 struct ShowcaseItem: Hashable, Identifiable, Equatable {
     var id = UUID().uuidString
     let name: String
+    let price: Float
     var count = 0
-    
-    init(
-        name: String,
-        count: Int = 0
-    ){
-        self.name = name
-        self.count = count
-    }
+    var pictureName = ""
 }
 
 
@@ -41,19 +35,18 @@ final class Showcase {
     }
     
     func setItem(
-        _ name: String,
-        _ count: Int
+        _ item: ShowcaseItem
     ) {
-        items[name] = ShowcaseItem(name: name, count: count)
+        items[item.name] = item
     }
     
-    func removeItem(_ name: String) {
+    func removeItemByName(_ name: String) {
         items.removeValue(forKey: name)
     }
     
     func setMany(
         _ items: [ShowcaseItem]
     ) {
-        items.forEach{it in setItem(it.name, it.count)}
+        items.forEach{it in setItem(it)}
     }
 }
