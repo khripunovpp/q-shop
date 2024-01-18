@@ -11,12 +11,7 @@ struct CheckoutScreenView: View {
     @StateObject var viewModel = CheckoutScreenViewModel()
     @State var choiseAddress = false
     @State var choisePayment = false
-    
-    
-//    private var price: String {
-//        model.price.formatted(.number.precision(.fractionLength(2)))
-//    }
-    
+
     var body: some View {
         VStack(
             alignment: .leading,
@@ -62,6 +57,8 @@ struct CheckoutScreenView: View {
                     }
                 }
             }
+            
+            ScreenHeaderView(title: "Total: $\(viewModel.totalFormatted)")
             
             BrandButtonView(
                 label: "Pay",

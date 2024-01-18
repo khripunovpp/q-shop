@@ -27,9 +27,6 @@ struct GoodEntity: Good {
 
 extension Good {
     var formattedPrice: String {
-        guard self.price >= 0.0 else {
-            return "0"
-        }
-        return self.price.formatted(.number.precision(.fractionLength(2)))
+        formatPrice(self.price)
     }
 }

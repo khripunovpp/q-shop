@@ -14,6 +14,7 @@ class CheckoutScreenViewModel: ObservableObject {
     @Injected var addressesProvider: AddressesProvider
     @Injected var paymentAccountsProvider: PaymentAccountsProvider
     @Published var items: [CartItem] = []
+    @Published var totalFormatted: String = "0"
     @Published var activeAddress: String = "Home"
     @Published var activePaymentAccount: String = "ApplePay"
     let bag = DisposeBag()
@@ -35,6 +36,8 @@ class CheckoutScreenViewModel: ObservableObject {
             .items$
             .subscribe { [weak self] items in
                 self?.items = items
+                self?.totalFormatted = self?.cartProvider.totalSumFormatted ?? ""
+                print("set total \( self?.totalFormatted ?? "")")
             }
             .disposed(by: bag)
     }
