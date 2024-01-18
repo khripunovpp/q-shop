@@ -9,29 +9,25 @@ import SwiftUI
 
 struct GoodRowView<Content: View>: View {
     @Binding var count: Int
-    var label: String
-    var price: Float
+    var good: any Good
     var change: (_ newValue: Int) -> Void
-    var content: () -> Content
+    var label: () -> Content
     
     init(
-        _ label: String,
+        _ good: any Good,
         count: Binding<Int>,
-        price: Float,
         change: @escaping (_ newValue: Int) -> Void,
-        @ViewBuilder content: @escaping () -> Content
+        @ViewBuilder label: @escaping () -> Content
     ) {
-        self.label = label
-        self.price = price
+        self.good = good
         self._count = count
         self.change = change
-        self.content = content
+        self.label = label
     }
     
     var body: some View {
         HStack {
-            Text(label)
-                .textStyle(RegularTextSyles)
+            label()
             Spacer()
             QuantityButtonView(
                 count: $count
@@ -45,8 +41,8 @@ struct GoodRowView<Content: View>: View {
 }
 
 #Preview {
-    GoodRowView("", count: .constant(0), price: 0.0) { _ in } content: {
-        
-        
+    GoodRowView(GoodEntity(name: "efv", price: 0.0), count: .constant(0)) { _ in } label: {
+        Text("efv")
+            .textStyle(RegularTextSyles)
     }
 }

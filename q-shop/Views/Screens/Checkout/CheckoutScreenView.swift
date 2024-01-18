@@ -12,6 +12,11 @@ struct CheckoutScreenView: View {
     @State var choiseAddress = false
     @State var choisePayment = false
     
+    
+//    private var price: String {
+//        model.price.formatted(.number.precision(.fractionLength(2)))
+//    }
+    
     var body: some View {
         VStack(
             alignment: .leading,
@@ -23,15 +28,14 @@ struct CheckoutScreenView: View {
                 VStack{
                     ForEach(viewModel.items.indices, id: \.self) { index in
                         GoodRowView(
-                            viewModel.items[index].name,
-                            count: $viewModel.items[index].count,
-                            price: viewModel.items[index].price
+                            viewModel.items[index],
+                            count: $viewModel.items[index].count
                         ) { newCount in
                             var c = viewModel.items[index]
                             c.count = newCount
                             viewModel.cartProvider.add(c)
-                        } content: {
-                            
+                        } label: {
+                            Text("\(viewModel.items[index].name) - $\(viewModel.items[index].formattedPrice)")
                         }
                     }
                 }

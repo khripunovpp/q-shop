@@ -19,9 +19,6 @@ struct GoodItemView: View {
     }
     @State var model: any Good
     var changed: (any Good) -> Void
-    private var price: String {
-        model.price.formatted(.number.precision(.fractionLength(2)))
-    }
     
     var body: some View {
         ZStack{
@@ -40,7 +37,7 @@ struct GoodItemView: View {
                             VStack{
                                 Text(model.name)
                                     .textStyle(GoodNameTextSyles)
-                                Text("$" + price)
+                                Text("$" + model.formattedPrice)
                                     .textStyle(GoodNameTextSyles)
                             }
                             .frame(maxWidth: .infinity,  maxHeight: 50)
