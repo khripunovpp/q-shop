@@ -8,7 +8,8 @@
 import Foundation
 
 
-struct ShowcaseItem: Hashable, Identifiable, Equatable {
+struct ShowcaseItem: Good {
+    var description: String = ""
     var id = UUID().uuidString
     let name: String
     let price: Float

@@ -36,8 +36,8 @@ struct ShowcaseScreenView: View {
                         
                         GoodsListView(
                             items: $viewModel.showcaseItems
-                        ) { name, newQuantity in
-                            viewModel.cartProvider.add(name, newQuantity)
+                        ) { item in
+                            viewModel.cartProvider.add(item)
                         }
                     }
                     

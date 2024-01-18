@@ -11,21 +11,22 @@ import Resolver
 
 struct GoodItemView: View {
     @State var sheet = false
-    @Binding var count: Int
-    @State var name: String
-    @State var price: Float {
+    @Binding var count: Int {
         didSet {
-            print("price set \(price) for \(name)")
+            model.count = count
+            changed(model)
         }
     }
-    @State var pictureName: String
-    
-    var changed: (Int) -> Void
+    @State var model: any Good
+    var changed: (any Good) -> Void
+    private var price: String {
+        model.price.formatted(.number.precision(.fractionLength(2)))
+    }
     
     var body: some View {
         ZStack{
             Group {
-                Image(pictureName)
+                Image(model.pictureName)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(maxWidth: .infinity, maxHeight: 300)
@@ -35,15 +36,27 @@ struct GoodItemView: View {
                 Group{
                     VStack {
                         Spacer()
-                        VStack{
-                            Text(name)
-                                .textStyle(GoodNameTextSyles)
-                            Text(price.formatted(.number.precision(.fractionLength(2))))
-                                .textStyle(GoodNameTextSyles)
-                                .padding(.bottom, BASE_PADDING)
-                            QuantityButtonView(count: $count) { value in
-                                count = value
-                                changed(value)
+                        VStack(spacing: 0) {
+                            VStack{
+                                Text(model.name)
+                                    .textStyle(GoodNameTextSyles)
+                                Text("$" + price)
+                                    .textStyle(GoodNameTextSyles)
+                            }
+                            .frame(maxWidth: .infinity,  maxHeight: 50)
+                            .padding(BASE_PADDING)
+                            .background(.ultraThinMaterial.opacity(0.7))
+                            .clipShape(RoundedRectangle(cornerRadius: BASE_RADIUS))
+                            .padding(.bottom, BASE_PADDING)
+                            
+                            if count > 0 {
+                                QuantityButtonView(count: $count) { value in
+                                    count = value
+                                }
+                            } else {
+                                BrandButtonView(label: "Add") {
+                                    count = 1
+                                }
                             }
                         }
                     }
@@ -60,8 +73,8 @@ struct GoodItemView: View {
             VStack(spacing: 0){
                 Spacer()
                 SingleGoodDetailsScreenView(
-                    count: count, name: $name, description: $name) { newCount in
-                        changed(newCount)
+                    count: count, model: model) { newGood in
+                        changed(newGood)
                     }
                     .presentationDetents([.fraction(0.1)])
             }
@@ -71,22 +84,8 @@ struct GoodItemView: View {
 
 #Preview {
     VStack{
-        GoodItemView(
-            count: .constant(0),
-            name: "1avrrv",
-            price: 0.0,
-            pictureName: "pic1"
-        ) { v in
-            
-        }
+        GoodItemView(count: .constant(0), model: GoodEntity(name: "RRGer\nRRGer\nRRGer", price: 0.0, pictureName: "pic1"), changed: { _ in })
         
-        GoodItemView(
-            count: .constant(0),
-            name: "arebd",
-            price: 0.0,
-            pictureName: "pic2"
-        ) { v in
-            
-        }
+        GoodItemView(count: .constant(0), model: GoodEntity(name: "", price: 0.0), changed: { _ in })
     }
 }

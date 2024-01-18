@@ -13,7 +13,7 @@ struct GoodsListView: View {
     @Binding var items: [ShowcaseItem]
     var verticalSpacing: CGFloat = BASE_PADDING
     var horizontalSpacing: CGFloat = BASE_PADDING
-    var addedHadler: (String, Int) -> Void
+    var addedHadler: (any Good) -> Void
     
     var body: some View {
         ScrollView {
@@ -21,11 +21,9 @@ struct GoodsListView: View {
                 ForEach(items.indices, id: \.self) { index in
                     GoodItemView(
                         count: $items[index].count,
-                        name: items[index].name,
-                        price: items[index].price,
-                        pictureName: items[index].pictureName
+                        model: items[index]
                     ) { newQuantity in
-                        addedHadler(items[index].name, newQuantity)
+                        addedHadler(items[index])
                     }.padding(EdgeInsets(top: 0, leading: horizontalSpacing, bottom: verticalSpacing, trailing: horizontalSpacing))
                 }
             }
@@ -40,7 +38,7 @@ struct GoodsListView: View {
         ShowcaseItem(name: "2", price: 0.0, count: 0),
         ShowcaseItem(name: "3", price: 0.0, count: 0),
         ShowcaseItem(name: "4", price: 0.0, count: 0),
-    ])) { _,_ in
+    ])) { _ in
         
     }
 }

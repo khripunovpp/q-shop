@@ -8,26 +8,33 @@
 import SwiftUI
 
 struct SingleGoodDetailsScreenView: View {
-    @State var count = 0
-    @Binding var name: String
-    @Binding var description: String
-    var changed: (Int) -> Void
+    @State var count = 0 {
+        didSet {
+            model.count = count
+        }
+    }
+    @State var model: any Good
+    var changed: (any Good) -> Void
     
     var body: some View {
         VStack{
-           Text(name)
+            Text(model.name)
                 .textStyle(GoodNameTextSyles)
-           Text(description)
+            Text(model.description)
                 .textStyle(RegularTextSyles)
                 .padding(.bottom, BASE_PADDING)
-            QuantityButtonView(count: $count) { c in changed(c) }
+            QuantityButtonView(count: $count) { c in
+                count = c
+                changed(model)
+            }
         }.padding(BASE_RADIUS)
     }
 }
 
 #Preview {
     SingleGoodDetailsScreenView(
-        name: .constant("Name"), description: .constant("Description")
+        count: 0,
+        model: GoodEntity(name: "", price: 0.0)
     ) { _ in
         
     }

@@ -7,19 +7,25 @@
 
 import SwiftUI
 
-struct GoodRowView: View {
+struct GoodRowView<Content: View>: View {
     @Binding var count: Int
     var label: String
+    var price: Float
     var change: (_ newValue: Int) -> Void
+    var content: () -> Content
     
     init(
         _ label: String,
         count: Binding<Int>,
-        change: @escaping (_ newValue: Int) -> Void
-    ){
+        price: Float,
+        change: @escaping (_ newValue: Int) -> Void,
+        @ViewBuilder content: @escaping () -> Content
+    ) {
         self.label = label
-        self.change = change
+        self.price = price
         self._count = count
+        self.change = change
+        self.content = content
     }
     
     var body: some View {
@@ -39,7 +45,8 @@ struct GoodRowView: View {
 }
 
 #Preview {
-    GoodRowView("", count: .constant(0)) { _ in
+    GoodRowView("", count: .constant(0), price: 0.0) { _ in } content: {
+        
         
     }
 }

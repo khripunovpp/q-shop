@@ -24,12 +24,14 @@ struct CheckoutScreenView: View {
                     ForEach(viewModel.items.indices, id: \.self) { index in
                         GoodRowView(
                             viewModel.items[index].name,
-                            count: $viewModel.items[index].count
+                            count: $viewModel.items[index].count,
+                            price: viewModel.items[index].price
                         ) { newCount in
-                            viewModel.cartProvider.add(
-                                viewModel.items[index].name,
-                                newCount
-                            )
+                            var c = viewModel.items[index]
+                            c.count = newCount
+                            viewModel.cartProvider.add(c)
+                        } content: {
+                            
                         }
                     }
                 }
