@@ -19,26 +19,20 @@ struct OrderScreenView: View {
         ) {
             ScreenHeaderView(title: "Thank you!")
             ScrollView {
-                VStack {
+                LazyVStack {
                     Text("Order is beeing checked")
                         .textStyle(RegularTextSyles)
                     
-                    GoodRowView(
-                        GoodEntity(name: "aerv", price: 0.0),
-                        count: .constant(0)
-                    ) { _ in
-                        goodDetails = true
-                    } label: {
-                        Text("Item 1").textStyle(RegularTextSyles)
-                    }
                     
-                    GoodRowView(
-                        GoodEntity(name: "aerv", price: 0.0),
-                        count: .constant(0)
-                    ) { _ in
-                        goodDetails = true
-                    } label: {
-                        Text("Total").textStyle(RegularTextSyles)
+                    ForEach(viewModel.items, id: \.id) { good in
+                        GoodRowView(
+                            good,
+                            count: .constant(good.count)
+                        ) { _ in
+                            goodDetails = true
+                        } label: {
+                            Text(good.name).textStyle(RegularTextSyles)
+                        }
                     }
                     
                     
@@ -63,7 +57,7 @@ struct OrderScreenView: View {
                             .textStyle(RegularTextSyles)
                     }
                 }
-
+                
             }
             Spacer()
             
@@ -81,7 +75,9 @@ struct OrderScreenView: View {
             leading: VIEWPORT_PADDING_H,
             bottom: VIEWPORT_PADDING_V,
             trailing: VIEWPORT_PADDING_H
-        ))
+        )).onAppear{
+//            viewModel.cartProvider.reset()
+        }
     }
 }
 

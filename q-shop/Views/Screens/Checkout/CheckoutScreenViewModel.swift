@@ -39,6 +39,7 @@ class CheckoutScreenViewModel: ObservableObject {
             .items$
             .subscribe { [weak self] items in
                 self?.items = items
+                print("\nset items \(items)\n")
                 self?.totalFormatted = self?.cartProvider.totalSumFormatted ?? ""
                 print("set total \( self?.totalFormatted ?? "")")
             }
@@ -51,5 +52,9 @@ class CheckoutScreenViewModel: ObservableObject {
             withPayment: paymentAccountsProvider.activePaymentAccount,
             to: addressesProvider.activeAddress
         )
+    }
+    
+    func resetCart(){
+        cartProvider.reset()
     }
 }

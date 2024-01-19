@@ -11,6 +11,7 @@ import RxSwift
 
 class OrderViewModel: ObservableObject {
     let ordersProvider: OrdersProvider
+    let cartProvider: CartProvider
     var order: Order?
     @Published var items: [any Good] = []
     @Published var address: String = ""
@@ -20,6 +21,7 @@ class OrderViewModel: ObservableObject {
     
     init() {
         ordersProvider = Resolver.resolve()
+        cartProvider = Resolver.resolve()
         ordersProvider.current$.subscribe{[weak self] currentOrder in
             self?.order = currentOrder
             print("order \(self?.order?.id)")

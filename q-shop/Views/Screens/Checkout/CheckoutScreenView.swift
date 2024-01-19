@@ -25,7 +25,8 @@ struct CheckoutScreenView: View {
                     ForEach(viewModel.items.indices, id: \.self) { index in
                         GoodRowView(
                             viewModel.items[index],
-                            count: $viewModel.items[index].count
+                            count: $viewModel.items[index].count,
+                            changableMode: true
                         ) { newCount in
                             var c = viewModel.items[index]
                             c.count = newCount

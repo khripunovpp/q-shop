@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoodRowView<Content: View>: View {
     @Binding var count: Int
-    @State var changableMode: Bool = false
+    let changableMode: Bool
     var good: any Good
     var change: (_ newValue: Int) -> Void
     var label: () -> Content
@@ -17,6 +17,7 @@ struct GoodRowView<Content: View>: View {
     init(
         _ good: any Good,
         count: Binding<Int>,
+        changableMode: Bool? = false,
         change: @escaping (_ newValue: Int) -> Void,
         @ViewBuilder label: @escaping () -> Content
     ) {
@@ -24,6 +25,7 @@ struct GoodRowView<Content: View>: View {
         self._count = count
         self.change = change
         self.label = label
+        self.changableMode = changableMode ?? false
     }
     
     var body: some View {
