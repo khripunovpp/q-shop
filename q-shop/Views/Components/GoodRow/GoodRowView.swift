@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GoodRowView<Content: View>: View {
     @Binding var count: Int
+    @State var changableMode: Bool = false
     var good: any Good
     var change: (_ newValue: Int) -> Void
     var label: () -> Content
@@ -29,12 +30,16 @@ struct GoodRowView<Content: View>: View {
         HStack {
             label()
             Spacer()
-            QuantityButtonView(
-                count: $count
-            ) { newCount in
-                change(newCount)
+            if changableMode {
+                QuantityButtonView(
+                    count: $count
+                ) { newCount in
+                    change(newCount)
+                }
+                .frame(width: 100)
+            }  else {
+                Text("\(count)")
             }
-            .frame(width: 100)
         }
         .padding(.bottom, BASE_PADDING)
     }

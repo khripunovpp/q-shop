@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CheckoutScreenView: View {
+    @State var goToOrder = false
     @StateObject var viewModel = CheckoutScreenViewModel()
     @State var choiseAddress = false
     @State var choisePayment = false
@@ -60,10 +61,15 @@ struct CheckoutScreenView: View {
             
             ScreenHeaderView(title: "Total: $\(viewModel.totalFormatted)")
             
-            BrandButtonView(
-                label: "Pay",
-                type: .big
-            ) {
+            NavigationLink(isActive: $goToOrder) {
+                OrderScreenView().navigationBarBackButtonHidden()
+            } label: {
+                BrandButtonView(
+                    label: "Pay",
+                    type: .big
+                ) {
+                    goToOrder = true
+                }
             }
             Spacer()
         }.padding(EdgeInsets(
