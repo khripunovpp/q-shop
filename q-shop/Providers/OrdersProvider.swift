@@ -6,7 +6,36 @@
 //
 
 import Foundation
+import RxSwift
 
 final class OrdersProvider {
+    private var itemsSubject = BehaviorSubject<[Order]>(value: [])
+    private var currentSubject = ReplaySubject<Order>.create(bufferSize: 1)
     
+    init() {
+        
+    }
+    
+    var current$: Observable<Order> {
+        currentSubject.asObservable()
+    }
+    
+    func create(
+        _ cart: Cart,
+        withPayment pa: PaymentAccount,
+        to address: Address
+    ) -> Order {
+        let current = Order(cart, payedBy: pa, to: address)
+        currentSubject.onNext(current)
+        var next = try! itemsSubject.value()
+        next.append(current)
+        itemsSubject.onNext(next)
+        print("\n🥨 order created \(current)")
+        
+        return current
+    }
+    
+    func getItems() -> [Order] {
+        try! itemsSubject.value()
+    }
 }

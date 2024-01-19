@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OrderScreenView: View {
+    @StateObject var viewModel = OrderViewModel()
     @State var goodDetails = false
     @State var goToOrders = false
     
@@ -44,21 +45,21 @@ struct OrderScreenView: View {
                     SimpleRowView {
                         Text("Total").textStyle(RegularTextSyles)
                     } content: {
-                        Text("$0")
+                        Text("$\(viewModel.total)")
                             .textStyle(RegularTextSyles)
                     }
                     
                     SimpleRowView {
                         Text("Address").textStyle(RegularTextSyles)
                     } content: {
-                        Text("aerberbara")
+                        Text("\(viewModel.address)")
                             .textStyle(RegularTextSyles)
                     }
                     
                     SimpleRowView {
                         Text("Payed by").textStyle(RegularTextSyles)
                     } content: {
-                        Text("aerberbara")
+                        Text("\(viewModel.paymentAccount)")
                             .textStyle(RegularTextSyles)
                     }
                 }

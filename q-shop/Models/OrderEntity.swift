@@ -7,14 +7,48 @@
 
 import Foundation
 
+enum OrderState: CaseIterable {
+    case initial, in_progress, finished, canceled
+}
 
-final class Order: Codable, Identifiable {
+final class Order: Identifiable {
     let id: UUID
     let date: Date
-    let items: [String:Int]?
-    init() {
+    var state: OrderState = .initial
+    let total: Float 
+    private var items: [any Good]
+    private var cart: Cart
+    private var payment: PaymentAccount
+    private var address: Address
+    var addressLabel: String {
+        address.label
+    }
+    
+    var paymentAccountLabel: String {
+        payment.label ?? ""
+    }
+    
+    init(
+        _ cart: Cart,
+        payedBy paymentAccount: PaymentAccount,
+        to currentAddress: Address
+    ) {
         id = UUID()
         date = Date()
-        items = nil
+        self.cart = cart
+        total = self.cart.totalSum
+        items = self.cart.getItems()
+        payment = paymentAccount
+        address = currentAddress
+    }
+    
+    func getITems() -> [any Good] {
+        items
+    }
+    
+    func addItem(
+        _ item: any Good
+    ) {
+        items.append(item)
     }
 }

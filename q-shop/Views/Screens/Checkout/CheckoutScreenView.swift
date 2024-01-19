@@ -68,6 +68,7 @@ struct CheckoutScreenView: View {
                     label: "Pay",
                     type: .big
                 ) {
+                    viewModel.createOrder()
                     goToOrder = true
                 }
             }

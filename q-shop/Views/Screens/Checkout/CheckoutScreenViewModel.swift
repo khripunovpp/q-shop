@@ -13,10 +13,13 @@ class CheckoutScreenViewModel: ObservableObject {
     @Injected var cartProvider: CartProvider
     @Injected var addressesProvider: AddressesProvider
     @Injected var paymentAccountsProvider: PaymentAccountsProvider
+    @Injected var ordersProvider: OrdersProvider
     @Published var items: [CartItem] = []
     @Published var totalFormatted: String = "0"
     @Published var activeAddress: String = "Home"
     @Published var activePaymentAccount: String = "ApplePay"
+    private var order: Order? = nil
+    
     let bag = DisposeBag()
     
     init() {
@@ -40,5 +43,13 @@ class CheckoutScreenViewModel: ObservableObject {
                 print("set total \( self?.totalFormatted ?? "")")
             }
             .disposed(by: bag)
+    }
+    
+    func createOrder() {
+        order = ordersProvider.create(
+            cartProvider.cart,
+            withPayment: paymentAccountsProvider.activePaymentAccount,
+            to: addressesProvider.activeAddress
+        )
     }
 }
