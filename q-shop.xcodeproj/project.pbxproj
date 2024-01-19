@@ -82,6 +82,7 @@
 		69C259352B59D18700B8B69D /* OrderScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C259342B59D18700B8B69D /* OrderScreenView.swift */; };
 		69C2593A2B5ADD2500B8B69D /* SimpleRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C259392B5ADD2500B8B69D /* SimpleRowViewModel.swift */; };
 		69C2593C2B5ADD3700B8B69D /* SimpleRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C2593B2B5ADD3700B8B69D /* SimpleRowView.swift */; };
+		69C2593F2B5B28CE00B8B69D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C2593E2B5B28CE00B8B69D /* Router.swift */; };
 		69EA13372B4A28C8005152D6 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA13362B4A28C8005152D6 /* RxBlocking */; };
 		69EA13392B4A28C8005152D6 /* RxBlocking-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA13382B4A28C8005152D6 /* RxBlocking-Dynamic */; };
 		69EA133B2B4A28C8005152D6 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 69EA133A2B4A28C8005152D6 /* RxCocoa */; };
@@ -159,6 +160,7 @@
 		69C259342B59D18700B8B69D /* OrderScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderScreenView.swift; sourceTree = "<group>"; };
 		69C259392B5ADD2500B8B69D /* SimpleRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRowViewModel.swift; sourceTree = "<group>"; };
 		69C2593B2B5ADD3700B8B69D /* SimpleRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleRowView.swift; sourceTree = "<group>"; };
+		69C2593E2B5B28CE00B8B69D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		69EA13542B4DEE13005152D6 /* Showcase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Showcase.swift; sourceTree = "<group>"; };
 		69EA13572B4DF151005152D6 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
 		69FE32882B50A01B001EBDFC /* ChoiserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiserViewModel.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		69AE72B22B3E0E1E0085902B /* q-shop */ = {
 			isa = PBXGroup;
 			children = (
+				69C2593D2B5B28C400B8B69D /* Router */,
 				69EA13562B4DF143005152D6 /* Enums */,
 				69EA13402B4DBA3F005152D6 /* Other */,
 				699BCC242B4724DE0084155C /* Styles */,
@@ -424,6 +427,14 @@
 				69C2593B2B5ADD3700B8B69D /* SimpleRowView.swift */,
 			);
 			path = SimpleRow;
+			sourceTree = "<group>";
+		};
+		69C2593D2B5B28C400B8B69D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				69C2593E2B5B28CE00B8B69D /* Router.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		69EA13402B4DBA3F005152D6 /* Other */ = {
@@ -697,6 +708,7 @@
 				69EA13552B4DEE13005152D6 /* Showcase.swift in Sources */,
 				6991828B2B5737F0007E06EF /* OrdersProvider.swift in Sources */,
 				6940AB412B51EC3D0032AEB0 /* SingleSettingView.swift in Sources */,
+				69C2593F2B5B28CE00B8B69D /* Router.swift in Sources */,
 				69FE328B2B50A02C001EBDFC /* ChoiserView.swift in Sources */,
 				699182892B573523007E06EF /* ThreadExtensions.swift in Sources */,
 				6940AB492B5441500032AEB0 /* PaymentsViewModel.swift in Sources */,

@@ -21,6 +21,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Resolver.register { AddressesProvider() as AddressesProvider }.scope(.application)
         Resolver.register { PaymentAccountsProvider() as PaymentAccountsProvider }.scope(.application)
         Resolver.register { OrdersProvider() as OrdersProvider }.scope(.application)
+        Resolver.register { Router() as Router }.scope(.application)
         
         return true
     }

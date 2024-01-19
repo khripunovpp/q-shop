@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct CheckoutScreenView: View {
-    @State var goToOrder = false
+    @InjectedObject var router: Router
     @StateObject var viewModel = CheckoutScreenViewModel()
     @State var choiseAddress = false
     @State var choisePayment = false
@@ -62,16 +63,12 @@ struct CheckoutScreenView: View {
             
             ScreenHeaderView(title: "Total: $\(viewModel.totalFormatted)")
             
-            NavigationLink(isActive: $goToOrder) {
-                OrderScreenView().navigationBarBackButtonHidden()
-            } label: {
-                BrandButtonView(
-                    label: "Pay",
-                    type: .big
-                ) {
-                    viewModel.createOrder()
-                    goToOrder = true
-                }
+            BrandButtonView(
+                label: "Pay",
+                type: .big
+            ) {
+                viewModel.createOrder()
+                router.navigate(to: .Order)
             }
             Spacer()
         }.padding(EdgeInsets(

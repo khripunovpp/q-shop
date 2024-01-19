@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct LoginFormView: View {
     @State var email = ""
     @State var password = ""
     @Environment(\.colorScheme) var colorScheme
+    @InjectedObject var router: Router
     
     var body: some View {
         VStack(alignment: .center){
@@ -25,6 +27,7 @@ struct LoginFormView: View {
                 label: "Login",
                 type:.big
             ) {
+                router.navigate(to: .Register)
             }.padding(25)
             
             NavigationLink("Creaete account", destination: RegisterScreenView())

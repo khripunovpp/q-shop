@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct OrderScreenView: View {
     @StateObject var viewModel = OrderViewModel()
     @State var goodDetails = false
-    @State var goToOrders = false
+    @InjectedObject var router: Router
     
     var body: some View {
         VStack(
@@ -61,14 +62,10 @@ struct OrderScreenView: View {
             }
             Spacer()
             
-            NavigationLink(isActive: $goToOrders) {
-                ShowcaseScreenView().navigationBarBackButtonHidden()
-            } label: {
-                BrandButtonView(
-                    label: "See other orders"
-                ) {
-                    goToOrders = true
-                }
+            BrandButtonView(
+                label: "See other orders"
+            ) {
+                router.navigate(to: .Orders)
             }
         }.padding(EdgeInsets(
             top: VIEWPORT_PADDING_V,
@@ -76,7 +73,7 @@ struct OrderScreenView: View {
             bottom: VIEWPORT_PADDING_V,
             trailing: VIEWPORT_PADDING_H
         )).onAppear{
-//            viewModel.cartProvider.reset()
+            viewModel.cartProvider.reset()
         }
     }
 }

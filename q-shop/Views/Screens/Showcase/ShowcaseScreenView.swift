@@ -12,6 +12,7 @@ import Resolver
 struct ShowcaseScreenView: View {
     @State var goToCart = false
     @Bindable var viewModel = ShowcaseScreenViewModel()
+    @InjectedObject var router: Router
     
     var body: some View {
         Group {
@@ -42,19 +43,12 @@ struct ShowcaseScreenView: View {
                     }
                     
                     if viewModel.count > 0 {
-                        NavigationLink(isActive: $goToCart) {
-                            CheckoutScreenView()
-                                .navigationBarTitleDisplayMode(.inline)
-                        } label: {
-                            VStack {
-                                BrandButtonView(
-                                    label: "Show \(viewModel.count) items in your cart"
-                                ) {
-                                    goToCart = true
-                                }
-                                .padding(BASE_PADDING)
-                            }
+                        BrandButtonView(
+                            label: "Show \(viewModel.count) items in your cart"
+                        ) {
+                            router.navigate(to: .Checkout)
                         }
+                        .padding(BASE_PADDING)
                     }
                 }
             }
