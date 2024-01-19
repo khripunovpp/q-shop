@@ -23,7 +23,7 @@ struct SingleGoodDetailsScreenView: View {
             Text(model.description)
                 .textStyle(RegularTextSyles)
                 .padding(.bottom, BASE_PADDING)
-            QuantityButtonView(count: $count) { c in
+            QuantityView(count: $count) { c in
                 count = c
                 changed(model)
             }

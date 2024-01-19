@@ -47,7 +47,10 @@ struct GoodItemView: View {
                             .padding(.bottom, BASE_PADDING)
                             
                             if count > 0 {
-                                QuantityButtonView(count: $count) { value in
+                                QuantityView(
+                                    count: $count,
+                                    labelStyle: TextStyle(color: .black, size: 25, weight: .black)
+                                ) { value in
                                     count = value
                                 }
                             } else {

@@ -33,12 +33,13 @@ struct GoodRowView<Content: View>: View {
             label()
             Spacer()
             if changableMode {
-                QuantityButtonView(
-                    count: $count
+                QuantityView(
+                    count: $count,
+                    compactMode: true
                 ) { newCount in
                     change(newCount)
                 }
-                .frame(width: 100)
+                .frame(maxWidth: 100)
             }  else {
                 Text("\(count)")
             }
