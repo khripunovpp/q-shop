@@ -14,6 +14,7 @@ class CheckoutScreenViewModel: ObservableObject {
     @Injected var addressesProvider: AddressesProvider
     @Injected var paymentAccountsProvider: PaymentAccountsProvider
     @Injected var ordersProvider: OrdersProvider
+    @InjectedObject var spinner: SpinnerProvider
     @Published var items: [CartItem] = []
     @Published var totalFormatted: String = "0"
     @Published var activeAddress: String = "Home"
@@ -47,11 +48,15 @@ class CheckoutScreenViewModel: ObservableObject {
     }
     
     func createOrder() {
+        spinner.visible = true
         order = ordersProvider.create(
             cartProvider.cart,
             withPayment: paymentAccountsProvider.activePaymentAccount,
             to: addressesProvider.activeAddress
         )
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) { [weak self] in
+            self?.spinner.visible = false
+        }
     }
     
     func resetCart(){
