@@ -10,6 +10,7 @@ import Resolver
 
 struct CheckoutScreenView: View {
     @InjectedObject var router: Router
+    @InjectedObject var spinner: SpinnerProvider
     @StateObject var viewModel = CheckoutScreenViewModel()
     @State var choiseAddress = false
     @State var choisePayment = false
@@ -67,8 +68,12 @@ struct CheckoutScreenView: View {
                 label: "Pay",
                 type: .big
             ) {
+                spinner.visible = true
                 viewModel.createOrder()
-                router.navigate(to: .Order)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                    router.navigate(to: .Order)
+                    spinner.visible = false
+                }
             }
             Spacer()
         }.padding(EdgeInsets(
