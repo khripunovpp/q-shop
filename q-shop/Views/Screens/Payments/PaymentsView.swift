@@ -20,9 +20,9 @@ struct PaymentsView: View {
                     displayEditing: $viewModel.displayEditing,
                     style: index == viewModel.activePaymentAccountIndex ? ActiveStyles : InactiveStyles
                 ) { newAddress in
-                    viewModel.setActive(index)
-                } onEdit: { newAddress in
                     viewModel.paymentAccountOnEditIdx = index
+                } onActivate: { newAddress in
+                    viewModel.setActive(index)
                 } content: { newAddress in
                     VStack(spacing: 0) {
                         ScreenHeaderView(title: "Edit address")

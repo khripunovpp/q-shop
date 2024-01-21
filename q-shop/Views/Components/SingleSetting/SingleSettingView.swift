@@ -16,7 +16,7 @@ struct SingleSettingView<Content: View>: View {
     @Binding var displayEditing: Bool
     var label: String
     var onEdit: (_ newValue: String) -> Void
-    var onActivate: (_ value: String) -> Void
+    var onActivate: (_ value: String) -> Void?
     private var content: (String) -> Content
     var style: BoxStyles
     
@@ -24,8 +24,8 @@ struct SingleSettingView<Content: View>: View {
         _ label: String,
         displayEditing: Binding<Bool>,
         style: BoxStyles = BoxStyles(),
-        onActivate: @escaping (_ value: String) -> Void = {_ in },
         onEdit: @escaping (_ newValue: String) -> Void = {_ in },
+        onActivate: @escaping (_ value: String) -> Void? = { _ in nil },
         @ViewBuilder content: @escaping (_:String) -> Content
     ){
         self.label = label

@@ -24,9 +24,9 @@ struct CheckoutScreenView: View {
             
             ScrollView{
                 VStack{
-                    ForEach(viewModel.items.indices, id: \.self) { index in
+                    ForEach($viewModel.items.indices, id: \.self) { index in
                         GoodRowView(
-                            viewModel.items[index],
+                            $viewModel.items[index] as! Good,
                             count: $viewModel.items[index].count,
                             changableMode: true
                         ) { newCount in

@@ -2,16 +2,16 @@
 //  CartProvider.swift
 //  q-shop
 //
-//  Created by Khripunov Pavel on 28/12/2023.
+//  Created by Khripunov Pavel on 21/01/2024.
 //
 
 import Foundation
 import RxSwift
+import Resolver
 
-final class CartProvider {
+struct CartProvider {
     private let cart = Cart()
     private let itemsSubject = BehaviorSubject<[CartItem]>(value: [])
-    
     var items$: Observable<[CartItem]> {
         itemsSubject.asObservable()
     }
@@ -36,5 +36,10 @@ final class CartProvider {
     
     private func emitItems() {
         itemsSubject.onNext(cart.getItems().sorted { a,b in a.name < b.name })
+    }
+    
+    
+    func reset(){
+        
     }
 }

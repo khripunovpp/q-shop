@@ -20,9 +20,9 @@ struct AddressesView: View {
                     displayEditing: $viewModel.displayEditing,
                     style: index == viewModel.activeAdressIndex ? ActiveStyles : InactiveStyles
                 ) { newAddress in
-                    viewModel.setActive(index)
-                } onEdit: { newAddress in
                     viewModel.addressOnEditIdx = index
+                } onActivate: { newAddress in
+                    viewModel.setActive(index)
                 } content: { newAddress in
                     VStack(alignment: .leading, spacing: 0) {
                         ScreenHeaderView(title: "Edit address")
