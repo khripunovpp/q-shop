@@ -10,8 +10,9 @@ import RxSwift
 import Resolver
 
 struct CartProvider {
-    private let cart = Cart()
+    let cart = Cart()
     private let itemsSubject = BehaviorSubject<[CartItem]>(value: [])
+    
     var items$: Observable<[CartItem]> {
         itemsSubject.asObservable()
     }
@@ -20,11 +21,14 @@ struct CartProvider {
         cart.getItems().count
     }
     
+    var totalSumFormatted: String {
+        formatPrice(cart.totalSum)
+    }
+    
     func add(
-        _ name: String,
-        _ count: Int
+        _ item: any Good
     ) {
-        cart.setItem(name, count)
+        cart.setItem(CartItem.parse(item))
         emitItems()
     }
     

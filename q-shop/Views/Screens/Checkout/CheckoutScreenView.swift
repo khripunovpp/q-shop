@@ -26,7 +26,7 @@ struct CheckoutScreenView: View {
                 VStack{
                     ForEach($viewModel.items.indices, id: \.self) { index in
                         GoodRowView(
-                            $viewModel.items[index] as! Good,
+                            viewModel.items[index],
                             count: $viewModel.items[index].count,
                             changableMode: true
                         ) { newCount in

@@ -18,7 +18,7 @@ struct RootView: View {
         ZStack {
             NavigationStack(path: $router.navPath) {
                 if userProvider.hasSignedIn {
-                    ProfileScreenView().navigationDestination(for: RouteName.self) { destination in
+                    ShowcaseScreenView().navigationDestination(for: RouteName.self) { destination in
                         switch destination {
                         case .Profile:
                             Text("Profile")

@@ -6,10 +6,22 @@
 //
 import Foundation
 
-struct CartItem: Hashable, Identifiable {
+struct CartItem: Good {
+    var description: String = ""
+    var price: Float = 0.0
+    var pictureName: String = ""
     var id: String = UUID().uuidString
-    var name: String
-    var count: Int
+    var name: String = ""
+    var count: Int = 0
+    
+    static func parse(_ anyGood: any Good) -> CartItem {
+        CartItem(
+            price: anyGood.price,
+            pictureName: anyGood.pictureName,
+            name: anyGood.name,
+            count: anyGood.count
+        )
+    }
 }
 
 
@@ -18,9 +30,12 @@ final class Cart {
         items.isEmpty
     }
     
-    
     var keys: [String] {
         items.keys.map { i in String(i)}
+    }
+    
+    var totalSum: Float {
+        getItems().reduce(0.0) { acc, item in  acc + (Float(item.count) * item.price) }
     }
     
     private var items: [String: CartItem] = [:]
@@ -29,17 +44,13 @@ final class Cart {
         return Array(items.values)
     }
     
-    func setItem(_ name: String, _ count: Int) {
-        guard count > 0 else {
-            removeItem(name)
+    func setItem(_ item: CartItem) {
+        guard item.count > 0 else {
+            removeItem(item.name)
             return
         }
         
-        if items[name] == nil {
-            items[name] = CartItem(name: name, count: count)
-        } else {
-            items[name]!.count = count
-        }
+        items[item.name] = item
     }
     
     func removeItem(_ name: String) {
