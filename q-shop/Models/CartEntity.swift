@@ -56,4 +56,8 @@ final class Cart {
     func removeItem(_ name: String) {
         items.removeValue(forKey: name)
     }
+    
+    func reset() {
+        items = [:]
+    }
 }

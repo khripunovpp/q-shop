@@ -44,6 +44,7 @@ struct CartProvider {
     
     
     func reset(){
-        
+        cart.reset()
+        emitItems()
     }
 }
