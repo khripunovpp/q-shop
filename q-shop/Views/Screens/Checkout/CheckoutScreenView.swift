@@ -72,7 +72,7 @@ struct CheckoutScreenView: View {
                 viewModel.createOrder()
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
                     viewModel.resetCart()
-                    router.navigate(to: .Order)
+                    router.navigate(to: .Main)
                     spinner.visible = false
                     
                 }

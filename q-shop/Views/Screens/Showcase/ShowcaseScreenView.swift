@@ -12,7 +12,7 @@ import Resolver
 struct ShowcaseScreenView: View {
     @State var goToCart = false
     @Bindable var viewModel = ShowcaseScreenViewModel()
-    @InjectedObject var router: Router
+    @InjectedObject var tabRouter: TabRouter
     
     var body: some View {
         Group {
@@ -46,7 +46,7 @@ struct ShowcaseScreenView: View {
                         BrandButtonView(
                             label: "Show \(viewModel.count) items in your cart"
                         ) {
-                            router.navigate(to: .Checkout)
+                            tabRouter.navigate(to: .cart)
                         }
                         .padding(BASE_PADDING)
                     }
