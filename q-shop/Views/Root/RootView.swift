@@ -36,15 +36,21 @@ struct RootView: View {
     
     @ViewBuilder func authroziedView() -> some View{
         main().navigationDestination(for: RouteName.self) { destination in
-                    switch destination {
-                    case .Main:
-                        main()
-                    case .Register:
-                        RegisterScreenView()
-                    case .Login:
-                        LoginScreenView().navigationBarBackButtonHidden()
+            switch destination {
+            case .Main:
+                main()
+                    .navigationBarBackButtonHidden()
+                    .onAppear {
+                        tabRouter.selectedTab = .home
                     }
-                }
+            case .Order:
+                OrderScreenView().navigationBarBackButtonHidden()
+            case .Register:
+                RegisterScreenView()
+            case .Login:
+                LoginScreenView().navigationBarBackButtonHidden()
+            }
+        }
     }
     
     @ViewBuilder func main() -> some View {
@@ -68,14 +74,14 @@ struct RootView: View {
                             tabRouter.selectedTab = tab
                         }
                     } label: {
-//                        Image(systemName: "")
-//                            .renderingMode(.template)
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 25,height: 25)
-//                            .frame(maxWidth: .infinity)
-//                            .foregroundColor(selectedTab == tab ? .green : .gray)
-//                            .scaleEffect(selectedTab == tab ? 1.5 : 1)
+                        //                        Image(systemName: "")
+                        //                            .renderingMode(.template)
+                        //                            .resizable()
+                        //                            .aspectRatio(contentMode: .fit)
+                        //                            .frame(width: 25,height: 25)
+                        //                            .frame(maxWidth: .infinity)
+                        //                            .foregroundColor(selectedTab == tab ? .green : .gray)
+                        //                            .scaleEffect(selectedTab == tab ? 1.5 : 1)
                         
                         Text(tab.rawValue)
                     }
