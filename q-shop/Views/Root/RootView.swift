@@ -54,44 +54,36 @@ struct RootView: View {
     }
     
     @ViewBuilder func main() -> some View {
-        TabView(selection: $tabRouter.selectedTab) {
-            ShowcaseScreenView().tag(TabScreen.home)
-            CheckoutScreenView().tag(TabScreen.cart)
-            ProfileScreenView().tag(TabScreen.profile)
+        VStack(spacing: 0) {
+            TabView(selection: $tabRouter.selectedTab) {
+                ShowcaseScreenView().tag(TabScreen.home)
+                CheckoutScreenView().tag(TabScreen.cart)
+                ProfileScreenView().tag(TabScreen.profile)
+            }
+            tabBar()
         }
-        tabBar()
     }
     
     @ViewBuilder func tabBar() -> some View {
-        
-        GeometryReader { proxy in
-            let width = proxy.size.width
-            HStack(spacing: 0) {
-                ForEach(TabScreen.allCases, id: \.self){ tab in
-                    Button {
-                        withAnimation(.easeOut(duration: 0.2)){
-                            print("tab selected \(tab)")
-                            tabRouter.selectedTab = tab
-                        }
-                    } label: {
-                        //                        Image(systemName: "")
-                        //                            .renderingMode(.template)
-                        //                            .resizable()
-                        //                            .aspectRatio(contentMode: .fit)
-                        //                            .frame(width: 25,height: 25)
-                        //                            .frame(maxWidth: .infinity)
-                        //                            .foregroundColor(selectedTab == tab ? .green : .gray)
-                        //                            .scaleEffect(selectedTab == tab ? 1.5 : 1)
-                        
-                        Text(tab.rawValue)
+        HStack(alignment: .center, spacing: 0) {
+            ForEach(TabScreen.allCases, id: \.self){ tab in
+                Button {
+                    withAnimation(.easeOut(duration: 0.2)){
+                        print("tab selected \(tab)")
+                        tabRouter.selectedTab = tab
                     }
-                }
+                } label: {
+                    Spacer()
+                    Text(tab.title).foregroundColor(tabRouter.selectedTab == tab ? BrandColors.main : .gray)
+                        .scaleEffect(tabRouter.selectedTab == tab ? 1.1 : 1)
+                    Spacer()
+                }.buttonStyle(.plain)
             }
-            .frame(maxWidth: .infinity)
         }
+        .frame(maxWidth: .infinity, alignment: .center)
         .frame(height: 30)
-        .padding(.bottom,10)
-        .padding([.horizontal,.top])
+        .padding(.top, BASE_PADDING)
+        .background(.regularMaterial)
     }
 }
 
