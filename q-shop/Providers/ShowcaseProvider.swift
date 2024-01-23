@@ -18,7 +18,7 @@ final class ShowcaseProvider {
         showcase = Showcase()
         showcase.setMany([
             ShowcaseItem(name: "Lemon-Basil", price: 3.50, count: 0, pictureName: "pic1"),
-            ShowcaseItem(name: "Shocolate diplomat", price: 3.50, count: 0, pictureName: "pic2"),
+            ShowcaseItem(name: "Chocolate diplomat", price: 3.50, count: 0, pictureName: "pic2"),
             ShowcaseItem(name: "Berry", price: 2.50, count: 0, pictureName: "pic3"),
             ShowcaseItem(name: "Lemon-Lime", price: 3.0, count: 0, pictureName: "pic4")
         ])
