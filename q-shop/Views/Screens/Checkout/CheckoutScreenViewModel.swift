@@ -19,6 +19,9 @@ class CheckoutScreenViewModel: ObservableObject {
     @Published var activeAddress: String = "Home"
     @Published var activePaymentAccount: String = "ApplePay"
     private var order: Order? = nil
+    var empty: Bool {
+        items.isEmpty
+    }
     
     let bag = DisposeBag()
     

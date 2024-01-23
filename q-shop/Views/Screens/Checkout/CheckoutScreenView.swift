@@ -64,17 +64,19 @@ struct CheckoutScreenView: View {
             
             ScreenHeaderView(title: "Total: $\(viewModel.totalFormatted)")
             
-            BrandButtonView(
-                label: "Pay",
-                type: .big
-            ) {
-                spinner.visible = true
-                viewModel.createOrder()
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
-                    viewModel.resetCart()
-                    router.navigate(to: .Order)
-                    spinner.visible = false
-                    
+            if !viewModel.empty {
+                BrandButtonView(
+                    label: "Pay",
+                    type: .big
+                ) {
+                    spinner.visible = true
+                    viewModel.createOrder()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2)) {
+                        viewModel.resetCart()
+                        router.navigate(to: .Order)
+                        spinner.visible = false
+                        
+                    }
                 }
             }
             Spacer()
