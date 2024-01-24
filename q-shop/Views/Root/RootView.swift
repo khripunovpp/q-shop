@@ -12,6 +12,7 @@ struct RootView: View {
     @Injected var userProvider: UserProvider
     @InjectedObject var router: Router
     @InjectedObject var tabRouter: TabRouter
+    @InjectedObject var sheetRouter: SheetRouter
     @InjectedObject var spinner: SpinnerProvider
     
     init() {
@@ -24,6 +25,13 @@ struct RootView: View {
                 if userProvider.hasSignedIn {
                     VStack(spacing: 0){
                         authroziedView()
+                    }.sheet(isPresented: $sheetRouter.isPresented) {
+                        switch sheetRouter.sheetName {
+                        case .Order:
+                            OrderScreenView()
+                        case .none:
+                            Text("")
+                        }
                     }
                 } else {
                     LoginScreenView()

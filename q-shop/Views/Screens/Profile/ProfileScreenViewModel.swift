@@ -11,7 +11,7 @@ import RxSwift
 
 class ProfileScreenViewModel: ObservableObject {
     @Injected private var ordersProvider: OrdersProvider
-    @InjectedObject private var router: Router
+    @InjectedObject private var sheetRouter: SheetRouter
     @Published var orders: [Order] = []
     private let bag = DisposeBag()
     
@@ -25,6 +25,6 @@ class ProfileScreenViewModel: ObservableObject {
         _ order: Order
     ){
         ordersProvider.setCurrent(order)
-        router.navigate(to: .Order)
+        sheetRouter.to(.Order)
     }
 }

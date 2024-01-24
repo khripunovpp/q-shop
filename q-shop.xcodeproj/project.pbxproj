@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6938AE702B61A8C800AF821C /* SheetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938AE6F2B61A8C800AF821C /* SheetRouter.swift */; };
 		6940AB382B51DD820032AEB0 /* ScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB372B51DD820032AEB0 /* ScreenHeaderView.swift */; };
 		6940AB3B2B51DE0B0032AEB0 /* GoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB3A2B51DE0B0032AEB0 /* GoodRowView.swift */; };
 		6940AB3E2B51E0BA0032AEB0 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB3D2B51E0BA0032AEB0 /* SettingsRowView.swift */; };
@@ -98,6 +99,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6938AE6F2B61A8C800AF821C /* SheetRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRouter.swift; sourceTree = "<group>"; };
 		6940AB372B51DD820032AEB0 /* ScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenHeaderView.swift; sourceTree = "<group>"; };
 		6940AB3A2B51DE0B0032AEB0 /* GoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodRowView.swift; sourceTree = "<group>"; };
 		6940AB3D2B51E0BA0032AEB0 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			children = (
 				69C2593E2B5B28CE00B8B69D /* Router.swift */,
 				69C259502B5FD56E00B8B69D /* TabRouter.swift */,
+				6938AE6F2B61A8C800AF821C /* SheetRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				69AE73302B3F3F2E0085902B /* SearchBarView.swift in Sources */,
 				6940AB512B54721B0032AEB0 /* AddressesEntity.swift in Sources */,
 				69EA13582B4DF151005152D6 /* Sorting.swift in Sources */,
+				6938AE702B61A8C800AF821C /* SheetRouter.swift in Sources */,
 				6940AB592B5492360032AEB0 /* PaymentAccount.swift in Sources */,
 				69EA13552B4DEE13005152D6 /* Showcase.swift in Sources */,
 				6991828B2B5737F0007E06EF /* OrdersProvider.swift in Sources */,

@@ -23,6 +23,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         Resolver.register { OrdersProvider() as OrdersProvider }.scope(.application)
         Resolver.register { Router() as Router }.scope(.application)
         Resolver.register { TabRouter() as TabRouter }.scope(.application)
+        Resolver.register { SheetRouter() as SheetRouter }.scope(.application)
         Resolver.register { SpinnerProvider() as SpinnerProvider }.scope(.application)
         
         return true

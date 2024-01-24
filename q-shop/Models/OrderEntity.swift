@@ -12,8 +12,8 @@ enum OrderState: CaseIterable {
 }
 
 final class Order: Identifiable {
-    let id: UUID
-    let date: Date
+    let id = UUID()
+    let date = Date()
     private(set) var state: OrderState = .initial
     let total: Float
     let totalFormatted: String
@@ -21,6 +21,7 @@ final class Order: Identifiable {
     private var cart: Cart
     private var payment: PaymentAccount
     private var address: Address
+    
     var addressLabel: String {
         address.label
     }
@@ -41,8 +42,6 @@ final class Order: Identifiable {
         payedBy paymentAccount: PaymentAccount,
         to currentAddress: Address
     ) {
-        id = UUID()
-        date = Date()
         self.cart = cart
         total = self.cart.totalSum
         totalFormatted = formatPrice(self.cart.totalSum)
