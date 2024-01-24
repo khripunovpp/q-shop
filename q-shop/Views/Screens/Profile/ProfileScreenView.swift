@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProfileScreenView: View {
+    @StateObject private var vm = ProfileScreenViewModel()
+    
     var body: some View {
         VStack(
             alignment: .leading,
@@ -25,6 +27,14 @@ struct ProfileScreenView: View {
                 row(
                     label: "Phone"
                 )
+                
+                ForEach(vm.orders, id: \.id) { order in
+                    HStack {
+                        Text("\(order.id)")
+                        Text("\(order.date)")
+                        Text("\(order.goodsCount) for $\(order.totalFormatted)")
+                    }
+                }
             }
         }.padding(EdgeInsets(
             top: VIEWPORT_PADDING_V,

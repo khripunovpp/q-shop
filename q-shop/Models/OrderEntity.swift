@@ -16,6 +16,7 @@ final class Order: Identifiable {
     let date: Date
     var state: OrderState = .initial
     let total: Float 
+    let totalFormatted: String
     private var items: [any Good]
     private var cart: Cart
     private var payment: PaymentAccount
@@ -28,6 +29,13 @@ final class Order: Identifiable {
         payment.label ?? ""
     }
     
+    var goodsCount: Int {
+        items.reduce(0) { partialResult, item in
+            print("item \(item)")
+            return item.count
+        }
+    }
+    
     init(
         _ cart: Cart,
         payedBy paymentAccount: PaymentAccount,
@@ -37,6 +45,7 @@ final class Order: Identifiable {
         date = Date()
         self.cart = cart
         total = self.cart.totalSum
+        totalFormatted = formatPrice(self.cart.totalSum)
         items = self.cart.getItems()
         payment = paymentAccount
         address = currentAddress

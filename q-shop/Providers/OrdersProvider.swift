@@ -20,6 +20,10 @@ final class OrdersProvider {
         currentSubject.asObservable()
     }
     
+    var items$: Observable<[Order]> {
+        itemsSubject.asObservable()
+    }
+    
     func create(
         _ cart: Cart,
         withPayment pa: PaymentAccount,
