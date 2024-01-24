@@ -12,31 +12,19 @@ struct ProfileScreenView: View {
     @StateObject private var vm = ProfileScreenViewModel()
     
     var body: some View {
-        VStack(
-            alignment: .leading,
-            spacing: 0
-        ) {
+        VStack {
             ScreenHeaderView(title: "Profile")
             
             ScrollView{
-                row(
-                    label: "Name"
-                ) 
-                row(
-                    label: "Email"
-                )
-                row(
-                    label: "Phone"
-                )
-                
-                ForEach(vm.orders, id: \.id) { order in
-                    Button {
-                        vm.toOrder(order)
-                    } label: {
-                        HStack {
-                            Text("\(order.id)")
-                            Text("\(order.date)")
-                            Text("\(order.goodsCount) for $\(order.totalFormatted)")
+                VStack( alignment: .leading,
+                        spacing: 0) {
+                    ProfileSettingsView(label: "Name")
+                    ProfileSettingsView(label: "Email")
+                    ProfileSettingsView(label: "Phone")
+                    
+                    ForEach(vm.orders, id: \.id) { order in
+                        OrderDetailsRowView(order: order) {
+                            
                         }
                     }
                 }
@@ -48,22 +36,7 @@ struct ProfileScreenView: View {
             trailing: VIEWPORT_PADDING_H
         ))
         .onAppear(){
-//            viewModel.loadCart()
-        }
-    }
-    
-    @ViewBuilder func row(
-        label: String = ""
-    ) -> some View{
-        SingleSettingView(
-            label,
-            displayEditing: .constant(false)
-        ) { newAddress in
-            
-        } content: { newAddress in
-            VStack(alignment: .leading, spacing: 0) {
-                ScreenHeaderView(title: "Edit")
-            }.padding(BASE_PADDING)
+            //            viewModel.loadCart()
         }
     }
 }

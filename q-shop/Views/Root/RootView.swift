@@ -27,12 +27,12 @@ struct RootView: View {
                         authroziedView()
                     }.sheet(isPresented: $sheetRouter.isPresented) {
                         switch sheetRouter.sheetName {
-                        case .Order:
-                            OrderScreenView()
-                        case .none:
-                            Text("")
+                            case .Order:
+                                OrderScreenView()
+                            case .none:
+                                Text("")
+                            }
                         }
-                    }
                 } else {
                     LoginScreenView()
                 }

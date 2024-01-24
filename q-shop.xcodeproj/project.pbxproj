@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6938AE702B61A8C800AF821C /* SheetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938AE6F2B61A8C800AF821C /* SheetRouter.swift */; };
+		6938AE732B61B37E00AF821C /* OrderDetailsRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938AE722B61B37E00AF821C /* OrderDetailsRowViewModel.swift */; };
+		6938AE752B61B38700AF821C /* OrderDetailsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938AE742B61B38700AF821C /* OrderDetailsRowView.swift */; };
+		6938AE782B61B62C00AF821C /* ProfileSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938AE772B61B62C00AF821C /* ProfileSettingsViewModel.swift */; };
+		6938AE7A2B61B63400AF821C /* ProfileSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6938AE792B61B63400AF821C /* ProfileSettingsView.swift */; };
 		6940AB382B51DD820032AEB0 /* ScreenHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB372B51DD820032AEB0 /* ScreenHeaderView.swift */; };
 		6940AB3B2B51DE0B0032AEB0 /* GoodRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB3A2B51DE0B0032AEB0 /* GoodRowView.swift */; };
 		6940AB3E2B51E0BA0032AEB0 /* SettingsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6940AB3D2B51E0BA0032AEB0 /* SettingsRowView.swift */; };
@@ -100,6 +104,10 @@
 
 /* Begin PBXFileReference section */
 		6938AE6F2B61A8C800AF821C /* SheetRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRouter.swift; sourceTree = "<group>"; };
+		6938AE722B61B37E00AF821C /* OrderDetailsRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsRowViewModel.swift; sourceTree = "<group>"; };
+		6938AE742B61B38700AF821C /* OrderDetailsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsRowView.swift; sourceTree = "<group>"; };
+		6938AE772B61B62C00AF821C /* ProfileSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewModel.swift; sourceTree = "<group>"; };
+		6938AE792B61B63400AF821C /* ProfileSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsView.swift; sourceTree = "<group>"; };
 		6940AB372B51DD820032AEB0 /* ScreenHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenHeaderView.swift; sourceTree = "<group>"; };
 		6940AB3A2B51DE0B0032AEB0 /* GoodRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodRowView.swift; sourceTree = "<group>"; };
 		6940AB3D2B51E0BA0032AEB0 /* SettingsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRowView.swift; sourceTree = "<group>"; };
@@ -202,6 +210,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6938AE712B61B36900AF821C /* OrderDetailsRow */ = {
+			isa = PBXGroup;
+			children = (
+				6938AE722B61B37E00AF821C /* OrderDetailsRowViewModel.swift */,
+				6938AE742B61B38700AF821C /* OrderDetailsRowView.swift */,
+			);
+			path = OrderDetailsRow;
+			sourceTree = "<group>";
+		};
+		6938AE762B61B61600AF821C /* ProfileSettings */ = {
+			isa = PBXGroup;
+			children = (
+				6938AE772B61B62C00AF821C /* ProfileSettingsViewModel.swift */,
+				6938AE792B61B63400AF821C /* ProfileSettingsView.swift */,
+			);
+			path = ProfileSettings;
+			sourceTree = "<group>";
+		};
 		6940AB362B51DD700032AEB0 /* ScreenHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +387,8 @@
 		69AE72D52B3E100E0085902B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6938AE762B61B61600AF821C /* ProfileSettings */,
+				6938AE712B61B36900AF821C /* OrderDetailsRow */,
 				69C259402B5B37C000B8B69D /* Spinner */,
 				69C259382B5ADD1300B8B69D /* SimpleRow */,
 				6940AB3F2B51EC130032AEB0 /* SingleSetting */,
@@ -708,6 +736,7 @@
 			files = (
 				699BCC202B47216B0084155C /* TextExtensions.swift in Sources */,
 				69C2593C2B5ADD3700B8B69D /* SimpleRowView.swift in Sources */,
+				6938AE782B61B62C00AF821C /* ProfileSettingsViewModel.swift in Sources */,
 				69AE73342B3F4A360085902B /* FiltersBarView.swift in Sources */,
 				69AE72F52B3E11980085902B /* GoodEntity.swift in Sources */,
 				69AE73212B3E14AB0085902B /* RegisterScreenViewModel.swift in Sources */,
@@ -724,6 +753,7 @@
 				69AE73302B3F3F2E0085902B /* SearchBarView.swift in Sources */,
 				6940AB512B54721B0032AEB0 /* AddressesEntity.swift in Sources */,
 				69EA13582B4DF151005152D6 /* Sorting.swift in Sources */,
+				6938AE7A2B61B63400AF821C /* ProfileSettingsView.swift in Sources */,
 				6938AE702B61A8C800AF821C /* SheetRouter.swift in Sources */,
 				6940AB592B5492360032AEB0 /* PaymentAccount.swift in Sources */,
 				69EA13552B4DEE13005152D6 /* Showcase.swift in Sources */,
@@ -739,6 +769,7 @@
 				69C2594F2B5DC52300B8B69D /* CartEntity.swift in Sources */,
 				6940AB382B51DD820032AEB0 /* ScreenHeaderView.swift in Sources */,
 				69AE73252B3E16E60085902B /* RootViewModel.swift in Sources */,
+				6938AE752B61B38700AF821C /* OrderDetailsRowView.swift in Sources */,
 				69C259422B5B37D100B8B69D /* Spinner.swift in Sources */,
 				69AE73022B3E12500085902B /* CheckoutProvider.swift in Sources */,
 				69AE72D72B3E10250085902B /* LoginScreenView.swift in Sources */,
@@ -754,6 +785,7 @@
 				6940AB442B5440CA0032AEB0 /* AdressesViewModel.swift in Sources */,
 				69C259302B59CD3300B8B69D /* Helpers.swift in Sources */,
 				69AE731F2B3E148F0085902B /* RegisterScreenView.swift in Sources */,
+				6938AE732B61B37E00AF821C /* OrderDetailsRowViewModel.swift in Sources */,
 				6991828E2B57381A007E06EF /* OrdersManager.swift in Sources */,
 				6940AB4B2B54415F0032AEB0 /* PaymentsView.swift in Sources */,
 				69AE72E42B3E10EF0085902B /* CheckoutScreenView.swift in Sources */,
