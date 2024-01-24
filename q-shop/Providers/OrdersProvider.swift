@@ -42,4 +42,10 @@ final class OrdersProvider {
     func getItems() -> [Order] {
         try! itemsSubject.value()
     }
+    
+    func setCurrent(
+        _ order: Order
+    ) {
+        currentSubject.onNext(order)
+    }
 }

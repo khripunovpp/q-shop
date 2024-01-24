@@ -13,6 +13,7 @@ struct RootView: View {
     @InjectedObject var router: Router
     @InjectedObject var tabRouter: TabRouter
     @InjectedObject var spinner: SpinnerProvider
+    
     init() {
         UITabBar.appearance().isHidden = true
     }
@@ -31,7 +32,6 @@ struct RootView: View {
             
             Spinner(showSpinner: $spinner.visible)
         }
-        
     }
     
     @ViewBuilder func authroziedView() -> some View{

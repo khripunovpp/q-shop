@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Resolver
 
 struct ProfileScreenView: View {
     @StateObject private var vm = ProfileScreenViewModel()
@@ -29,10 +30,14 @@ struct ProfileScreenView: View {
                 )
                 
                 ForEach(vm.orders, id: \.id) { order in
-                    HStack {
-                        Text("\(order.id)")
-                        Text("\(order.date)")
-                        Text("\(order.goodsCount) for $\(order.totalFormatted)")
+                    Button {
+                        vm.toOrder(order)
+                    } label: {
+                        HStack {
+                            Text("\(order.id)")
+                            Text("\(order.date)")
+                            Text("\(order.goodsCount) for $\(order.totalFormatted)")
+                        }
                     }
                 }
             }
