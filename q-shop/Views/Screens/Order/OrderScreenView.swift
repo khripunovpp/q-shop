@@ -65,7 +65,7 @@ struct OrderScreenView: View {
             BrandButtonView(
                 label: "See other orders"
             ) {
-                router.navigate(to: .Main)
+                router.navigate(to: .Profile)
             }
         }.padding(EdgeInsets(
             top: VIEWPORT_PADDING_V,

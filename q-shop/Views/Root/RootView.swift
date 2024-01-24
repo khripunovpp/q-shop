@@ -35,25 +35,26 @@ struct RootView: View {
     }
     
     @ViewBuilder func authroziedView() -> some View{
-        main().navigationDestination(for: RouteName.self) { destination in
-            switch destination {
-            case .Main:
-                main()
-                    .navigationBarBackButtonHidden()
-                    .onAppear {
-                        tabRouter.selectedTab = .home
-                    }
-            case .Order:
-                OrderScreenView().navigationBarBackButtonHidden()
-            case .Register:
-                RegisterScreenView()
-            case .Login:
-                LoginScreenView().navigationBarBackButtonHidden()
+        main(withTab: TabScreen.home)
+            .navigationDestination(for: RouteName.self) { destination in
+                switch destination {
+                case .Main:
+                    main(withTab: TabScreen.home)
+                case .Order:
+                    OrderScreenView().navigationBarBackButtonHidden()
+                case .Register:
+                    RegisterScreenView()
+                case .Login:
+                    LoginScreenView().navigationBarBackButtonHidden()
+                case .Profile:
+                    main(withTab: TabScreen.profile)
+                }
             }
-        }
     }
     
-    @ViewBuilder func main() -> some View {
+    @ViewBuilder func main(
+        withTab: TabScreen
+    ) -> some View {
         VStack(spacing: 0) {
             TabView(selection: $tabRouter.selectedTab) {
                 ShowcaseScreenView().tag(TabScreen.home)
@@ -62,13 +63,17 @@ struct RootView: View {
             }
             tabBar()
         }
+        .navigationBarBackButtonHidden()
+        .onAppear {
+            tabRouter.selectedTab = withTab
+        }
     }
     
     @ViewBuilder func tabBar() -> some View {
         HStack(alignment: .center, spacing: 0) {
             ForEach(TabScreen.allCases, id: \.self){ tab in
                 Button {
-                    withAnimation(.easeOut(duration: 0.2)){
+                    withAnimation(.easeOut(duration: 0.2)) {
                         print("tab selected \(tab)")
                         tabRouter.selectedTab = tab
                     }

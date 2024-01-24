@@ -10,7 +10,7 @@ import SwiftUI
 // main - основной экран с tabview
 
 enum RouteName: CaseIterable, Codable, Hashable  {
-    case Main, Register, Login, Order
+    case Main, Register, Login, Order, Profile
 }
 
 final class Router: ObservableObject {
