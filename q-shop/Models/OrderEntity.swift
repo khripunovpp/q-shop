@@ -8,14 +8,14 @@
 import Foundation
 
 enum OrderState: CaseIterable {
-    case initial, in_progress, finished, canceled
+    case initial, in_progress, on_delivery, finished, canceled
 }
 
 final class Order: Identifiable {
     let id: UUID
     let date: Date
-    var state: OrderState = .initial
-    let total: Float 
+    private(set) var state: OrderState = .initial
+    let total: Float
     let totalFormatted: String
     private var items: [any Good]
     private var cart: Cart
@@ -59,5 +59,21 @@ final class Order: Identifiable {
         _ item: any Good
     ) {
         items.append(item)
+    }
+    
+    func setOrderToInProgress(){
+        state = .in_progress
+    }
+    
+    func setOrderToOnDelivery(){
+        state = .on_delivery
+    }
+    
+    func cancel(){
+        state = .canceled
+    }
+    
+    func setDone(){
+        state = .finished
     }
 }
